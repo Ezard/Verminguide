@@ -7,6 +7,7 @@
     "express": "^4.13.3",
     "express-handlebars": "^2.0.1",
     "express-subdomain": "^1.0.4",
+    "mysql": "file:node_modules/mysql",
     "node-mysql": "^0.4.2",
     "subdomain-static": "^0.1.3",
     "vhost": "^3.0.2"

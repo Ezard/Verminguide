@@ -24,7 +24,12 @@ module.exports = function (router, con) {
 				var enemy = {};
 				enemy.name = rows[0].name;
 				enemy.description = rows[0].description;
-				enemy.notes = rows[0].notes;
+				enemy.notes = [];
+				var split = rows[0].notes.split("&&");
+				for (var i = 0; i < split.length; i++) {
+					var split2 = split[i].split("||");
+					enemy.notes.push({title: split2[0], content: split2[1]});
+				}
 				res.end(JSON.stringify(enemy));
 			}
 		});

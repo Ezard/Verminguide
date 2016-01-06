@@ -21,7 +21,7 @@ module.exports = function (router, con) {
 			if (rows.length == 0) {
 				res.status(404).end(JSON.stringify({"error": {"message": "Sorry, that resource does not exist"}}));
 			} else {
-				var enemy = [];
+				var enemy = {};
 				enemy.name = rows[0].name;
 				enemy.description = rows[0].description;
 				enemy.notes = rows[0].notes;

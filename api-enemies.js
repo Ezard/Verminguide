@@ -15,6 +15,7 @@ module.exports = function (router, con) {
 					obj.notes.push({title: split2[0], content: split2[1]});
 				}
 				obj.icon = "http://images.vermintideutility.com/enemies/icons/" + obj.name.toLowerCase().replace(" ", "_") + ".png";
+				obj.image = "http://images.vermintideutility.com/enemies/" + obj.name.toLowerCase().replace(" ", "_") + ".png";
 				enemies.push(obj);
 			}
 			res.end(JSON.stringify(enemies));
@@ -36,6 +37,8 @@ module.exports = function (router, con) {
 					var split2 = split[i].split("||");
 					enemy.notes.push({title: split2[0], content: split2[1]});
 				}
+				enemy.icon = "http://images.vermintideutility.com/enemies/icons/" + enemy.name.toLowerCase().replace(" ", "_") + ".png";
+				enemy.image = "http://images.vermintideutility.com/enemies/" + enemy.name.toLowerCase().replace(" ", "_") + ".png";
 				res.end(JSON.stringify(enemy));
 			}
 		});

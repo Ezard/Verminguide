@@ -14,6 +14,7 @@ module.exports = function (router, con) {
 					var split2 = split[j].split("||");
 					obj.notes.push({title: split2[0], content: split2[1]});
 				}
+				obj.icon = obj.name.toLowerCase().replace(" ", "_");
 				enemies.push(obj);
 			}
 			res.end(JSON.stringify(enemies));

@@ -22,6 +22,7 @@ router.get('/', function(req, res) {
 });
 
 require("./api-trinkets")(router, con);
+require("./api-enemies")(router, con);
 
 app.use(subdomain('api', router));
 

@@ -14,7 +14,7 @@ module.exports = function (router, con) {
 					var split2 = split[j].split("||");
 					obj.notes.push({title: split2[0], content: split2[1]});
 				}
-				obj.icon = "http://images.vermintideutility.com/enemies/" + obj.name.toLowerCase().replace(" ", "_") + "_icon.png";
+				obj.icon = "http://images.vermintideutility.com/enemies/icons/" + obj.name.toLowerCase().replace(" ", "_") + ".png";
 				enemies.push(obj);
 			}
 			res.end(JSON.stringify(enemies));

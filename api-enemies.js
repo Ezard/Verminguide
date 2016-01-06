@@ -8,7 +8,12 @@ module.exports = function (router, con) {
 				var obj = {};
 				obj.name = rows[i].name;
 				obj.description = rows[i].description;
-				obj.notes = rows[i].notes;
+				obj.notes = [];
+				var split = rows[0].notes.split("&&");
+				for (var j = 0; j < split.length; j++) {
+					var split2 = split[j].split("||");
+					obj.notes.push({title: split2[0], content: split2[1]});
+				}
 				enemies.push(obj);
 			}
 			res.end(JSON.stringify(enemies));

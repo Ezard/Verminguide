@@ -9,7 +9,7 @@ module.exports = function (router, con) {
 				obj.name = rows[i].name;
 				obj.description = rows[i].description;
 				obj.notes = [];
-				var split = rows[0].notes.split("&&");
+				var split = rows[i].notes.split("&&");
 				for (var j = 0; j < split.length; j++) {
 					var split2 = split[j].split("||");
 					obj.notes.push({title: split2[0], content: split2[1]});

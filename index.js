@@ -22,6 +22,7 @@ app.use('/handlebars', express.static('node_modules/handlebars/lib'));
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
+app.set('views', __dirname + '/views');
 
 app.get('/', function(req, res) {
 	res.render('enemies');

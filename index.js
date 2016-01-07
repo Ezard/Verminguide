@@ -4,12 +4,7 @@ var subdomain = require('express-subdomain');
 var mysql = require('mysql');
 var vhost = require('vhost');
 
-var con = mysql.createConnection({
-	host     : 'localhost',
-	user     : 'root',
-	password : 'Superezard2',
-	database : 'vermintideutility'
-});
+var con = mysql.createConnection(require('./config'));
 
 setTimeout(function() {
 	con.connect();

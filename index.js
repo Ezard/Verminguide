@@ -1,4 +1,5 @@
 var express = require('express');
+var exphbs  = require('express-handlebars');
 var subdomain = require('express-subdomain');
 var mysql = require('mysql');
 var vhost = require('vhost');
@@ -16,6 +17,16 @@ setTimeout(function() {
 
 var app = express();
 
+app.use('/content', express.static('views'));
+app.use('/handlebars', express.static('node_modules/handlebars/lib'));
+
+app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+app.set('view engine', 'handlebars');
+
+app.get('/', function(req, res) {
+
+});
+
 var router = express.Router();
 router.get('/', function(req, res) {
 	res.end("Test");
@@ -27,8 +38,5 @@ require("./api-enemies")(router, con);
 app.use(subdomain('api', router));
 
 app.use(vhost('images.vermintideutility.com', express.static('/var/www/images/', {fallthrough: false})));
-app.get('/', function(req, res) {
-	res.end("Test");
-});
 
 var server = app.listen(80, function(){});

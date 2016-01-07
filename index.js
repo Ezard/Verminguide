@@ -20,7 +20,7 @@ var app = express();
 app.use('/content', express.static('views'));
 app.use('/handlebars', express.static('node_modules/handlebars/lib'));
 
-app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+app.engine('handlebars', exphbs({defaultLayout:  __dirname + 'main'}));
 app.set('view engine', 'handlebars');
 app.set('views', __dirname + '/views');
 

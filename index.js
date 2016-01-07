@@ -13,23 +13,29 @@ setTimeout(function() {
 var app = express();
 
 app.use('/content', express.static('views'));
-app.use('/handlebars', express.static('node_modules/handlebars/lib'));
+app.use('/images', express.static('images'));
+app.use('/scripts', express.static('scripts'));
+app.use('/handlebars', express.static('node_modules/handlebars/dist'));
 
 app.engine('handlebars', exphbs({defaultLayout:  __dirname + '/views/layouts/main'}));
 app.set('view engine', 'handlebars');
 app.set('views', __dirname + '/views');
 
-app.get('/', function(req, res) {
-	res.render('enemies');
-});
-
 var router = express.Router();
+var api = require("./api/api")(router, con);
+
 router.get('/', function(req, res) {
 	res.end("Test");
 });
 
-require("./api-trinkets")(router, con);
-require("./api-enemies")(router, con);
+app.get('/', function(req, res) {
+	api.getTrinkets(function(trinkets) {
+		res.render('enemies');
+	});
+});
+
+//require("./api-trinkets")(router, con);
+//require("./api-enemies")(router, con);
 
 app.use(subdomain('api', router));
 

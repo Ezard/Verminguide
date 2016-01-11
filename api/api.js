@@ -65,7 +65,7 @@ module.exports = function (router, con) {
 			});
 		},
 		getTrinket: function (name, callback) {
-			con.query("SELECT t.name, tt.description as description, tt.name as type, effect, r.name as rarity, image FROM trinkets t LEFT JOIN trinket_types tt ON t.type=tt.id LEFT JOIN rarities r ON t.rarity=r.id WHERE t.name=" + con.escape(req.params.name), function (err, rows, fields) {
+			con.query("SELECT t.name, tt.description as description, tt.name as type, effect, r.name as rarity, image FROM trinkets t LEFT JOIN trinket_types tt ON t.type=tt.id LEFT JOIN rarities r ON t.rarity=r.id WHERE t.name=" + con.escape(name), function (err, rows, fields) {
 				res.set("Content-type", "application/json");
 				if (rows.length == 0) {
 					callback(null);

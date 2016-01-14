@@ -1,7 +1,7 @@
 module.exports = function (router, con) {
 	return {
 		getEnemies: function (callback) {
-			con.query("SELECT name, description, notes FROM enemies", function (err, rows, fields) {
+			con.query("SELECT name, description, notes, hp_easy, hp_normal, hp_hard, hp_nightmare, hp_cataclysm FROM enemies", function (err, rows, fields) {
 				var enemies = [];
 				for (var i = 0; i < rows.length; i++) {
 					var obj = {};
@@ -13,6 +13,13 @@ module.exports = function (router, con) {
 						var split2 = split[j].split("||");
 						obj.notes.push({title: split2[0], content: split2[1]});
 					}
+					obj.hp = {
+						"easy": rows[i].hp_easy,
+						"normal": rows[i].hp_normal,
+						"hard": rows[i].hp_hard,
+						"nightmare": rows[i].hp_nightmare,
+						"cataclysm": rows[i].hp_cataclysm
+					};
 					obj.icon = "http://images.vermintideutility.com/enemies/icons/" + obj.name.toLowerCase().replace(/ /g, "_") + ".png";
 					obj.image = "http://images.vermintideutility.com/enemies/" + obj.name.toLowerCase().replace(/ /g, "_") + ".png";
 					enemies.push(obj);
@@ -20,8 +27,8 @@ module.exports = function (router, con) {
 				callback(enemies);
 			});
 		},
-		getEnemy: function(name, callback) {
-			con.query("SELECT name, description, notes FROM enemies WHERE name=" + con.escape(name), function (err, rows, fields) {
+		getEnemy: function (name, callback) {
+			con.query("SELECT name, description, notes, hp_easy, hp_normal, hp_hard, hp_nightmare, hp_cataclysm FROM enemies WHERE name=" + con.escape(name), function (err, rows, fields) {
 				res.set("Content-type", "application/json");
 				if (rows.length == 0) {
 					callback(null);
@@ -35,6 +42,13 @@ module.exports = function (router, con) {
 						var split2 = split[i].split("||");
 						enemy.notes.push({title: split2[0], content: split2[1]});
 					}
+					enemy.hp = {
+						"easy": rows[i].hp_easy,
+						"normal": rows[i].hp_normal,
+						"hard": rows[i].hp_hard,
+						"nightmare": rows[i].hp_nightmare,
+						"cataclysm": rows[i].hp_cataclysm
+					};
 					enemy.icon = "http://images.vermintideutility.com/enemies/icons/" + enemy.name.toLowerCase().replace(/ /g, "_") + ".png";
 					enemy.image = "http://images.vermintideutility.com/enemies/" + enemy.name.toLowerCase().replace(/ /g, "_") + ".png";
 					callback(enemy);

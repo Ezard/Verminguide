@@ -4,25 +4,25 @@ module.exports = function (router, con) {
 			con.query("SELECT name, description, notes, hp_easy, hp_normal, hp_hard, hp_nightmare, hp_cataclysm FROM enemies", function (err, rows, fields) {
 				var enemies = [];
 				for (var i = 0; i < rows.length; i++) {
-					var obj = {};
-					obj.name = rows[i].name;
-					obj.description = rows[i].description;
-					obj.notes = [];
+					var enemy = {};
+					enemy.name = rows[i].name;
+					enemy.description = rows[i].description;
+					enemy.notes = [];
 					var split = rows[i].notes.split("&&");
 					for (var j = 0; j < split.length; j++) {
 						var split2 = split[j].split("||");
-						obj.notes.push({title: split2[0], content: split2[1]});
+						enemy.notes.push({title: split2[0], content: split2[1]});
 					}
-					obj.hp = {
+					enemy.hp = {
 						"easy": rows[i].hp_easy,
 						"normal": rows[i].hp_normal,
 						"hard": rows[i].hp_hard,
 						"nightmare": rows[i].hp_nightmare,
 						"cataclysm": rows[i].hp_cataclysm
 					};
-					obj.icon = "http://images.vermintideutility.com/enemies/icons/" + obj.name.toLowerCase().replace(/ /g, "_") + ".png";
-					obj.image = "http://images.vermintideutility.com/enemies/" + obj.name.toLowerCase().replace(/ /g, "_") + ".png";
-					enemies.push(obj);
+					enemy.icon = "http://images.vermintideutility.com/enemies/icons/" + enemy.name.toLowerCase().replace(/ /g, "_") + ".png";
+					enemy.image = "http://images.vermintideutility.com/enemies/" + enemy.name.toLowerCase().replace(/ /g, "_") + ".png";
+					enemies.push(enemy);
 				}
 				callback(enemies);
 			});

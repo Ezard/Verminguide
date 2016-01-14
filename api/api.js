@@ -1,7 +1,7 @@
 module.exports = function (router, con) {
 	return {
 		getEnemies: function (callback) {
-			con.query("SELECT name, description, notes, hp_easy, hp_normal, hp_hard, hp_nightmare, hp_cataclysm FROM enemies", function (err, rows, fields) {
+			con.query("SELECT name, description, notes, hp_easy, hp_normal, hp_hard, hp_nightmare, hp_cataclysm, armoured FROM enemies", function (err, rows, fields) {
 				var enemies = [];
 				for (var i = 0; i < rows.length; i++) {
 					var enemy = {};
@@ -20,6 +20,7 @@ module.exports = function (router, con) {
 						"nightmare": rows[i].hp_nightmare,
 						"cataclysm": rows[i].hp_cataclysm
 					};
+					enemy.armoured = rows[i].armoured == 1;
 					enemy.icon = "http://images.vermintideutility.com/enemies/icons/" + enemy.name.toLowerCase().replace(/ /g, "_") + ".png";
 					enemy.image = "http://images.vermintideutility.com/enemies/" + enemy.name.toLowerCase().replace(/ /g, "_") + ".png";
 					enemies.push(enemy);
@@ -28,7 +29,7 @@ module.exports = function (router, con) {
 			});
 		},
 		getEnemy: function (name, callback) {
-			con.query("SELECT name, description, notes, hp_easy, hp_normal, hp_hard, hp_nightmare, hp_cataclysm FROM enemies WHERE name=" + con.escape(name), function (err, rows, fields) {
+			con.query("SELECT name, description, notes, hp_easy, hp_normal, hp_hard, hp_nightmare, hp_cataclysm, armoured FROM enemies WHERE name=" + con.escape(name), function (err, rows, fields) {
 				res.set("Content-type", "application/json");
 				if (rows.length == 0) {
 					callback(null);
@@ -49,6 +50,7 @@ module.exports = function (router, con) {
 						"nightmare": rows[i].hp_nightmare,
 						"cataclysm": rows[i].hp_cataclysm
 					};
+					enemy.armoured = rows[i].armoured == 1;
 					enemy.icon = "http://images.vermintideutility.com/enemies/icons/" + enemy.name.toLowerCase().replace(/ /g, "_") + ".png";
 					enemy.image = "http://images.vermintideutility.com/enemies/" + enemy.name.toLowerCase().replace(/ /g, "_") + ".png";
 					callback(enemy);

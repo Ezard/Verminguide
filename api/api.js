@@ -21,8 +21,8 @@ module.exports = function (router, con) {
 						"cataclysm": rows[i].hp_cataclysm
 					};
 					enemy.armoured = rows[i].armoured == 1;
-					enemy.icon = "http://images.vermintideutility.com/enemies/icons/" + enemy.name.toLowerCase().replace(/ /g, "_") + ".png";
-					enemy.image = "http://images.vermintideutility.com/enemies/" + enemy.name.toLowerCase().replace(/ /g, "_") + ".png";
+					enemy.icon = "http://static.vermintideutility.com/enemies/icons/" + enemy.name.toLowerCase().replace(/ /g, "_") + ".png";
+					enemy.image = "http://static.vermintideutility.com/enemies/" + enemy.name.toLowerCase().replace(/ /g, "_") + ".png";
 					enemies.push(enemy);
 				}
 				callback(enemies);
@@ -51,8 +51,8 @@ module.exports = function (router, con) {
 						"cataclysm": rows[i].hp_cataclysm
 					};
 					enemy.armoured = rows[i].armoured == 1;
-					enemy.icon = "http://images.vermintideutility.com/enemies/icons/" + enemy.name.toLowerCase().replace(/ /g, "_") + ".png";
-					enemy.image = "http://images.vermintideutility.com/enemies/" + enemy.name.toLowerCase().replace(/ /g, "_") + ".png";
+					enemy.icon = "http://static.vermintideutility.com/enemies/icons/" + enemy.name.toLowerCase().replace(/ /g, "_") + ".png";
+					enemy.image = "http://static.vermintideutility.com/enemies/" + enemy.name.toLowerCase().replace(/ /g, "_") + ".png";
 					callback(enemy);
 				}
 			});

@@ -59,7 +59,7 @@ module.exports = function (router, con) {
 		},
 
 		getTrinkets: function (callback) {
-			con.query("SELECT t.name, tt.description as description, tt.name as type, effect, r.name as rarity, image FROM trinkets t LEFT JOIN trinket_types tt ON t.type=tt.id LEFT JOIN rarities r ON t.rarity=r.id", function (err, rows, fields) {
+			con.query("SELECT t.name, tt.description AS description, tt.name AS type, effect, r.name AS rarity, image FROM trinkets t LEFT JOIN trinket_types tt ON t.type=tt.id LEFT JOIN rarities r ON t.rarity=r.id", function (err, rows, fields) {
 				var trinkets = [];
 				for (var i = 0; i < rows.length; i++) {
 					var trinket = {};
@@ -80,7 +80,7 @@ module.exports = function (router, con) {
 			});
 		},
 		getTrinket: function (name, callback) {
-			con.query("SELECT t.name, tt.description as description, tt.name as type, effect, r.name as rarity, image FROM trinkets t LEFT JOIN trinket_types tt ON t.type=tt.id LEFT JOIN rarities r ON t.rarity=r.id WHERE t.name=" + con.escape(name), function (err, rows, fields) {
+			con.query("SELECT t.name, tt.description AS description, tt.name AS type, effect, r.name AS rarity, image FROM trinkets t LEFT JOIN trinket_types tt ON t.type=tt.id LEFT JOIN rarities r ON t.rarity=r.id WHERE t.name=" + con.escape(name), function (err, rows, fields) {
 				if (rows.length == 0) {
 					callback(null);
 				} else {
@@ -98,6 +98,26 @@ module.exports = function (router, con) {
 					trinket.image = rows[0].image;
 					callback(trinket);
 				}
+			});
+		},
+
+		getWeapons: function (callback) {
+			con.query("SELECT wc.id, wc.name, description, h.name AS hero FROM weapon_classes wc INNER JOIN heroes h ON wc.hero=h.id ORDER BY wc.id", function (err, rows, fields) {
+				var weapon_classes = [];
+				for (var i = 0; i < rows.length; i++) {
+					weapon_classes[rows[i].id - 1] = {
+						"name": rows[i].name,
+						"description": rows[i].description,
+						"hero": rows[i].hero,
+						"weapons": []
+					};
+				}
+				con.query("SELECT name, weapon_class FROM weapons", function (err, rows, fields) {
+					for (var i = 0; i < rows.length; i++) {
+						weapon_classes[rows[i].weapon_class - 1].weapons.push({"name": rows[i].name});
+					}
+					callback(weapon_classes);
+				});
 			});
 		}
 	}

@@ -73,7 +73,7 @@ module.exports = function (router, con) {
 					trinket.name = rows[i].name;
 					trinket.type = rows[i].type;
 					trinket.rarity = rows[i].rarity;
-					trinket.image = rows[i].image;
+					trinket.image = "http://static.vermintideutility.com/trinkets/" + trinket.name.toLowerCase().replace(/ /g, "_").replace(/[',]/g, "") + ".png";
 					trinkets.push(trinket);
 				}
 				callback(trinkets);
@@ -95,7 +95,7 @@ module.exports = function (router, con) {
 					trinket.name = rows[0].name;
 					trinket.type = rows[0].type;
 					trinket.rarity = rows[0].rarity;
-					trinket.image = rows[0].image;
+					trinket.image = "http://static.vermintideutility.com/trinkets/" + trinket.name.toLowerCase().replace(/ /g, "_").replace(/[',]/g, "") + ".png";
 					callback(trinket);
 				}
 			});

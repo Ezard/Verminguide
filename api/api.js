@@ -112,9 +112,12 @@ module.exports = function (router, con) {
 						"weapons": []
 					};
 				}
-				con.query("SELECT name, weapon_class FROM weapons", function (err, rows, fields) {
+				con.query("SELECT w.name, r.name as rarity, weapon_class FROM weapons w LEFT JOIN rarities r ON w.rarity=r.id", function (err, rows, fields) {
 					for (var i = 0; i < rows.length; i++) {
-						weapon_classes[rows[i].weapon_class - 1].weapons.push({"name": rows[i].name});
+						weapon_classes[rows[i].weapon_class - 1].weapons.push({
+							"name": rows[i].name,
+							"rarity": rows[i].rarity
+						});
 					}
 					callback(weapon_classes);
 				});

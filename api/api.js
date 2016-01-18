@@ -122,6 +122,30 @@ module.exports = function (router, con) {
 					callback(weapon_classes);
 				});
 			});
+		},
+
+		getWeaponsByClass: function (weapon_class, callback) {
+			con.query("SELECT wc.id, wc.name, description, h.name AS hero FROM weapon_classes wc INNER JOIN heroes h ON wc.hero=h.id WHERE wc.name=" + con.escape(weapon_class) + " ORDER BY wc.id", function (err, rows, fields) {
+				if (rows.length == 0) {
+					callback(null);
+				} else {
+					var weapon_class = {
+						"name": rows[0].name,
+						"description": rows[0].description,
+						"hero": rows[0].hero,
+						"weapons": []
+					};
+					con.query("SELECT w.name, r.name as rarity, weapon_class FROM weapons w LEFT JOIN rarities r ON w.rarity=r.id WHERE weapon_class=" + rows[0].id, function (err, rows, fields) {
+						for (var i = 0; i < rows.length; i++) {
+							weapon_class.weapons.push({
+								"name": rows[i].name,
+								"rarity": rows[i].rarity
+							});
+						}
+						callback(weapon_class);
+					});
+				}
+			});
 		}
 	}
 };

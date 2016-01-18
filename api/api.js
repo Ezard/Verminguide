@@ -59,7 +59,7 @@ module.exports = function (router, con) {
 		},
 
 		getTrinkets: function (callback) {
-			con.query("SELECT t.name, tt.description AS description, tt.name AS type, effect, r.name AS rarity, image FROM trinkets t LEFT JOIN trinket_types tt ON t.type=tt.id LEFT JOIN rarities r ON t.rarity=r.id", function (err, rows, fields) {
+			con.query("SELECT t.name, tt.description AS description, tt.name AS type, effect, r.name AS rarity FROM trinkets t LEFT JOIN trinket_types tt ON t.type=tt.id LEFT JOIN rarities r ON t.rarity=r.id", function (err, rows, fields) {
 				var trinkets = [];
 				for (var i = 0; i < rows.length; i++) {
 					var trinket = {};
@@ -80,7 +80,7 @@ module.exports = function (router, con) {
 			});
 		},
 		getTrinket: function (name, callback) {
-			con.query("SELECT t.name, tt.description AS description, tt.name AS type, effect, r.name AS rarity, image FROM trinkets t LEFT JOIN trinket_types tt ON t.type=tt.id LEFT JOIN rarities r ON t.rarity=r.id WHERE t.name=" + con.escape(name), function (err, rows, fields) {
+			con.query("SELECT t.name, tt.description AS description, tt.name AS type, effect, r.name AS rarity FROM trinkets t LEFT JOIN trinket_types tt ON t.type=tt.id LEFT JOIN rarities r ON t.rarity=r.id WHERE t.name=" + con.escape(name), function (err, rows, fields) {
 				if (rows.length == 0) {
 					callback(null);
 				} else {

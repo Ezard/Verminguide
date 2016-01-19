@@ -18,6 +18,13 @@ module.exports = function (router, api) {
 		});
 	});
 
+	router.get('/heroes', function (req, res) {
+		api.getHeroes(function(heroes) {
+			res.set("Content-type", "application/json");
+			res.end(JSON.stringify(heroes));
+		})
+	});
+
 	router.get('/trinkets', function (req, res) {
 		api.getTrinkets(function(trinkets) {
 			res.set("Content-type", "application/json");

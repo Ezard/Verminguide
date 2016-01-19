@@ -58,7 +58,7 @@ module.exports = function (router, con) {
 			});
 		},
 
-		getHeroes: function(callback) {
+		getHeroes: function (callback) {
 			con.query("SELECT name, class FROM heroes LEFT JOIN ", function (err, rows, fields) {
 				var heroes = [];
 				for (var i = 0; i < rows.length; i++) {

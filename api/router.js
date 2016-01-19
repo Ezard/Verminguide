@@ -44,7 +44,7 @@ module.exports = function (router, api) {
 	});
 
 	router.get("/weapons/:name([a-zA-Z',\-\s%20]+)", function (req, res) {
-		api.getWeapons(req.params.name.toLowerCase(), function(trinket) {
+		api.getWeaponsByClass(req.params.name.toLowerCase(), function(trinket) {
 			res.set("Content-type", "application/json");
 			if (trinket == null) {
 				res.status(404).end(JSON.stringify({"error": {"message": "Sorry, that resource does not exist"}}));

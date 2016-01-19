@@ -58,6 +58,19 @@ module.exports = function (router, con) {
 			});
 		},
 
+		getHeroes: function(callback) {
+			con.query("SELECT name, class FROM heroes LEFT JOIN ", function (err, rows, fields) {
+				var heroes = [];
+				for (var i = 0; i < rows.length; i++) {
+					var hero = {};
+					hero.name = rows[i].name;
+					hero.class = rows[i].class;
+					heroes.push(hero);
+				}
+				callback(heroes);
+			});
+		},
+
 		getTrinkets: function (callback) {
 			con.query("SELECT t.name, tt.description AS description, tt.name AS type, effect, r.name AS rarity FROM trinkets t LEFT JOIN trinket_types tt ON t.type=tt.id LEFT JOIN rarities r ON t.rarity=r.id", function (err, rows, fields) {
 				var trinkets = [];

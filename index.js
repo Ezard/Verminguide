@@ -52,12 +52,12 @@ app.get('/heroes/', function(req, res) {
 });
 app.get('/enemies/', function(req, res) {
 	api.getEnemies(function(enemies) {
-		res.render('enemies', {title: "enemies", enemies: enemies});
+		res.render('enemies', {title: "Enemies", enemies: enemies});
 	});
 });
 app.get('/trinkets/', function(req, res) {
 	api.getTrinkets(function(trinkets) {
-		res.render('trinkets', {title: "trinkets", trinkets: trinkets});
+		res.render('trinkets', {title: "Trinkets", trinkets: trinkets});
 	});
 });
 

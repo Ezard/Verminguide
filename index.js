@@ -28,8 +28,12 @@ var router = express.Router();
 var api = require("./api/api")(router, con);
 require("./api/router")(router, api);
 
-router.get('/', function(req, res) {
-	res.end("Test");
+app.get('/*', function(req, res, next) {
+	if (req.headers.host.match(/^www\./)) {
+		res.writeHead(301, {'Location': 'http://vermintideutility.com'});
+	} else {
+		return next();
+	}
 });
 
 app.get('/', function(req, res) {

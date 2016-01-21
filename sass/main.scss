@@ -51,6 +51,18 @@ nav {
 	}
 }
 
+div#content {
+	float: left;
+	width: 80%;
+	background-color:#212121;
+
+	h1 {
+		margin-left: 20px;
+		color: #FFF;
+		font-size: 3em;
+	}
+}
+
 @media only screen and (max-width: 480px) {
 	nav {
 		position: fixed;
@@ -76,17 +88,5 @@ nav {
 
 	div#content {
 		width: 100%;
-	}
-}
-
-div#content {
-	float: left;
-	width: 80%;
-	background-color:#212121;
-
-	h1 {
-		margin-left: 20px;
-		color: #FFF;
-		font-size: 3em;
 	}
 }

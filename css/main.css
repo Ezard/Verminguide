@@ -1,12 +1,15 @@
 div#enemies img {
   float: left;
-  margin: 20px;
+  margin: 20px 0 0 20px;
   border-radius: 20px;
   transition: box-shadow 300ms; }
   div#enemies img:hover {
     box-shadow: 0 0 10px 10px #C60000;
     cursor: pointer; }
 
+@media only screen and (max-width: 480px) {
+  div#enemies img {
+    width: calc((100% - 60px) / 2); } }
 /* latin */
 @font-face {
   font-family: 'Lato';
@@ -46,6 +49,18 @@ nav {
     margin-bottom: 1em;
     padding-left: 40px; }
 
+div#menu {
+  display: none; }
+
+div#content {
+  float: left;
+  width: 80%;
+  background-color: #212121; }
+  div#content h1 {
+    margin-left: 20px;
+    color: #FFF;
+    font-size: 3em; }
+
 @media only screen and (max-width: 480px) {
   nav {
     position: fixed;
@@ -62,14 +77,28 @@ nav {
       margin-top: 0.25em;
       margin-bottom: 0.25em;
       padding-left: 0;
-      text-align: center; } }
-div#content {
-  float: left;
-  width: 80%;
-  background-color: #212121; }
-  div#content h1 {
-    margin-left: 20px;
-    color: #FFF;
-    font-size: 3em; }
+      text-align: center; }
+
+  div#menu {
+    display: inline-block;
+    float: left;
+    top: 0;
+    left: 20px;
+    width: 30px;
+    height: 21px;
+    margin: 29px 20px 0 20px; }
+    div#menu div {
+      position: relative;
+      float: left;
+      height: 3px;
+      width: 100%;
+      background-color: white;
+      border-radius: 10px;
+      margin-top: 6px; }
+
+  div#content {
+    width: 100%; }
+    div#content h1 {
+      margin: 0.2em 0 0.2em 20px; } }
 
 /*# sourceMappingURL=main.css.map */

@@ -29,6 +29,8 @@ var router = express.Router();
 var api = require("./api/api")(router, con);
 require("./api/router")(router, api);
 
+app.use(subdomain('api', router));
+
 app.get('/*', function(req, res, next) {
 	if (req.headers.host.match(/^www\./)) {
 		res.writeHead(301, {'Location': 'http://vermintideutility.com'});
@@ -64,8 +66,6 @@ app.get('/trinkets/', function(req, res) {
 
 //require("./api-trinkets")(router, con);
 //require("./api-enemies")(router, con);
-
-app.use(subdomain('api', router));
 
 app.use(vhost('images.vermintideutility.com', express.static('/var/www/images/', {fallthrough: false})));
 

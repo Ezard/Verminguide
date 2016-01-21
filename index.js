@@ -34,7 +34,7 @@ router.get('/', function(req, res) {
 
 app.get('/', function(req, res) {
 	api.getTrinkets(function(trinkets) {
-		res.render('enemies');
+		res.render('home');
 	});
 });
 app.get('/heroes/', function(req, res) {

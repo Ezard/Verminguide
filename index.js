@@ -37,6 +37,21 @@ app.get('/', function(req, res) {
 		res.render('enemies');
 	});
 });
+app.get('/heroes/', function(req, res) {
+	api.getTrinkets(function(trinkets) {
+		res.render('heroes');
+	});
+});
+app.get('/enemies/', function(req, res) {
+	api.getTrinkets(function(trinkets) {
+		res.render('enemies');
+	});
+});
+app.get('/trinkets/', function(req, res) {
+	api.getTrinkets(function(trinkets) {
+		res.render('trinkets');
+	});
+});
 
 //require("./api-trinkets")(router, con);
 //require("./api-enemies")(router, con);

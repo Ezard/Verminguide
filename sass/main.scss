@@ -1,3 +1,6 @@
+@import "colours";
+@import "enemies";
+
 /* latin */
 @font-face {
 	font-family: 'Lato';
@@ -24,11 +27,12 @@ body {
 }
 
 a, a:visited {
-	color: #C60000;
+	color: $dark_red;
 	text-decoration: none;
 }
 
 nav {
+	float: left;
 	width: 20%;
 	height: 100vh;
 	background-color: black;
@@ -47,6 +51,14 @@ nav {
 	}
 }
 
-div#content{
+div#content {
+	float: left;
+	width: 80%;
 	background-color:#212121;
+
+	h1 {
+		margin-left: 20px;
+		color: #FFF;
+		font-size: 3em;
+	}
 }

@@ -1,3 +1,12 @@
+div#enemies img {
+  float: left;
+  margin: 20px;
+  border-radius: 20px;
+  transition: box-shadow 300ms; }
+  div#enemies img:hover {
+    box-shadow: 0 0 10px 10px #C60000;
+    cursor: pointer; }
+
 /* latin */
 @font-face {
   font-family: 'Lato';
@@ -23,6 +32,7 @@ a, a:visited {
   text-decoration: none; }
 
 nav {
+  float: left;
   width: 20%;
   height: 100vh;
   background-color: black; }
@@ -37,6 +47,12 @@ nav {
     padding-left: 40px; }
 
 div#content {
+  float: left;
+  width: 80%;
   background-color: #212121; }
+  div#content h1 {
+    margin-left: 20px;
+    color: #FFF;
+    font-size: 3em; }
 
 /*# sourceMappingURL=main.css.map */

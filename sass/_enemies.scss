@@ -1,0 +1,16 @@
+@import "colours";
+
+div#enemies {
+
+	img {
+		float: left;
+		margin: 20px;
+		border-radius: 20px;
+		transition: box-shadow 300ms;
+
+		&:hover{
+			box-shadow: 0 0 10px 10px $dark_red;
+			cursor: pointer;
+		}
+	}
+}

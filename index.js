@@ -43,12 +43,12 @@ app.get('/', function(req, res) {
 	});
 });
 app.get('/heroes/', function(req, res) {
-	api.getTrinkets(function(trinkets) {
+	api.getHeroes(function(trinkets) {
 		res.render('heroes');
 	});
 });
 app.get('/enemies/', function(req, res) {
-	api.getTrinkets(function(trinkets) {
+	api.getEnemies(function(trinkets) {
 		res.render('enemies');
 	});
 });

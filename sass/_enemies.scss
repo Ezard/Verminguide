@@ -14,3 +14,12 @@ div#enemies {
 		}
 	}
 }
+
+@media only screen and (max-width: 480px) {
+	div#enemies {
+
+		img {
+			width: calc((100% - 60px) / 2);
+		}
+	}
+}

@@ -4,6 +4,7 @@
   "author": "Ben Ezard",
   "main": "index.js",
   "dependencies": {
+    "compression": "^1.6.1",
     "express": "^4.13.3",
     "express-handlebars": "^2.0.1",
     "express-subdomain": "^1.0.4",

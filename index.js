@@ -3,6 +3,7 @@ var exphbs  = require('express-handlebars');
 var subdomain = require('express-subdomain');
 var mysql = require('mysql');
 var vhost = require('vhost');
+var compression = require('compression');
 
 var con = mysql.createConnection(require('./config'));
 
@@ -11,6 +12,8 @@ setTimeout(function() {
 }, 1000);
 
 var app = express();
+
+app.use(compression({}));
 
 app.use('/content', express.static('views'));
 app.use('/images', express.static('images'));

@@ -51,6 +51,10 @@ nav {
 	}
 }
 
+div#menu {
+	display: none;
+}
+
 div#content {
 	float: left;
 	width: 80%;
@@ -86,7 +90,31 @@ div#content {
 		}
 	}
 
+	div#menu {
+		display: inline-block;
+		float: left;
+		top: 0;
+		left: 20px;
+		width: 30px;
+		height: 21px;
+		margin: 29px 20px 0 20px;
+
+		div {
+			position: relative;
+			float: left;
+			height: 3px;
+			width: 100%;
+			background-color: white;
+			border-radius: 10px;
+			margin-top: 6px;
+		}
+	}
+
 	div#content {
 		width: 100%;
+
+		h1 {
+			margin: 0.2em 0 0.2em 20px;
+		}
 	}
 }

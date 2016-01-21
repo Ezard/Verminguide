@@ -16,6 +16,7 @@ var app = express();
 app.use(compression({}));
 
 app.use('/content', express.static('views'));
+app.use('/css', express.static('css'));
 app.use('/images', express.static('images'));
 app.use('/scripts', express.static('scripts'));
 app.use('/handlebars', express.static('node_modules/handlebars/dist'));

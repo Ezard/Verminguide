@@ -51,7 +51,7 @@ nav {
 	}
 }
 
-div#menu {
+div#hamburger {
 	display: none;
 }
 
@@ -74,23 +74,42 @@ div#content {
 		top: 0;
 		width: 70%;
 		z-index: 10;
-		box-shadow: 0 0 10px 10px black;
 		transition: left 300ms;
 
 		&.expanded {
 			left: 0;
-		}
 
-		a {
-			font-size: 2.5em;
-			margin-top: 0.25em;
-			margin-bottom: 0.25em;
-			padding-left: 0;
-			text-align: center;
+			div#cover {
+				left: 0;
+				background-color: rgba(0, 0, 0, 0.5);
+			}
+		}
+		div#items {
+			position: absolute;
+			height: 100%;
+			background-color: black;
+			box-shadow: 0 0 10px 10px black;
+
+			a {
+				font-size: 2.5em;
+				margin-top: 0.25em;
+				margin-bottom: 0.25em;
+				padding-left: 0;
+				text-align: center;
+			}
+		}
+		div#cover {
+			position: fixed;
+			left: -100%;
+			top: 0;
+			width: 100vw;
+			height: 100vh;
+			background-color: transparent;
+			transition: background-color 300ms;
 		}
 	}
 
-	div#menu {
+	div#hamburger {
 		display: inline-block;
 		float: left;
 		top: 0;

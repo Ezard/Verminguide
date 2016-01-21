@@ -62,3 +62,11 @@ function goToPage(page) {
 	xhr.open("GET", "http://api.vermintideutility.com/" + path, true);
 	xhr.send();
 }
+
+function setMenuOpen(open) {
+	if (open) {
+		document.getElementById("menu").className = "expanded";
+	} else {
+		document.getElementById("menu").className = "";
+	}
+}

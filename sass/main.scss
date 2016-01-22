@@ -27,6 +27,10 @@ body {
 	color: $light_grey;
 }
 
+h1, h2, h3, h4, h5{
+	color: #FFF;
+}
+
 a, a:visited {
 	color: $dark_red;
 	text-decoration: none;
@@ -63,7 +67,6 @@ div#content {
 
 	h1 {
 		margin-left: 20px;
-		color: #FFF;
 		font-size: 3em;
 	}
 }

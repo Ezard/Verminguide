@@ -64,4 +64,5 @@ module.exports = function (router, api) {
 
 function setHeaders(res) {
 	res.set("Content-type", "application/json");
+	res.set("Access-Control-Allow-Origin", "*");
 }

@@ -30,7 +30,6 @@ module.exports = function (router, con) {
 		},
 		getEnemy: function (name, callback) {
 			con.query("SELECT name, description, notes, hp_easy, hp_normal, hp_hard, hp_nightmare, hp_cataclysm, armoured FROM enemies WHERE name=" + con.escape(name), function (err, rows, fields) {
-				res.set("Content-type", "application/json");
 				if (rows.length == 0) {
 					callback(null);
 				} else {

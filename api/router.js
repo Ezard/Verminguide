@@ -8,7 +8,7 @@ module.exports = function (router, api) {
 	});
 
 	router.get("/enemies/:name([a-zA-Z',\-\s]+)", function (req, res) {
-		api.getEnemy(req.params.name.replace('-', ' '), function (enemy) {
+		api.getEnemy(req.params.name.replace(/-/g, ' '), function (enemy) {
 			res.set("Content-type", "application/json");
 			if (enemy == null) {
 				res.status(404).end(JSON.stringify({"error": {"message": "Sorry, that resource does not exist"}}));
@@ -33,7 +33,7 @@ module.exports = function (router, api) {
 	});
 
 	router.get("/trinkets/:name([a-zA-Z',\-\s]+)", function (req, res) {
-		api.getTrinket(req.params.name.replace('-', ' '), function (trinket) {
+		api.getTrinket(req.params.name.replace(/-/g, ' '), function (trinket) {
 			res.set("Content-type", "application/json");
 			if (trinket == null) {
 				res.status(404).end(JSON.stringify({"error": {"message": "Sorry, that resource does not exist"}}));
@@ -51,7 +51,7 @@ module.exports = function (router, api) {
 	});
 
 	router.get("/weapons/:name([a-zA-Z',\-\s]+)", function (req, res) {
-		api.getWeaponsByClass(req.params.name.replace('-', ' '), function (trinket) {
+		api.getWeaponsByClass(req.params.name.replace(/-/g, ' '), function (trinket) {
 			res.set("Content-type", "application/json");
 			if (trinket == null) {
 				res.status(404).end(JSON.stringify({"error": {"message": "Sorry, that resource does not exist"}}));

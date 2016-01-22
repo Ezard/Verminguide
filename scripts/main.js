@@ -11,26 +11,37 @@ window.addEventListener('load', function () {
 				if (xhr.readyState == 4) {
 					var json = JSON.parse(xhr.responseText);
 					var result;
+					console.log(type);
 					if (type == "trinkets") {
 						 result = Handlebars.templates.trinkets(json);
 					}
+					if (type == "enemy") {
+						result = Handlebars.templates.enemy(json);
+					}
 					document.getElementById("content").innerHTML = result;
 					document.getElementById("content").style.opacity = 1;
-					window.history.pushState({}, page, page);
+					window.history.pushState({}, "", document.location.origin + "/" + path);
 				}
 			};
 			var path;
 			var match;
-			var page = target.href.replace("http://vermintideutility.com/", "");
-			if (/trinkets\/?/.test(page)) {
-				path = "trinkets/";
-				type = "trinkets";
-			} else if (match = page.match(/trinkets\/([a-zA-Z',\-\s%20]+)/)) {
-				path = "trinkets/" + match[0];
-				type = "trinket";
+			console.log(target.href.replace("http://", "http://api."));
+			var page = target.href.replace("http://vermintideutility.com/", "").replace("http://localhost/", "");
+			console.log("page = " + page);
+			if (/enemies\/?/.test(page)) {
+				if (match = page.match(/enemies\/([a-zA-Z',\-\s]+)\/?$/)) {
+					console.log(match);
+					path = "enemies/" + match[1];
+					type = "enemy";
+				} else {
+					path = "enemies/";
+					type = "enemies";
+				}
 			}
 			//xhr.open("GET", "http://api.localhost/" + path, true);
-			xhr.open("GET", "http://api.vermintideutility.com/" + path, true);
+			var s = "http://api.vermintideutility.com/" + path;
+			console.log(s);
+			xhr.open("GET", s, true);
 			xhr.send();
 		}
 	});
@@ -39,29 +50,9 @@ window.addEventListener('load', function () {
 window.onpopstate = function (event) {
 	if (window.history && history.pushState) {
 //			event.preventDefault();
-		console.log(document.location.pathname);
+		console.log(document.location);
 	}
 };
-
-function goToPage(page) {
-	document.getElementById("content").style.opacity = 0;
-	var xhr = new XMLHttpRequest();
-	xhr.onreadystatechange = function () {
-		document.getElementById("content").innerHTML = xhr.responseText;
-		document.getElementById("content").style.opacity = 1;
-		window.history.pushState({}, page, page);
-	};
-	var path;
-	var match;
-	page = page.replace("http://vermintideutility.com/", "");
-	if (page.matches(/trinkets\/?/)) {
-		path = "trinkets/";
-	} else if (match = page.match(/trinkets\/([a-zA-Z',\-\s%20]+)/)) {
-		path = "trinkets/" + match[0];
-	}
-	xhr.open("GET", "http://api.vermintideutility.com/" + path, true);
-	xhr.send();
-}
 
 function setMenuOpen(open) {
 	if (open) {

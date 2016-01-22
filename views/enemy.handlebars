@@ -1,12 +1,16 @@
-<img src="{{icon}}"/>
-<h2>{{name}}</h2>
-<img src="{{image}}"/>
-<h3>Description</h3>
-<p>{{description}}</p>
-<div>
-	<h3>Notes</h3>
-	{{#each notes}}
-		<h4>{{title}}</h4>
-		<p>{{content}}</p>
-	{{/each}}
+<object type="image/svg+xml" data="/images/skaven_icon.svg" style="color:green"></object>
+<h1>Enemies</h1>
+<img src="{{icon}}" style="margin:20px;border-radius:20px;box-shadow:0 0 10px 10px #C60000;float:left"/>
+<h2 style="float:left;line-height:200px;margin-left:20px;font-size:2em;color:white">{{name}}</h2>
+<div style="float:left">
+	<img src="{{image}}" style="float:left;width:40%"/>
+	<h3>Description</h3>
+	<p>{{description}}</p>
+	<div style="float:left">
+		<h3>Notes</h3>
+		{{#each notes}}
+			<h4>{{title}}</h4>
+			<p>{{content}}</p>
+		{{/each}}
+	</div>
 </div>

@@ -43,13 +43,13 @@ module.exports = function (router, con) {
 						enemy.notes.push({title: split2[0], content: split2[1]});
 					}
 					enemy.hp = {
-						"easy": rows[i].hp_easy,
-						"normal": rows[i].hp_normal,
-						"hard": rows[i].hp_hard,
-						"nightmare": rows[i].hp_nightmare,
-						"cataclysm": rows[i].hp_cataclysm
+						"easy": rows[0].hp_easy,
+						"normal": rows[0].hp_normal,
+						"hard": rows[0].hp_hard,
+						"nightmare": rows[0].hp_nightmare,
+						"cataclysm": rows[0].hp_cataclysm
 					};
-					enemy.armoured = rows[i].armoured == 1;
+					enemy.armoured = rows[0].armoured == 1;
 					enemy.icon = "http://static.vermintideutility.com/enemies/icons/" + enemy.name.toLowerCase().replace(/ /g, "_") + ".png";
 					enemy.image = "http://static.vermintideutility.com/enemies/" + enemy.name.toLowerCase().replace(/ /g, "_") + ".png";
 					callback(enemy);

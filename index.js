@@ -58,12 +58,12 @@ app.get('/enemies/', function(req, res) {
 		res.render('enemies', {enemies: enemies});
 	});
 });
-app.get("/enemies/:name([a-zA-Z',\-\s]+)", function(req, res) {
-	api.getEnemy(req.params.name, function(enemy) {
-		console.log(enemy);
-		res.render('enemy', enemy);
-	});
-});
+//app.get("/enemies/:name([a-zA-Z',\-\s]+)", function(req, res) {
+//	api.getEnemy(req.params.name, function(enemy) {
+//		console.log(enemy);
+//		res.render('enemy', enemy);
+//	});
+//});
 app.get('/trinkets/', function(req, res) {
 	api.getTrinkets(function(trinkets) {
 		res.render('trinkets', {trinkets: trinkets});

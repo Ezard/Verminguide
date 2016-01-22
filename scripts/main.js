@@ -21,7 +21,7 @@ window.addEventListener('load', function () {
 			};
 			var path;
 			var match;
-			var page = target.href.replace("http://vermintideutility.com/", "").replace("http://localhost/", "");
+			var page = target.href.replace("http://vermintideutility.com/", "");
 			if (/trinkets\/?/.test(page)) {
 				path = "trinkets/";
 				type = "trinkets";

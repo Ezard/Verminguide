@@ -64,9 +64,6 @@ app.get('/trinkets/', function(req, res) {
 	});
 });
 
-//require("./api-trinkets")(router, con);
-//require("./api-enemies")(router, con);
-
 app.use(vhost('static.vermintideutility.com', express.static('/var/www/images/', {fallthrough: false})));
 
 var server = app.listen(80, function(){});

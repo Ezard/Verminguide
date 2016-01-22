@@ -21,8 +21,10 @@ module.exports = function (router, con) {
 						"cataclysm": rows[i].hp_cataclysm
 					};
 					enemy.armoured = rows[i].armoured == 1;
-					enemy.icon = "http://static.vermintideutility.com/enemies/icons/" + enemy.name.toLowerCase().replace(/ /g, "_") + ".png";
-					enemy.image = "http://static.vermintideutility.com/enemies/" + enemy.name.toLowerCase().replace(/ /g, "_") + ".png";
+					var urlName = noSpaceLowerCase(enemy.name);
+					enemy.icon = "http://static.vermintideutility.com/enemies/icons/" + urlName + ".png";
+					enemy.image = "http://static.vermintideutility.com/enemies/" + urlName + ".png";
+					enemy.url = "http://api.vermintideutility.com/enemies/" + urlName;
 					enemies.push(enemy);
 				}
 				callback(enemies);
@@ -50,8 +52,9 @@ module.exports = function (router, con) {
 						"cataclysm": rows[0].hp_cataclysm
 					};
 					enemy.armoured = rows[0].armoured == 1;
-					enemy.icon = "http://static.vermintideutility.com/enemies/icons/" + enemy.name.toLowerCase().replace(/ /g, "_") + ".png";
-					enemy.image = "http://static.vermintideutility.com/enemies/" + enemy.name.toLowerCase().replace(/ /g, "_") + ".png";
+					var urlName = noSpaceLowerCase(enemy.name);
+					enemy.icon = "http://static.vermintideutility.com/enemies/icons/" + urlName + ".png";
+					enemy.image = "http://static.vermintideutility.com/enemies/" + urlName + ".png";
 					callback(enemy);
 				}
 			});
@@ -85,7 +88,8 @@ module.exports = function (router, con) {
 					trinket.name = rows[i].name;
 					trinket.type = rows[i].type;
 					trinket.rarity = rows[i].rarity;
-					trinket.image = "http://static.vermintideutility.com/trinkets/" + trinket.name.toLowerCase().replace(/ /g, "_").replace(/[',]/g, "") + ".png";
+					trinket.image = "http://static.vermintideutility.com/trinkets/" + noSpaceLowerCase(trinket.name).replace(/[',]/g, "") + ".png";
+					trinket.url = "http://api.vermintideutility.com/trinkets/" + noSpaceLowerCase(trinket.name);
 					trinkets.push(trinket);
 				}
 				callback(trinkets);
@@ -107,7 +111,7 @@ module.exports = function (router, con) {
 					trinket.name = rows[0].name;
 					trinket.type = rows[0].type;
 					trinket.rarity = rows[0].rarity;
-					trinket.image = "http://static.vermintideutility.com/trinkets/" + trinket.name.toLowerCase().replace(/ /g, "_").replace(/[',]/g, "") + ".png";
+					trinket.image = "http://static.vermintideutility.com/trinkets/" + noSpaceLowerCase(trinket.name).replace(/[',]/g, "") + ".png";
 					callback(trinket);
 				}
 			});
@@ -161,3 +165,7 @@ module.exports = function (router, con) {
 		}
 	}
 };
+
+function noSpaceLowerCase(str) {
+	return str.replace(/ /g, '-').toLowerCase();
+}

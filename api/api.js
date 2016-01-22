@@ -24,7 +24,7 @@ module.exports = function (router, con) {
 					var urlName = noSpaceLowerCase(enemy.name);
 					enemy.icon = "http://static.vermintideutility.com/enemies/icons/" + urlName + ".png";
 					enemy.image = "http://static.vermintideutility.com/enemies/" + urlName + ".png";
-					enemy.url = "http://vermintideutility.com/enemies/" + urlName + "/";
+					enemy.url = "http://vermintideutility.com/enemies/" + urlName;
 					enemies.push(enemy);
 				}
 				callback(enemies);
@@ -55,7 +55,7 @@ module.exports = function (router, con) {
 					var urlName = noSpaceLowerCase(enemy.name);
 					enemy.icon = "http://static.vermintideutility.com/enemies/icons/" + urlName + ".png";
 					enemy.image = "http://static.vermintideutility.com/enemies/" + urlName + ".png";
-					enemy.url = "http://vermintideutility.com/enemies/" + urlName + "/";
+					enemy.url = "http://vermintideutility.com/enemies/" + urlName;
 					callback(enemy);
 				}
 			});
@@ -91,7 +91,7 @@ module.exports = function (router, con) {
 					trinket.rarity = rows[i].rarity;
 					var urlName = noSpaceLowerCase(trinket.name).replace(/[',]/g, "");
 					trinket.image = "http://static.vermintideutility.com/trinkets/" + urlName + ".png";
-					trinket.url = "http://vermintideutility.com/trinkets/" + urlName + "/";
+					trinket.url = "http://vermintideutility.com/trinkets/" + urlName;
 					trinkets.push(trinket);
 				}
 				callback(trinkets);
@@ -115,7 +115,7 @@ module.exports = function (router, con) {
 					trinket.rarity = rows[0].rarity;
 					var urlName = noSpaceLowerCase(trinket.name).replace(/[',]/g, "");
 					trinket.image = "http://static.vermintideutility.com/trinkets/" + urlName + ".png";
-					trinket.url = "http://vermintideutility.com/trinkets/" + urlName + "/";
+					trinket.url = "http://vermintideutility.com/trinkets/" + urlName;
 					callback(trinket);
 				}
 			});

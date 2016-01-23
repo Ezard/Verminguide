@@ -34,6 +34,7 @@ h1, h2, h3, h4, h5{
 
 h1{
 	margin: 40px;
+	font-size: 3em;
 }
 
 a, a:visited{
@@ -69,11 +70,6 @@ div#content{
 	float: left;
 	width: 80%;
 	background-color: #212121;
-
-	h1{
-		margin-left: 20px;
-		font-size: 3em;
-	}
 }
 
 @media only screen and (max-width: 480px) {

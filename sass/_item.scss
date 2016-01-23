@@ -44,7 +44,7 @@ div.item{
 
 		table{
 			margin: 1.33em 40px;
-			text-align: center;
+			text-align: left;
 
 			th{
 				font-size: 1.25em;
@@ -54,11 +54,17 @@ div.item{
 				padding-top: 5px;
 			}
 			td.tooltip{
+				padding-right: 40px;
 				cursor: help;
 			}
-			th:nth-child(1), td:nth-child(1){
-				padding-left: 0;
-				text-align: left;
+
+			&.difficulties{
+				text-align: center;
+
+				th:nth-child(1), td:nth-child(1){
+					padding-left: 0;
+					text-align: left;
+				}
 			}
 		}
 	}

@@ -4,7 +4,7 @@ var subdomain = require('express-subdomain');
 var mysql = require('mysql');
 var vhost = require('vhost');
 var compression = require('compression');
-var slash = require("express-slash");
+var slash = require("./slash");
 
 var con = mysql.createConnection(require('./config'));
 

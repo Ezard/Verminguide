@@ -26,8 +26,8 @@ app.set('view engine', 'handlebars');
 app.set('views', __dirname + '/views');
 
 var router = express.Router();
-var api = require("./api/api")(router, con);
-require("./api/router")(api);
+var api = require("./api/api")(con);
+require("./api/router")(router, api);
 
 app.use(subdomain('api', router));
 

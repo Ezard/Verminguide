@@ -12,9 +12,7 @@ window.addEventListener('load', function () {
 window.onpopstate = function (event) {
 	if (window.history && history.pushState) {
 		event.preventDefault();
-		//setContent();
-		console.log(event);
-		console.log(document.location);
+		setContent(document.location.href);
 	}
 };
 

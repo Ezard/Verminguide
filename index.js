@@ -50,22 +50,22 @@ app.get('/', function(req, res) {
 });
 app.get('/heroes/', function(req, res) {
 	api.getHeroes(function(heroes) {
-		res.render('heroes', heroes);
+		res.render('heroes', {heroes: heroes});
 	});
 });
 app.get('/enemies/', function(req, res) {
 	api.getEnemies(function(enemies) {
-		res.render('enemies', enemies);
+		res.render('enemies', {enemies: enemies});
 	});
 });
 app.get("/enemies/:name([a-z-]+)", function(req, res) {
 	api.getEnemy(req.params.name.replace('-', ' '), function(enemy) {
-		res.render('enemy', enemy);
+		res.render('enemy', {enemy: enemy});
 	});
 });
 app.get('/trinkets/', function(req, res) {
 	api.getTrinkets(function(trinkets) {
-		res.render('trinkets', trinkets);
+		res.render('trinkets', {trinkets: trinkets});
 	});
 });
 

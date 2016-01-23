@@ -58,9 +58,8 @@ app.get('/enemies/', function(req, res) {
 		res.render('enemies', {enemies: enemies});
 	});
 });
-app.get("/enemies/:name([a-zA-Z',\-\s]+)", function(req, res) {
+app.get("/enemies/:name([a-z-]+)", function(req, res) {
 	api.getEnemy(req.params.name, function(enemy) {
-		console.log(enemy);
 		res.render('enemy', enemy);
 	});
 });

@@ -27,11 +27,25 @@ function setContent(url) {
 
 function getContent(url, callback) {
 	var type;
+	if (/heroes\/?/.test(url)) {
+		if (/heroes\/[a-zA-Z',\-\s]+\/?$/.test(url)) {
+			type = "hero";
+		} else {
+			type = "heroes";
+		}
+	}
 	if (/enemies\/?/.test(url)) {
 		if (/enemies\/[a-zA-Z',\-\s]+\/?$/.test(url)) {
 			type = "enemy";
 		} else {
 			type = "enemies";
+		}
+	}
+	if (/trinkets\/?/.test(url)) {
+		if (/trinkets\/[a-zA-Z',\-\s]+\/?$/.test(url)) {
+			type = "trinket";
+		} else {
+			type = "trinkets";
 		}
 	}
 	var xhr = new XMLHttpRequest();

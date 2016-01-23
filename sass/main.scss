@@ -2,7 +2,7 @@
 @import "enemies";
 
 /* latin */
-@font-face {
+@font-face{
 	font-family: 'Lato';
 	font-style: normal;
 	font-weight: 400;
@@ -11,7 +11,7 @@
 }
 
 /* latin-ext */
-@font-face {
+@font-face{
 	font-family: 'Lato';
 	font-style: normal;
 	font-weight: 400;
@@ -19,7 +19,7 @@
 	unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
 }
 
-body {
+body{
 	font-family: Lato, Arial, sans-serif;
 	background-color: #1f1f1f;
 	margin: 0;
@@ -31,23 +31,23 @@ h1, h2, h3, h4, h5{
 	color: #FFF;
 }
 
-a, a:visited {
+a, a:visited{
 	color: $dark_red;
 	text-decoration: none;
 }
 
-nav {
+nav{
 	float: left;
 	width: 20%;
 	height: 100vh;
 	background-color: black;
 
-	img {
-		width:100%;
-		margin-top:1em;
+	img{
+		width: 100%;
+		margin-top: 1em;
 	}
 
-	a {
+	a{
 		display: block;
 		font-size: 24px;
 		margin-top: 1em;
@@ -56,23 +56,23 @@ nav {
 	}
 }
 
-div#hamburger {
+div#hamburger{
 	display: none;
 }
 
-div#content {
+div#content{
 	float: left;
 	width: 80%;
-	background-color:#212121;
+	background-color: #212121;
 
-	h1 {
+	h1{
 		margin-left: 20px;
 		font-size: 3em;
 	}
 }
 
 @media only screen and (max-width: 480px) {
-	nav {
+	nav{
 		position: fixed;
 		left: -75%;
 		top: 0;
@@ -80,21 +80,21 @@ div#content {
 		z-index: 10;
 		transition: left 300ms;
 
-		&.expanded {
+		&.expanded{
 			left: 0;
 
-			div#cover {
+			div#cover{
 				left: 0;
 				background-color: rgba(0, 0, 0, 0.5);
 			}
 		}
-		div#items {
+		div#items{
 			position: absolute;
 			height: 100%;
 			background-color: black;
 			box-shadow: 0 0 10px 10px black;
 
-			a {
+			a{
 				font-size: 2.5em;
 				margin-top: 0.25em;
 				margin-bottom: 0.25em;
@@ -102,7 +102,7 @@ div#content {
 				text-align: center;
 			}
 		}
-		div#cover {
+		div#cover{
 			position: fixed;
 			left: -100%;
 			top: 0;
@@ -113,7 +113,7 @@ div#content {
 		}
 	}
 
-	div#hamburger {
+	div#hamburger{
 		display: inline-block;
 		float: left;
 		top: 0;
@@ -122,7 +122,7 @@ div#content {
 		height: 21px;
 		margin: 29px 20px 0 20px;
 
-		div {
+		div{
 			position: relative;
 			float: left;
 			height: 3px;
@@ -133,10 +133,10 @@ div#content {
 		}
 	}
 
-	div#content {
+	div#content{
 		width: 100%;
 
-		h1 {
+		h1{
 			margin: 0.2em 0 0.2em 20px;
 		}
 	}

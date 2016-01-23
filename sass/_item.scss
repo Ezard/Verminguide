@@ -38,4 +38,25 @@ div.item{
 			margin: 40px;
 		}
 	}
+
+	div.stats{
+		width: 100%;
+
+		table{
+			margin: 1.33em 40px;
+			text-align: center;
+
+			th{
+				font-size: 1.25em;
+				padding: 0 40px;
+			}
+			td{
+				padding-top: 5px;
+			}
+			th:nth-child(1), td:nth-child(1){
+				padding-left: 0;
+				text-align: left;
+			}
+		}
+	}
 }

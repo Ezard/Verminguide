@@ -15,4 +15,43 @@
 			{{/each}}
 		</div>
 	</div>
+	<div class="stats">
+		<h3 id="stats">Stats</h3>
+		<table>
+			<tbody>
+			<tr>
+				<td>Armoured:</td>
+				<td>{{enemy.armoured}}</td>
+			</tr>
+			</tbody>
+		</table>
+		<table>
+			<tbody>
+			<tr>
+				<th>Difficulty</th>
+				<th>Health</th>
+			</tr>
+			<tr>
+				<td>Easy</td>
+				<td>{{enemy.hp.easy}}</td>
+			</tr>
+			<tr>
+				<td>Normal</td>
+				<td>{{enemy.hp.normal}}</td>
+			</tr>
+			<tr>
+				<td>Hard</td>
+				<td>{{enemy.hp.hard}}</td>
+			</tr>
+			<tr>
+				<td>Nightmare</td>
+				<td>{{enemy.hp.nightmare}}</td>
+			</tr>
+			<tr>
+				<td>Cataclysm</td>
+				<td>{{enemy.hp.cataclysm}}</td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
 </div>

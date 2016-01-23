@@ -53,7 +53,7 @@ module.exports = function (con) {
 						"cataclysm": rows[0].hp_cataclysm
 					};
 					enemy.armoured = rows[0].armoured == 1;
-					enemy.poison_resistance = rows[i].poison_resistance;
+					enemy.poison_resistance = rows[0].poison_resistance;
 					var urlName = noSpaceLowerCase(enemy.name);
 					enemy.icon = "http://static.vermintideutility.com/enemies/icons/" + urlName + ".png";
 					enemy.image = "http://static.vermintideutility.com/enemies/" + urlName + ".png";

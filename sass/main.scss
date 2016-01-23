@@ -73,6 +73,11 @@ div#content{
 	background-color: #212121;
 }
 
+.tooltip{
+	padding-right: 40px;
+	cursor: help;
+}
+
 @media only screen and (max-width: 480px) {
 	nav{
 		left: -75%;

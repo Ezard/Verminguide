@@ -37,7 +37,9 @@ function getContent(url, callback) {
 	var xhr = new XMLHttpRequest();
 	xhr.onreadystatechange = function () {
 		if (xhr.readyState == 4) {
-			callback(Handlebars.templates[type]({type: JSON.parse(xhr.responseText)}));
+			var obj = {};
+			obj[type] =JSON.parse(xhr.responseText);
+			callback(Handlebars.templates[type](obj));
 		}
 	};
 	xhr.open("GET", url.replace("http://", "http://api."), true);

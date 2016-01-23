@@ -1,4 +1,4 @@
-module.exports = function (router, con) {
+module.exports = function (con) {
 	return {
 		getEnemies: function (callback) {
 			con.query("SELECT name, description, notes, hp_easy, hp_normal, hp_hard, hp_nightmare, hp_cataclysm, armoured FROM enemies", function (err, rows, fields) {

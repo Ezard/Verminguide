@@ -1,5 +1,8 @@
 (function() {
   var template = Handlebars.template, templates = Handlebars.templates = Handlebars.templates || {};
+templates['404'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    return "<h1>404 - Page not found</h1>\r\n<p>Sorry, the page you're looking for was not found. If you typed the URL into the address bar, then please check that you typed it correctly. If you navigated\r\n	here from some other part of the website, then don't worry, we'll have it fixed up in a jiffy :)</p>";
+},"useData":true});
 templates['enemies'] = template({"1":function(container,depth0,helpers,partials,data) {
     var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
 

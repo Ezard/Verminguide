@@ -1,7 +1,7 @@
 module.exports = function (con) {
 	return {
 		getEnemies: function (callback) {
-			con.query("SELECT name, description, notes, hp_easy, hp_normal, hp_hard, hp_nightmare, hp_cataclysm, armoured FROM enemies", function (err, rows, fields) {
+			con.query("SELECT name, description, notes, hp_easy, hp_normal, hp_hard, hp_nightmare, hp_cataclysm, armoured, poison_resistance FROM enemies", function (err, rows, fields) {
 				var enemies = [];
 				for (var i = 0; i < rows.length; i++) {
 					var enemy = {};
@@ -21,6 +21,7 @@ module.exports = function (con) {
 						"cataclysm": rows[i].hp_cataclysm
 					};
 					enemy.armoured = rows[i].armoured == 1;
+					enemy.poison_resistance = rows[i].poison_resistance;
 					var urlName = noSpaceLowerCase(enemy.name);
 					enemy.icon = "http://static.vermintideutility.com/enemies/icons/" + urlName + ".png";
 					enemy.image = "http://static.vermintideutility.com/enemies/" + urlName + ".png";
@@ -31,7 +32,7 @@ module.exports = function (con) {
 			});
 		},
 		getEnemy: function (name, callback) {
-			con.query("SELECT name, description, notes, hp_easy, hp_normal, hp_hard, hp_nightmare, hp_cataclysm, armoured FROM enemies WHERE name=" + con.escape(name), function (err, rows, fields) {
+			con.query("SELECT name, description, notes, hp_easy, hp_normal, hp_hard, hp_nightmare, hp_cataclysm, armoured, poison_resistance FROM enemies WHERE name=" + con.escape(name), function (err, rows, fields) {
 				if (rows.length == 0) {
 					callback(null);
 				} else {
@@ -52,6 +53,7 @@ module.exports = function (con) {
 						"cataclysm": rows[0].hp_cataclysm
 					};
 					enemy.armoured = rows[0].armoured == 1;
+					enemy.poison_resistance = rows[i].poison_resistance;
 					var urlName = noSpaceLowerCase(enemy.name);
 					enemy.icon = "http://static.vermintideutility.com/enemies/icons/" + urlName + ".png";
 					enemy.image = "http://static.vermintideutility.com/enemies/" + urlName + ".png";

@@ -24,7 +24,14 @@ app.use('/images', express.static('images'));
 app.use('/scripts', express.static('scripts'));
 app.use('/handlebars', express.static('node_modules/handlebars/dist'));
 
-app.engine('handlebars', exphbs({defaultLayout: __dirname + '/views/layouts/main'}));
+app.engine('handlebars', exphbs({
+	defaultLayout: __dirname + '/views/layouts/main',
+	helpers: {
+		booleanToYesNo: function (bool) {
+			return bool ? "yes" : "no";
+		}
+	}
+}));
 app.set('view engine', 'handlebars');
 app.set('views', __dirname + '/views');
 
@@ -63,6 +70,7 @@ app.get('/enemies/', function (req, res) {
 });
 app.get("/enemies/:name([a-z-]+)", function (req, res) {
 	api.getEnemy(req.params.name.replace('-', ' '), function (enemy) {
+		console.log(enemy);
 		res.render('enemy', {enemy: enemy});
 	});
 });

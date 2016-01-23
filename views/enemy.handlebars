@@ -24,7 +24,7 @@
 					title="Whether or not this enemy is protected by armour. Armoured enemies can only be damaged by attacks to the head or by strikes with the 'Armour Penetration' attribute. All weapons have this attribute on their heavy attack, but some weapons such as axes have it by default">
 					Armoured:
 				</td>
-				<td>{{enemy.armoured}}</td>
+				<td>{{booleanToYesNo enemy.armoured}}</td>
 			</tr>
 			<tr>
 				<td class="tooltip"
@@ -35,7 +35,7 @@
 			</tr>
 			</tbody>
 		</table>
-		<table>
+		<table class="difficulties">
 			<tbody>
 			<tr>
 				<th>Difficulty</th>

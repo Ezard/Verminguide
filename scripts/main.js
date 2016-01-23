@@ -16,6 +16,10 @@ window.onpopstate = function (event) {
 	}
 };
 
+Handlebars.registerHelper('booleanToYesNo', function (bool) {
+	return bool ? "yes" : "no";
+});
+
 function setContent(url) {
 	document.getElementById("content").style.opacity = 0.5;
 	getContent(url, function (html) {

@@ -1,0 +1,41 @@
+div.item{
+
+	& > img{
+		float: left;
+		margin-left: 40px;
+		border-radius: 20px;
+		box-shadow: 0 0 10px 10px #C60000;
+	}
+
+	h2{
+		float: left;
+		margin: 0 0 0 40px;
+		line-height: 200px;
+		font-size: 2.5em;
+	}
+
+	h3{
+		margin: 40px 40px 0 40px;
+		font-size: 1.75em;
+	}
+
+	h4{
+		margin-left: 40px;
+		font-size: 1.25em;
+	}
+
+	p{
+		margin: 20px 40px;
+		line-height: 1.4em;
+	}
+
+	& > div{
+		float: right;
+
+		& > img{
+			float: right;
+			width: 40%;
+			margin: 40px;
+		}
+	}
+}

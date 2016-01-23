@@ -47,7 +47,7 @@ div.item{
 		}
 
 		table{
-			margin: 1.33em 40px;
+			margin: 10px 40px 1.33em;
 			text-align: left;
 
 			th{
@@ -57,8 +57,12 @@ div.item{
 			td{
 				padding-top: 5px;
 			}
+			tr:first-child td{
+				padding-top: 0px;
+			}
 
 			&.difficulties{
+				margin-top: 1.33em;
 				text-align: center;
 
 				th:nth-child(1), td:nth-child(1){

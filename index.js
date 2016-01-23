@@ -70,7 +70,6 @@ app.get('/enemies/', function (req, res) {
 });
 app.get("/enemies/:name([a-z-]+)", function (req, res) {
 	api.getEnemy(req.params.name.replace('-', ' '), function (enemy) {
-		console.log(enemy);
 		res.render('enemy', {enemy: enemy});
 	});
 });

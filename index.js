@@ -73,6 +73,7 @@ app.get('/trinkets/', function(req, res) {
 });
 
 app.use(vhost('static.vermintideutility.com', express.static('/var/www/images/', {fallthrough: false})));
+app.use(slash());
 
 app.use(function (req, res, next) {
 	res.status(404);
@@ -89,6 +90,5 @@ app.use(function (req, res, next) {
 
 	res.type('txt').send('Not found');
 });
-app.use(slash());
 
 var server = app.listen(80, function(){});

@@ -53,17 +53,17 @@ templates['enemy'] = template({"1":function(container,depth0,helpers,partials,da
     + alias2((helpers.booleanToYesNo || (depth0 && depth0.booleanToYesNo) || helpers.helperMissing).call(alias3,((stack1 = (depth0 != null ? depth0.enemy : depth0)) != null ? stack1.armoured : stack1),{"name":"booleanToYesNo","hash":{},"data":data}))
     + "</td>\r\n			</tr>\r\n			<tr>\r\n				<td class=\"tooltip\"\r\n					title=\"Every time the poison DoT ticks, enemies have a chance to die instantly, regardless of their remaining health. The percentage chance for this to happen is (100 - resistance). Some enemies have 100 poison resistance, meaning that this instant death effect can never happen to them\">\r\n					Poison Resistance:\r\n				</td>\r\n				<td>"
     + alias2(alias1(((stack1 = (depth0 != null ? depth0.enemy : depth0)) != null ? stack1.poison_resistance : stack1), depth0))
-    + "</td>\r\n			</tr>\r\n			</tbody>\r\n		</table>\r\n		<table class=\"difficulties\">\r\n			<tbody>\r\n			<tr>\r\n				<th>Difficulty</th>\r\n				<th>Health</th>\r\n			</tr>\r\n			<tr>\r\n				<td>Easy</td>\r\n				<td>"
+    + "</td>\r\n			</tr>\r\n			</tbody>\r\n		</table>\r\n		<table class=\"difficulties\">\r\n			<tbody>\r\n			<tr>\r\n				<th>Difficulty</th>\r\n				<th>Health</th>\r\n				<th>Damage</th>\r\n			</tr>\r\n			<tr>\r\n				<td>Easy</td>\r\n				<td>"
     + alias2(alias1(((stack1 = ((stack1 = (depth0 != null ? depth0.enemy : depth0)) != null ? stack1.hp : stack1)) != null ? stack1.easy : stack1), depth0))
-    + "</td>\r\n			</tr>\r\n			<tr>\r\n				<td>Normal</td>\r\n				<td>"
+    + "</td>\r\n				<td>Coming soon!</td>\r\n			</tr>\r\n			<tr>\r\n				<td>Normal</td>\r\n				<td>"
     + alias2(alias1(((stack1 = ((stack1 = (depth0 != null ? depth0.enemy : depth0)) != null ? stack1.hp : stack1)) != null ? stack1.normal : stack1), depth0))
-    + "</td>\r\n			</tr>\r\n			<tr>\r\n				<td>Hard</td>\r\n				<td>"
+    + "</td>\r\n				<td>Coming soon!</td>\r\n			</tr>\r\n			<tr>\r\n				<td>Hard</td>\r\n				<td>"
     + alias2(alias1(((stack1 = ((stack1 = (depth0 != null ? depth0.enemy : depth0)) != null ? stack1.hp : stack1)) != null ? stack1.hard : stack1), depth0))
-    + "</td>\r\n			</tr>\r\n			<tr>\r\n				<td>Nightmare</td>\r\n				<td>"
+    + "</td>\r\n				<td>Coming soon!</td>\r\n			</tr>\r\n			<tr>\r\n				<td>Nightmare</td>\r\n				<td>"
     + alias2(alias1(((stack1 = ((stack1 = (depth0 != null ? depth0.enemy : depth0)) != null ? stack1.hp : stack1)) != null ? stack1.nightmare : stack1), depth0))
-    + "</td>\r\n			</tr>\r\n			<tr>\r\n				<td>Cataclysm</td>\r\n				<td>"
+    + "</td>\r\n				<td>Coming soon!</td>\r\n			</tr>\r\n			<tr>\r\n				<td>Cataclysm</td>\r\n				<td>"
     + alias2(alias1(((stack1 = ((stack1 = (depth0 != null ? depth0.enemy : depth0)) != null ? stack1.hp : stack1)) != null ? stack1.cataclysm : stack1), depth0))
-    + "</td>\r\n			</tr>\r\n			</tbody>\r\n		</table>\r\n	</div>\r\n</div>";
+    + "</td>\r\n				<td>Coming soon!</td>\r\n			</tr>\r\n			</tbody>\r\n		</table>\r\n	</div>\r\n</div>";
 },"useData":true});
 templates['heroes'] = template({"1":function(container,depth0,helpers,partials,data) {
     var helper;

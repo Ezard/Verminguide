@@ -1,10 +1,11 @@
 @import "colours";
 
 div#enemies{
+	padding-left: 40px;
 
 	img{
 		float: left;
-		margin: 20px 0 0 20px;
+		margin: 0 20px 20px 0;
 		border-radius: 20px;
 		transition: box-shadow 300ms;
 

@@ -4,6 +4,7 @@ var subdomain = require('express-subdomain');
 var mysql = require('mysql');
 var vhost = require('vhost');
 var compression = require('compression');
+var slash = require("express-slash");
 
 var con = mysql.createConnection(require('./config'));
 
@@ -12,6 +13,8 @@ setTimeout(function() {
 }, 1000);
 
 var app = express();
+
+app.enable('strict routing');
 
 app.use(compression({}));
 
@@ -70,5 +73,6 @@ app.get('/trinkets/', function(req, res) {
 });
 
 app.use(vhost('static.vermintideutility.com', express.static('/var/www/images/', {fallthrough: false})));
+app.use(slash());
 
 var server = app.listen(80, function(){});

@@ -49,7 +49,7 @@ templates['enemy'] = template({"1":function(container,depth0,helpers,partials,da
     + alias2(alias1(((stack1 = (depth0 != null ? depth0.enemy : depth0)) != null ? stack1.description : stack1), depth0))
     + "</p>\r\n		<div>\r\n			<h3 id=\"notes\">Notes</h3>\r\n"
     + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {},((stack1 = (depth0 != null ? depth0.enemy : depth0)) != null ? stack1.notes : stack1),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "		</div>\r\n	</div>\r\n	<div class=\"stats\">\r\n		<h3 id=\"stats\">Stats</h3>\r\n		<table>\r\n			<tbody>\r\n			<tr>\r\n				<td>Armoured:</td>\r\n				<td>"
+    + "		</div>\r\n	</div>\r\n	<div class=\"stats\">\r\n		<h3 id=\"stats\">Stats</h3>\r\n		<table>\r\n			<tbody>\r\n			<tr>\r\n				<td class=\"tooltip\"\r\n					title=\"Whether or not this enemy is protected by armour. Armoured enemies can only be damaged by attacks to the head or by strikes with the 'Armour Penetration' attribute. All weapons have this attribute on their heavy attack, but some weapons such as axes have it by default\">\r\n					Armoured:\r\n				</td>\r\n				<td>"
     + alias2(alias1(((stack1 = (depth0 != null ? depth0.enemy : depth0)) != null ? stack1.armoured : stack1), depth0))
     + "</td>\r\n			</tr>\r\n			</tbody>\r\n		</table>\r\n		<table>\r\n			<tbody>\r\n			<tr>\r\n				<th>Difficulty</th>\r\n				<th>Health</th>\r\n			</tr>\r\n			<tr>\r\n				<td>Easy</td>\r\n				<td>"
     + alias2(alias1(((stack1 = ((stack1 = (depth0 != null ? depth0.enemy : depth0)) != null ? stack1.hp : stack1)) != null ? stack1.easy : stack1), depth0))

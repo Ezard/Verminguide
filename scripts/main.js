@@ -18,7 +18,7 @@ window.onpopstate = function (event) {
 
 function setContent(url) {
 	document.getElementById("content").style.opacity = 0.5;
-	getContent(url, function(html) {
+	getContent(url, function (html) {
 		document.getElementById("content").innerHTML = html;
 		document.getElementById("content").style.opacity = 1;
 		window.history.pushState({}, "", url);
@@ -38,7 +38,7 @@ function getContent(url, callback) {
 	xhr.onreadystatechange = function () {
 		if (xhr.readyState == 4) {
 			var obj = {};
-			obj[type] =JSON.parse(xhr.responseText);
+			obj[type] = JSON.parse(xhr.responseText);
 			callback(Handlebars.templates[type](obj));
 		}
 	};

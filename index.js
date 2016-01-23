@@ -1,5 +1,5 @@
 var express = require('express');
-var exphbs  = require('express-handlebars');
+var exphbs = require('express-handlebars');
 var subdomain = require('express-subdomain');
 var mysql = require('mysql');
 var vhost = require('vhost');
@@ -8,7 +8,7 @@ var slash = require("./slash");
 
 var con = mysql.createConnection(require('./config'));
 
-setTimeout(function() {
+setTimeout(function () {
 	con.connect();
 }, 1000);
 
@@ -24,7 +24,7 @@ app.use('/images', express.static('images'));
 app.use('/scripts', express.static('scripts'));
 app.use('/handlebars', express.static('node_modules/handlebars/dist'));
 
-app.engine('handlebars', exphbs({defaultLayout:  __dirname + '/views/layouts/main'}));
+app.engine('handlebars', exphbs({defaultLayout: __dirname + '/views/layouts/main'}));
 app.set('view engine', 'handlebars');
 app.set('views', __dirname + '/views');
 
@@ -34,7 +34,7 @@ require("./api/router")(router, api);
 
 app.use(subdomain('api', router));
 
-app.get('/*', function(req, res, next) {
+app.get('/*', function (req, res, next) {
 	if (req.headers.host.match(/^www\./)) {
 		res.writeHead(301, {'Location': 'http://vermintideutility.com'});
 		res.end();
@@ -43,31 +43,31 @@ app.get('/*', function(req, res, next) {
 	}
 });
 
-app.get('/', function(req, res) {
-	api.getTrinkets(function(trinkets) {
+app.get('/', function (req, res) {
+	api.getTrinkets(function (trinkets) {
 		//res.render('home', function(err, html) {
 		//	res.end(html.replace("[[title]]", "Test"));
 		//});
 		res.render('home');
 	});
 });
-app.get('/heroes/', function(req, res) {
-	api.getHeroes(function(heroes) {
+app.get('/heroes/', function (req, res) {
+	api.getHeroes(function (heroes) {
 		res.render('heroes', {heroes: heroes});
 	});
 });
-app.get('/enemies/', function(req, res) {
-	api.getEnemies(function(enemies) {
+app.get('/enemies/', function (req, res) {
+	api.getEnemies(function (enemies) {
 		res.render('enemies', {enemies: enemies});
 	});
 });
-app.get("/enemies/:name([a-z-]+)", function(req, res) {
-	api.getEnemy(req.params.name.replace('-', ' '), function(enemy) {
+app.get("/enemies/:name([a-z-]+)", function (req, res) {
+	api.getEnemy(req.params.name.replace('-', ' '), function (enemy) {
 		res.render('enemy', {enemy: enemy});
 	});
 });
-app.get('/trinkets/', function(req, res) {
-	api.getTrinkets(function(trinkets) {
+app.get('/trinkets/', function (req, res) {
+	api.getTrinkets(function (trinkets) {
 		res.render('trinkets', {trinkets: trinkets});
 	});
 });
@@ -91,4 +91,5 @@ app.use(function (req, res, next) {
 	res.type('txt').send('Not found');
 });
 
-var server = app.listen(80, function(){});
+var server = app.listen(80, function () {
+});

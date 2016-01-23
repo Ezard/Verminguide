@@ -19,9 +19,9 @@ function expressSlash(statusCode) {
 			return;
 		}
 
-		var url      = parseURL(req.url),
+		var url = parseURL(req.url),
 			pathname = url.pathname,
-			search   = url.search || '',
+			search = url.search || '',
 			hasSlash = pathname.charAt(pathname.length - 1) === '/';
 
 		// Adjust the URL's path by either adding or removing a trailing slash.
@@ -42,7 +42,7 @@ function expressSlash(statusCode) {
 
 function testStackForMatch(stack, method, path) {
 	return stack.some(function (layer) {
-		var route    = layer.route,
+		var route = layer.route,
 			subStack = layer.handle.stack;
 		console.log(route);
 

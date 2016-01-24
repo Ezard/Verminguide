@@ -35,7 +35,7 @@ app.engine('handlebars', exphbs({
 app.set('view engine', 'handlebars');
 app.set('views', __dirname + '/views');
 
-var router = express.Router();
+var router = express.Router({strict: app.get('strict routing')});
 var api = require("./api/api")(con);
 require("./api/router")(router, api);
 

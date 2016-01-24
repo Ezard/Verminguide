@@ -39,6 +39,7 @@ var router = express.Router();
 var api = require("./api/api")(con);
 require("./api/router")(router, api);
 
+router.use(slash());
 app.use(subdomain('api', router));
 
 app.get('/*', function (req, res, next) {

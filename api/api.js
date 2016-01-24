@@ -70,6 +70,9 @@ module.exports = function (con) {
 					var hero = {};
 					hero.name = rows[i].name;
 					hero.class = rows[i].class;
+					var urlName = noSpaceLowerCase(hero.name);
+					hero.icon = "http://static.vermintideutility.com/heroes/icons/" + urlName + ".png";
+					hero.image = "http://static.vermintideutility.com/heroes/" + urlName + ".png";
 					heroes.push(hero);
 				}
 				callback(heroes);

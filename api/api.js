@@ -23,7 +23,7 @@ module.exports = function (con) {
 					enemy.armoured = rows[i].armoured == 1;
 					enemy.poison_resistance = rows[i].poison_resistance;
 					var urlName = noSpaceLowerCase(enemy.name);
-					enemy.icon = "http://static.vermintideutility.com/enemies/icons/" + urlName + ".png";
+					enemy.icon = "http://static.vermintideutility.com/enemies/icons/" + urlName + ".jpg";
 					enemy.image = "http://static.vermintideutility.com/enemies/" + urlName + ".png";
 					enemy.url = "http://vermintideutility.com/enemies/" + urlName;
 					enemies.push(enemy);
@@ -55,7 +55,7 @@ module.exports = function (con) {
 					enemy.armoured = rows[0].armoured == 1;
 					enemy.poison_resistance = rows[0].poison_resistance;
 					var urlName = noSpaceLowerCase(enemy.name);
-					enemy.icon = "http://static.vermintideutility.com/enemies/icons/" + urlName + ".png";
+					enemy.icon = "http://static.vermintideutility.com/enemies/icons/" + urlName + ".jpg";
 					enemy.image = "http://static.vermintideutility.com/enemies/" + urlName + ".png";
 					enemy.url = "http://vermintideutility.com/enemies/" + urlName;
 					callback(enemy);

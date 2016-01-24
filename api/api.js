@@ -72,7 +72,7 @@ module.exports = function (con) {
 					hero.class = rows[i].class;
 					var urlName = noSpaceLowerCase(hero.name);
 					hero.icon = "http://static.vermintideutility.com/heroes/icons/" + urlName + ".jpg";
-					hero.image = "http://static.vermintideutility.com/heroes/" + urlName + ".jpg";
+					hero.image = "http://static.vermintideutility.com/heroes/" + urlName + ".png";
 					heroes.push(hero);
 				}
 				callback(heroes);

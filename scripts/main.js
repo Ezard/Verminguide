@@ -20,6 +20,14 @@ Handlebars.registerHelper('booleanToYesNo', function (bool) {
 	return bool ? "yes" : "no";
 });
 
+Handlebars.registerHelper('smallerFont', function (str) {
+	if (str.length > 16) {
+		return 'style="font-size:1em" ';
+	} else {
+		return "";
+	}
+});
+
 function setContent(url) {
 	document.getElementById("content").style.opacity = 0.5;
 	getContent(url, function (html) {

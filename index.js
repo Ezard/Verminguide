@@ -29,6 +29,13 @@ app.engine('handlebars', exphbs({
 	helpers: {
 		booleanToYesNo: function (bool) {
 			return bool ? "yes" : "no";
+		},
+		smallerFont: function(str) {
+			if (str.length > 16) {
+				return 'style="font-size:1em" ';
+			} else {
+				return "";
+			}
 		}
 	}
 }));

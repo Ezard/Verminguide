@@ -1,6 +1,11 @@
 <h1>Enemies</h1>
 <div id="enemies">
 	{{#each enemies}}
-		<a href="{{url}}"><img src="{{icon}}" alt="{{name}}" width="184" height="184"/></a>
+		<a href="{{url}}">
+			<div>
+				<div style="background-image:url({{icon}})"></div>
+				<h2 {{#smallerFont name}}{{/smallerFont}}>{{name}}</h2>
+			</div>
+		</a>
 	{{/each}}
 </div>

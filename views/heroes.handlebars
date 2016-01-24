@@ -1,6 +1,11 @@
 <h1>Heroes</h1>
-{{#each heroes}}
-	<div>
-		<h3>{{name}}</h3>
-	</div>
-{{/each}}
+<div id="items">
+	{{#each heroes}}
+		<a href="{{url}}">
+			<div>
+				<div style="background-image:url({{icon}})"></div>
+				<h2 {{#smallerFont name}}{{/smallerFont}}>{{name}}</h2>
+			</div>
+		</a>
+	{{/each}}
+</div>

@@ -31,10 +31,8 @@ function expressSlash(statusCode) {
 		var match = testStackForMatch(req.app._router.stack, method, pathname);
 
 		if (match) {
-			console.log("Found: " + pathname);
 			res.redirect(statusCode, pathname + search);
 		} else {
-			console.log("Not found");
 			next();
 		}
 	};
@@ -44,7 +42,6 @@ function testStackForMatch(stack, method, path) {
 	return stack.some(function (layer) {
 		var route = layer.route,
 			subStack = layer.handle.stack;
-		console.log(route);
 
 		// It's only a match if the stack layer is a route.
 		if (route) {

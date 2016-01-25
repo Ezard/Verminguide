@@ -32,33 +32,47 @@ module.exports = function (con) {
 			});
 		},
 		getEnemy: function (name, callback) {
-			con.query("SELECT name, description, notes, hp_easy, hp_normal, hp_hard, hp_nightmare, hp_cataclysm, armoured, poison_resistance FROM enemies WHERE name=" + con.escape(name), function (err, rows, fields) {
+			con.query("SELECT id, name, description, notes, hp_easy, hp_normal, hp_hard, hp_nightmare, hp_cataclysm, armoured, poison_resistance FROM enemies WHERE name=" + con.escape(name), function (err, rows, fields) {
 				if (rows.length == 0) {
 					callback(null);
 				} else {
-					var enemy = {};
-					enemy.name = rows[0].name;
-					enemy.description = rows[0].description;
-					enemy.notes = [];
-					var split = rows[0].notes.split("&&");
-					for (var i = 0; i < split.length; i++) {
-						var split2 = split[i].split("||");
-						enemy.notes.push({title: split2[0], content: split2[1]});
-					}
-					enemy.hp = {
-						"easy": rows[0].hp_easy,
-						"normal": rows[0].hp_normal,
-						"hard": rows[0].hp_hard,
-						"nightmare": rows[0].hp_nightmare,
-						"cataclysm": rows[0].hp_cataclysm
-					};
-					enemy.armoured = rows[0].armoured == 1;
-					enemy.poison_resistance = rows[0].poison_resistance;
-					var urlName = noSpaceLowerCase(enemy.name);
-					enemy.icon = "http://static.vermintideutility.com/enemies/icons/" + urlName + ".jpg";
-					enemy.image = "http://static.vermintideutility.com/enemies/" + urlName + ".png";
-					enemy.url = "http://vermintideutility.com/enemies/" + urlName;
-					callback(enemy);
+					con.query("SELECT name, damage_easy, damage_normal, damage_hard, damage_nightmare, damage_cataclysm FROM enemy_attacks WHERE enemy_id=" + rows[0].id, function (err2, rows2, fields2) {
+						var enemy = {};
+						enemy.name = rows[0].name;
+						enemy.description = rows[0].description;
+						enemy.notes = [];
+						var split = rows[0].notes.split("&&");
+						for (var i = 0; i < split.length; i++) {
+							var split2 = split[i].split("||");
+							enemy.notes.push({title: split2[0], content: split2[1]});
+						}
+						enemy.hp = {
+							"easy": rows[0].hp_easy,
+							"normal": rows[0].hp_normal,
+							"hard": rows[0].hp_hard,
+							"nightmare": rows[0].hp_nightmare,
+							"cataclysm": rows[0].hp_cataclysm
+						};
+						enemy.attacks = [];
+						for (i = 0; i < rows2.length; i++) {
+							enemy.attacks.push({
+								name: rows2[i].name, damage: {
+									"easy": rows2[i].damage_easy,
+									"normal": rows2[i].damage_normal,
+									"hard": rows2[i].damage_hard,
+									"nightmare": rows2[i].damage_nightmare,
+									"cataclysm": rows2[i].damage_cataclysm
+								}
+							});
+						}
+						enemy.armoured = rows[0].armoured == 1;
+						enemy.poison_resistance = rows[0].poison_resistance;
+						var urlName = noSpaceLowerCase(enemy.name);
+						enemy.icon = "http://static.vermintideutility.com/enemies/icons/" + urlName + ".jpg";
+						enemy.image = "http://static.vermintideutility.com/enemies/" + urlName + ".png";
+						enemy.url = "http://vermintideutility.com/enemies/" + urlName;
+						callback(enemy);
+					});
 				}
 			});
 		},

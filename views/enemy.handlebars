@@ -21,14 +21,14 @@
 			<tbody>
 			<tr>
 				<td class="tooltip"
-					title="Whether or not this enemy is protected by armour. Armoured enemies can only be damaged by attacks to the head or by strikes with the 'Armour Penetration' attribute. All weapons have this attribute on their heavy attack, but some weapons such as axes have it by default">
+				    title="Whether or not this enemy is protected by armour. Armoured enemies can only be damaged by attacks to the head or by strikes with the 'Armour Penetration' attribute. All weapons have this attribute on their heavy attack, but some weapons such as axes have it by default">
 					Armoured:
 				</td>
 				<td>{{booleanToYesNo enemy.armoured}}</td>
 			</tr>
 			<tr>
 				<td class="tooltip"
-					title="Every time the poison DoT ticks, enemies have a chance to die instantly, regardless of their remaining health. The percentage chance for this to happen is (100 - resistance). Some enemies have 100 poison resistance, meaning that this instant death effect can never happen to them">
+				    title="Every time the poison DoT ticks, enemies have a chance to die instantly, regardless of their remaining health. The percentage chance for this to happen is (100 - resistance). Some enemies have 100 poison resistance, meaning that this instant death effect can never happen to them">
 					Poison Resistance:
 				</td>
 				<td>{{enemy.poison_resistance}}</td>
@@ -41,32 +41,44 @@
 				<tr>
 					<th class="tooltip" title="The difficulty setting">Difficulty</th>
 					<th class="tooltip" title="The amount of health that the enemy has on the corresponding difficulty setting">Health</th>
-					<th class="tooltip">Damage</th>
+					{{#each enemy.attacks}}
+						<th>{{name}}</th>
+					{{/each}}
 				</tr>
 				<tr>
 					<td>Easy</td>
 					<td>{{enemy.hp.easy}}</td>
-					<td>Coming soon!</td>
+					{{#each enemy.attacks}}
+						<th>{{damage.easy}}</th>
+					{{/each}}
 				</tr>
 				<tr>
 					<td>Normal</td>
 					<td>{{enemy.hp.normal}}</td>
-					<td>Coming soon!</td>
+					{{#each enemy.attacks}}
+						<th>{{damage.normal}}</th>
+					{{/each}}
 				</tr>
 				<tr>
 					<td>Hard</td>
 					<td>{{enemy.hp.hard}}</td>
-					<td>Coming soon!</td>
+					{{#each enemy.attacks}}
+						<th>{{damage.hard}}</th>
+					{{/each}}
 				</tr>
 				<tr>
 					<td>Nightmare</td>
 					<td>{{enemy.hp.nightmare}}</td>
-					<td>Coming soon!</td>
+					{{#each enemy.attacks}}
+						<th>{{damage.nightmare}}</th>
+					{{/each}}
 				</tr>
 				<tr>
 					<td>Cataclysm</td>
 					<td>{{enemy.hp.cataclysm}}</td>
-					<td>Coming soon!</td>
+					{{#each enemy.attacks}}
+						<th>{{damage.cataclysm}}</th>
+					{{/each}}
 				</tr>
 				</tbody>
 			</table>

@@ -36,15 +36,29 @@ div#items{
 			text-align: center;
 			background-color: rgba(0, 0, 0, 0.8);
 			border-radius: 0 0 20px 20px;
+
+			&.smaller_text{
+				font-size: 1em;
+			}
 		}
 	}
 }
 
 @media only screen and (max-width: 480px) {
-	div#enemies{
+	div#items{
+		padding-left: 20px;
 
-		img{
-			width: calc((100% - 60px) / 2);
+		& > a > div{
+			width: calc((100vw - 60px) / 2);
+			height: calc((100vw - 60px) / 2);
+
+			h2{
+				line-height: 35px;
+
+				&.smaller_text{
+					font-size: 1.25em;
+				}
+			}
 		}
 	}
 }

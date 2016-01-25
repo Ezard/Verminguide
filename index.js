@@ -32,10 +32,10 @@ app.engine('handlebars', exphbs({
 		},
 		smallerFont: function(str) {
 			if (str.length > 16) {
-				return 'style="font-size:1em" ';
+				return 'class="smaller_text" ';
 			} else {
 				return "";
-			}
+			}//1em
 		}
 	}
 }));

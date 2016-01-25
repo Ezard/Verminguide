@@ -38,6 +38,10 @@ div.item{
 			width: 40%;
 			margin: 40px;
 		}
+
+		& > div{
+			float: left;
+		}
 	}
 
 	div.stats{

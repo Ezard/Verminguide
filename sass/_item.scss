@@ -73,3 +73,55 @@ div.item{
 		}
 	}
 }
+
+@media only screen and (max-width: 480px) {
+	div.item{
+
+		& > img{
+			margin: 20px 0 0 calc(50% - 184px / 2);
+		}
+		h2{
+			width: 100%;
+			margin: 20px 0;
+			text-align: center;
+			line-height: normal;
+		}
+		& > div{
+			& > img{
+				width: calc(100% - 40px);
+				margin: 0 20px;
+				box-sizing: border-box;
+			}
+			h3, h4, p{
+				float: left;
+				width: 100%;
+				margin: 20px 0 0 0;
+				padding: 0 20px;
+				box-sizing: border-box;
+			}
+			p{
+				text-align: justify;
+			}
+		}
+		div.stats{
+			table{
+				position: relative;
+				top: 10px;
+				margin: 0;
+				padding: 0 20px;
+			}
+			& > div{
+				position: relative;
+				top: 10px;
+				margin: 0 0 15px 0;
+				padding: 0 20px 10px 20px;
+				overflow-x: scroll;
+
+				table.difficulties{
+					margin: 0;
+					padding: 0;
+				}
+			}
+		}
+	}
+}

@@ -52,6 +52,9 @@ div#items{
 			width: calc((100vw - 60px) / 2);
 			height: calc((100vw - 60px) / 2);
 
+			div{
+				background-size: 100%;
+			}
 			h2{
 				line-height: 35px;
 

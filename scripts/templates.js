@@ -41,33 +41,33 @@ templates['enemy'] = template({"1":function(container,depth0,helpers,partials,da
 },"5":function(container,depth0,helpers,partials,data) {
     var stack1;
 
-  return "						<th>"
+  return "						<td>"
     + container.escapeExpression(container.lambda(((stack1 = (depth0 != null ? depth0.damage : depth0)) != null ? stack1.easy : stack1), depth0))
-    + "</th>\r\n";
+    + "</td>\r\n";
 },"7":function(container,depth0,helpers,partials,data) {
     var stack1;
 
-  return "						<th>"
+  return "						<td>"
     + container.escapeExpression(container.lambda(((stack1 = (depth0 != null ? depth0.damage : depth0)) != null ? stack1.normal : stack1), depth0))
-    + "</th>\r\n";
+    + "</td>\r\n";
 },"9":function(container,depth0,helpers,partials,data) {
     var stack1;
 
-  return "						<th>"
+  return "						<td>"
     + container.escapeExpression(container.lambda(((stack1 = (depth0 != null ? depth0.damage : depth0)) != null ? stack1.hard : stack1), depth0))
-    + "</th>\r\n";
+    + "</td>\r\n";
 },"11":function(container,depth0,helpers,partials,data) {
     var stack1;
 
-  return "						<th>"
+  return "						<td>"
     + container.escapeExpression(container.lambda(((stack1 = (depth0 != null ? depth0.damage : depth0)) != null ? stack1.nightmare : stack1), depth0))
-    + "</th>\r\n";
+    + "</td>\r\n";
 },"13":function(container,depth0,helpers,partials,data) {
     var stack1;
 
-  return "						<th>"
+  return "						<td>"
     + container.escapeExpression(container.lambda(((stack1 = (depth0 != null ? depth0.damage : depth0)) != null ? stack1.cataclysm : stack1), depth0))
-    + "</th>\r\n";
+    + "</td>\r\n";
 },"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1, alias1=container.lambda, alias2=container.escapeExpression, alias3=depth0 != null ? depth0 : {};
 

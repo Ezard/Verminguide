@@ -27,6 +27,7 @@ div.item{
 	p{
 		margin: 20px 40px;
 		line-height: 1.4em;
+		text-align: justify;
 	}
 
 	& > div{
@@ -99,9 +100,6 @@ div.item{
 				margin: 20px 0 0 0;
 				padding: 0 20px;
 				box-sizing: border-box;
-			}
-			p{
-				text-align: justify;
 			}
 		}
 		div.stats{

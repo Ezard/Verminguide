@@ -11,7 +11,7 @@ module.exports = function (router, api) {
 		api.getEnemy(req.params.name.replace(/-/g, ' '), function (enemy) {
 			setHeaders(res);
 			if (enemy == null) {
-				res.status(404).end(JSON.stringify({"error": {"message": "Sorry, that resource does not exist"}}));
+				sendResourceNotFound(res);
 			} else {
 				res.end(JSON.stringify(enemy));
 			}
@@ -36,7 +36,7 @@ module.exports = function (router, api) {
 		api.getTrinket(req.params.name.replace(/-/g, ' '), function (trinket) {
 			setHeaders(res);
 			if (trinket == null) {
-				res.status(404).end(JSON.stringify({"error": {"message": "Sorry, that resource does not exist"}}));
+				sendResourceNotFound(res);
 			} else {
 				res.end(JSON.stringify(trinket));
 			}
@@ -54,7 +54,7 @@ module.exports = function (router, api) {
 		api.getWeaponsByClass(req.params.name.replace(/-/g, ' '), function (trinket) {
 			setHeaders(res);
 			if (trinket == null) {
-				res.status(404).end(JSON.stringify({"error": {"message": "Sorry, that resource does not exist"}}));
+				sendResourceNotFound(res);
 			} else {
 				res.end(JSON.stringify(trinket));
 			}
@@ -65,4 +65,8 @@ module.exports = function (router, api) {
 function setHeaders(res) {
 	res.set("Content-type", "application/json");
 	res.set("Access-Control-Allow-Origin", "*");
+}
+
+function sendResourceNotFound(res) {
+	res.status(404).end(JSON.stringify({"error": {"message": "Sorry, that resource does not exist"}}));
 }

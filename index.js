@@ -86,6 +86,16 @@ app.get('/trinkets/', function (req, res) {
 		res.render('trinkets', {trinkets: trinkets});
 	});
 });
+app.get('/weapons/', function (req, res) {
+	api.getWeapons(function (weapons) {
+		res.render('weapons', {weapons: weapons});
+	});
+});
+app.get('/weapons/:name([a-z-]+)', function (req, res) {
+	api.getWeaponsByClass(req.params.name.replace('-', ' '), function (weapons) {
+		res.render('weapons', {weapons: weapons});
+	});
+});
 
 app.use(vhost('static.vermintideutility.com', express.static('/var/www/images/', {fallthrough: false})));
 app.use(slash());

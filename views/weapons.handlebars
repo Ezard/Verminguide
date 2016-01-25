@@ -1,0 +1,11 @@
+<h1>Weapons</h1>
+<div id="items">
+	{{#each weapons}}
+		<a href="{{url}}">
+			<div>
+				<div style="background-image:url({{icon}})"></div>
+				<h2 {{#smallerFont name}}{{/smallerFont}}>{{name}}</h2>
+			</div>
+		</a>
+	{{/each}}
+</div>

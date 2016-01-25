@@ -5,6 +5,7 @@ window.addEventListener('load', function () {
 		if (target.href && event.button == 0 && target.origin == document.location.origin && window.history && history.pushState) {
 			event.preventDefault();
 			setContent(target.href);
+			setMenuOpen(false);
 		}
 	});
 }, false);

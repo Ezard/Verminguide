@@ -77,7 +77,7 @@ app.get('/enemies/', function (req, res) {
 	});
 });
 app.get("/enemies/:name([a-z-]+)", function (req, res) {
-	api.getEnemy(req.params.name.replace('-', ' '), function (enemy) {
+	api.getEnemy(req.params.name.replace(/-/g, ' '), function (enemy) {
 		res.render('enemy', {enemy: enemy});
 	});
 });
@@ -92,7 +92,7 @@ app.get('/weapons/', function (req, res) {
 	});
 });
 app.get('/weapons/:name([a-z-]+)', function (req, res) {
-	api.getWeaponsByClass(req.params.name.replace('-', ' '), function (weapons) {
+	api.getWeaponsByClass(req.params.name.replace(/-/g, ' '), function (weapons) {
 		res.render('weapons', {weapons: weapons});
 	});
 });

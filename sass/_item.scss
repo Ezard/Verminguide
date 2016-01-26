@@ -41,6 +41,8 @@ div.item{
 
 		& > div{
 			float: left;
+			width: 100%;
+			box-sizing: border-box;
 		}
 	}
 

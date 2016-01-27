@@ -22,7 +22,7 @@ Handlebars.registerHelper('booleanToYesNo', function (bool) {
 });
 
 Handlebars.registerHelper('smallerFont', function (str) {
-	if (str.length > 16) {
+	if (str.length >= 15) {
 		return 'class="smaller_text" ';
 	} else {
 		return "";

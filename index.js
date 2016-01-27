@@ -31,7 +31,7 @@ app.engine('handlebars', exphbs({
 			return bool ? "yes" : "no";
 		},
 		smallerFont: function(str) {
-			if (str.length > 16) {
+			if (str.length >= 15) {
 				return 'class="smaller_text" ';
 			} else {
 				return "";

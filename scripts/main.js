@@ -54,6 +54,13 @@ function getContent(url, callback) {
 			type = "enemies";
 		}
 	}
+	if (/weapon\/?/.test(url)) {
+		if (/weapons\/[a-zA-Z',\-\s]+\/?$/.test(url)) {
+			type = "weapon";
+		} else {
+			type = "weapons";
+		}
+	}
 	if (/trinkets\/?/.test(url)) {
 		if (/trinkets\/[a-zA-Z',\-\s]+\/?$/.test(url)) {
 			type = "trinket";

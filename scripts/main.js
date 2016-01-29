@@ -50,12 +50,17 @@ function getContent(url, callback) {
 	var xhr = new XMLHttpRequest();
 	xhr.onreadystatechange = function () {
 		if (xhr.readyState == 4) {
-			var obj = {};
-			obj[type] = JSON.parse(xhr.responseText);
-			callback(Handlebars.templates[type](obj));
+			if (type == "home") {
+				callback(Handlebars.templates[type]());
+			} else {
+				var obj = {};
+				obj[type] = JSON.parse(xhr.responseText);
+				callback(Handlebars.templates[type](obj));
+			}
 		}
 	};
-	if (/http:\/\/vermintideutility.com\/?/.test(url)) {
+	if (/^http:\/\/vermintideutility.com\/?$/.test(url)) {
+		type = "home";
 		xhr.open("GET", "http://vermintideutility.com", true);
 	} else {
 		if (/heroes\/?/.test(url)) {

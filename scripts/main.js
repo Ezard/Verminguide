@@ -1,7 +1,6 @@
 window.addEventListener('load', function () {
 	document.body.addEventListener('click', function (event) {
-		var target = event.target;
-		if (!target.href) target = target.parentNode;
+		var target = getTarget(event.target);
 		if (target.href && event.button == 0 && target.origin == document.location.origin && window.history && history.pushState) {
 			event.preventDefault();
 			setContent(target.href);
@@ -16,6 +15,14 @@ window.onpopstate = function (event) {
 		setContent(document.location.href);
 	}
 };
+
+function getTarget(e) {
+	if (e.href) {
+		return e;
+	} else if (e != document.body) {
+		return getTarget(e.parentNode);
+	}
+}
 
 Handlebars.registerHelper('booleanToYesNo', function (bool) {
 	return bool ? "yes" : "no";

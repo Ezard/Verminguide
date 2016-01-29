@@ -1,7 +1,6 @@
 window.addEventListener('load', function () {
 	document.body.addEventListener('click', function (event) {
-		var target = event.target;
-		if (!target.href) target = target.parentNode;
+		var target = getTarget(event.target);
 		if (target.href && event.button == 0 && target.origin == document.location.origin && window.history && history.pushState) {
 			event.preventDefault();
 			setContent(target.href);
@@ -16,6 +15,14 @@ window.onpopstate = function (event) {
 		setContent(document.location.href);
 	}
 };
+
+function getTarget(e) {
+	if (e.href) {
+		return e;
+	} else if (e != document.body) {
+		return getTarget(e.parentNode);
+	}
+}
 
 Handlebars.registerHelper('booleanToYesNo', function (bool) {
 	return bool ? "yes" : "no";
@@ -40,43 +47,52 @@ function setContent(url) {
 
 function getContent(url, callback) {
 	var type;
-	if (/heroes\/?/.test(url)) {
-		if (/heroes\/[a-zA-Z',\-\s]+\/?$/.test(url)) {
-			type = "hero";
-		} else {
-			type = "heroes";
-		}
-	}
-	if (/enemies\/?/.test(url)) {
-		if (/enemies\/[a-zA-Z',\-\s]+\/?$/.test(url)) {
-			type = "enemy";
-		} else {
-			type = "enemies";
-		}
-	}
-	if (/weapon\/?/.test(url)) {
-		if (/weapons\/[a-zA-Z',\-\s]+\/?$/.test(url)) {
-			type = "weapon";
-		} else {
-			type = "weapons";
-		}
-	}
-	if (/trinkets\/?/.test(url)) {
-		if (/trinkets\/[a-zA-Z',\-\s]+\/?$/.test(url)) {
-			type = "trinket";
-		} else {
-			type = "trinkets";
-		}
-	}
 	var xhr = new XMLHttpRequest();
 	xhr.onreadystatechange = function () {
 		if (xhr.readyState == 4) {
-			var obj = {};
-			obj[type] = JSON.parse(xhr.responseText);
-			callback(Handlebars.templates[type](obj));
+			if (type == "home") {
+				callback(Handlebars.templates[type]());
+			} else {
+				var obj = {};
+				obj[type] = JSON.parse(xhr.responseText);
+				callback(Handlebars.templates[type](obj));
+			}
 		}
 	};
-	xhr.open("GET", url.replace("http://", "http://api."), true);
+	if (/^http:\/\/vermintideutility.com\/?$/.test(url)) {
+		type = "home";
+		xhr.open("GET", "http://vermintideutility.com", true);
+	} else {
+		if (/heroes\/?/.test(url)) {
+			if (/heroes\/[a-zA-Z',\-\s]+\/?$/.test(url)) {
+				type = "hero";
+			} else {
+				type = "heroes";
+			}
+		}
+		if (/enemies\/?/.test(url)) {
+			if (/enemies\/[a-zA-Z',\-\s]+\/?$/.test(url)) {
+				type = "enemy";
+			} else {
+				type = "enemies";
+			}
+		}
+		if (/weapon\/?/.test(url)) {
+			if (/weapons\/[a-zA-Z',\-\s]+\/?$/.test(url)) {
+				type = "weapon";
+			} else {
+				type = "weapons";
+			}
+		}
+		if (/trinkets\/?/.test(url)) {
+			if (/trinkets\/[a-zA-Z',\-\s]+\/?$/.test(url)) {
+				type = "trinket";
+			} else {
+				type = "trinkets";
+			}
+		}
+		xhr.open("GET", url.replace("http://", "http://api."), true);
+	}
 	xhr.send();
 }
 

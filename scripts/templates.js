@@ -162,6 +162,19 @@ templates['trinkets'] = template({"1":function(container,depth0,helpers,partials
     + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {},(depth0 != null ? depth0.trinkets : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "</div>";
 },"useData":true});
+templates['weapon'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var stack1, alias1=container.lambda, alias2=container.escapeExpression;
+
+  return "<h1>Weapons</h1>\r\n<div class=\"item\">\r\n	<img src=\""
+    + alias2(alias1(((stack1 = (depth0 != null ? depth0.weapon : depth0)) != null ? stack1.icon : stack1), depth0))
+    + "\" title=\""
+    + alias2(alias1(((stack1 = (depth0 != null ? depth0.weapon : depth0)) != null ? stack1.name : stack1), depth0))
+    + "\" alt=\""
+    + alias2(alias1(((stack1 = (depth0 != null ? depth0.weapon : depth0)) != null ? stack1.name : stack1), depth0))
+    + " icon\"/>\r\n	<h2>"
+    + alias2(alias1(((stack1 = (depth0 != null ? depth0.weapon : depth0)) != null ? stack1.name : stack1), depth0))
+    + "</h2>\r\n</div>\r\n";
+},"useData":true});
 templates['weapons'] = template({"1":function(container,depth0,helpers,partials,data) {
     var stack1, helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
 
@@ -193,7 +206,7 @@ templates['layouts/main'] = template({"1":function(container,depth0,helpers,part
 
   return "<!DOCTYPE html>\r\n<html>\r\n<head>\r\n	<title>Vermintide Utility"
     + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.title : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "</title>\r\n	<meta name=\"description\" content=\"Everything you could possibly want to know about Vermintide, plus more!\">\r\n	<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\r\n	<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\r\n	<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/main.css\">\r\n	<script src=\"/handlebars/handlebars.min.js\"></script>\r\n	<script src=\"/scripts/main.js\"></script>\r\n	<script src=\"/scripts/templates.js\"></script>\r\n	<script>(function (i, s, o, g, r, a, m) {\r\n		i['GoogleAnalyticsObject'] = r;\r\n		i[r] = i[r] || function () {\r\n					(i[r].q = i[r].q || []).push(arguments)\r\n				}, i[r].l = 1 * new Date();\r\n		a = s.createElement(o), m = s.getElementsByTagName(o)[0];\r\n		a.async = 1;\r\n		a.src = g;\r\n		m.parentNode.insertBefore(a, m)\r\n	})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');\r\n	ga('create', 'UA-72698344-1', 'auto');\r\n	ga('send', 'pageview');</script>\r\n</head>\r\n<body>\r\n<nav id=\"menu\">\r\n	<div id=\"cover\" onclick=\"setMenuOpen(false)\"></div>\r\n	<div>\r\n		<img src=\"/images/logo.png\" alt=\"Vermintide Utility logo\"/>\r\n		<a href=\"/heroes/\">\r\n			Heroes\r\n		</a>\r\n		<a href=\"/enemies/\">\r\n			Enemies\r\n		</a>\r\n		<a href=\"/trinkets/\">\r\n			Trinkets\r\n		</a>\r\n		<a href=\"/weapons/\">\r\n			Weapons\r\n		</a>\r\n	</div>\r\n</nav>\r\n<div id=\"content\">\r\n	"
+    + "</title>\r\n	<meta name=\"description\" content=\"Everything you could possibly want to know about Vermintide, plus more!\">\r\n	<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\r\n	<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\r\n	<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/main.css\">\r\n	<script src=\"/handlebars/handlebars.min.js\"></script>\r\n	<script src=\"/scripts/main.js\"></script>\r\n	<script src=\"/scripts/templates.js\"></script>\r\n	<script>(function (i, s, o, g, r, a, m) {\r\n		i['GoogleAnalyticsObject'] = r;\r\n		i[r] = i[r] || function () {\r\n					(i[r].q = i[r].q || []).push(arguments)\r\n				}, i[r].l = 1 * new Date();\r\n		a = s.createElement(o), m = s.getElementsByTagName(o)[0];\r\n		a.async = 1;\r\n		a.src = g;\r\n		m.parentNode.insertBefore(a, m)\r\n	})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');\r\n	ga('create', 'UA-72698344-1', 'auto');\r\n	ga('send', 'pageview');</script>\r\n</head>\r\n<body>\r\n<nav id=\"menu\">\r\n	<div id=\"cover\" onclick=\"setMenuOpen(false)\"></div>\r\n	<div>\r\n		<a href=\"http://vermintideutility.com\" style=\"margin:0;padding:0\">\r\n			<img src=\"/images/logo.png\" alt=\"Vermintide Utility logo\"/>\r\n		</a>\r\n		<a href=\"/heroes/\">\r\n			Heroes\r\n		</a>\r\n		<a href=\"/enemies/\">\r\n			Enemies\r\n		</a>\r\n		<a href=\"/trinkets/\">\r\n			Trinkets\r\n		</a>\r\n		<a href=\"/weapons/\">\r\n			Weapons\r\n		</a>\r\n	</div>\r\n</nav>\r\n<div id=\"content\">\r\n	"
     + ((stack1 = ((helper = (helper = helpers.body || (depth0 != null ? depth0.body : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(alias1,{"name":"body","hash":{},"data":data}) : helper))) != null ? stack1 : "")
     + "\r\n</div>\r\n<div id=\"hamburger\" onclick=\"setMenuOpen(true)\">\r\n	<div style=\"margin: 0;\"></div>\r\n	<div></div>\r\n	<div></div>\r\n</div>\r\n</body>\r\n</html>";
 },"useData":true});

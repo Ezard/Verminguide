@@ -186,10 +186,65 @@ module.exports = function (con) {
 					});
 				}
 			});
+		},
+
+		getWeaponTraitSets: function (weapon_class, callback) {
+			con.query("SELECT rarity, wt1.name as trait1_name, wt1.description as trait1_string, trait1_data, wt2.name as trait2_name, wt2.description as trait2_string, trait2_data, wt3.name as trait3_name, wt3.description as trait3_string, trait3_data FROM trait_sets ts LEFT JOIN weapon_traits wt1 ON trait1_string=wt1.id LEFT JOIN weapon_traits wt2 ON trait2_string=wt2.id LEFT JOIN weapon_traits wt3 ON trait3_string=wt3.id WHERE ts.weapon=(SELECT wc.id FROM weapon_classes wc WHERE wc.name='" + weapon_class + "') ORDER BY ts.rarity", function (err, rows, fields) {
+				var traits = [[], [], [], []];
+				for (var i = 0; i < rows.length; i++) {
+					var set = [];
+					if (rows[i].rarity >= 2) {
+						set.push({
+							name: rows[i]["trait1_name"],
+							description: getTraitText(rows[i]["trait1_string"], JSON.parse(rows[i]["trait1_data"]), rows[i].rarity)
+						});
+					}
+					if (rows[i].rarity >= 3) {
+						set.push({
+							name: rows[i]["trait2_name"],
+							description: getTraitText(rows[i]["trait2_string"], JSON.parse(rows[i]["trait2_data"]), rows[i].rarity)
+						});
+					}
+					if (rows[i].rarity >= 4) {
+						set.push({
+							name: rows[i]["trait3_name"],
+							description: getTraitText(rows[i]["trait3_string"], JSON.parse(rows[i]["trait3_data"]), rows[i].rarity)
+						});
+					}
+					traits[(rows[i].rarity == 5 ? 3 : rows[i].rarity - 2)].push(set);
+				}
+				callback(traits);
+			});
 		}
 	}
 };
 
 function noSpaceLowerCase(str) {
 	return str.replace(/ /g, '-').toLowerCase();
+}
+
+function getTraitText(text, data, rarity) {
+	var index;
+	if ((index = text.indexOf("|val")) != -1) {
+		if (text.charAt(index + 4) == '%') {
+			text = text.substring(0, index) + (rarity == 5 ? (Math.round(data.max_chance * 100) + "%") : (Math.round(data.min_chance * 100) + "% - " + Math.round(data.max_chance * 100) + "%")) + text.substring(index + 6);
+		} else {
+			text = text.substring(0, index) + (rarity == 5 ? Math.round(data.max_chance * 100) : (Math.round(data.min_chance * 100) + " - " + Math.round(data.max_chance * 100))) + text.substring(index + 5);
+		}
+	}
+	if ((index = text.indexOf("|bonus")) != -1) {
+		if (text.charAt(index + 6) == '%') {
+			text = text.substring(0, index) + Math.round(data.bonus) + "%" + text.substring(index + 8);
+		} else {
+			text = text.substring(0, index) + Math.round(data.bonus) + text.substring(index + 7);
+		}
+	}
+	if ((index = text.indexOf("|multiplier")) != -1) {
+		if (text.charAt(index + 11) == '%') {
+			text = text.substring(0, index) + Math.round(data.multiplier * 100) + "%" + text.substring(index + 13);
+		} else {
+			text = text.substring(0, index) + Math.round(data.multiplier * 100) + text.substring(index + 12);
+		}
+	}
+	return text;
 }

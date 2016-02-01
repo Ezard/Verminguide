@@ -2,4 +2,40 @@
 <div class="item">
 	<img src="{{weapon.icon}}" title="{{weapon.name}}" alt="{{weapon.name}} icon"/>
 	<h2>{{weapon.name}}</h2>
+	<div>
+		<p>Wielded by: {{weapon.hero}}</p>
+		<p>{{weapon.description}}</p>
+		<div class="stats">
+			<table class="rarities">
+				<tbody>
+				<tr>
+					<th>Name</th>
+					<th>Rarity</th>
+				</tr>
+				{{#each weapon.weapons}}
+					<tr>
+						<td>{{name}}</td>
+						<td>{{rarity}}</td>
+					</tr>
+				{{/each}}
+				</tbody>
+			</table>
+		</div>
+		<div>
+			<h3>Trait Picker</h3>
+			<label for="rarity">Rarity:</label>
+			<select id="rarity">
+				<option>Uncommon (green)</option>
+				<option>Rare (blue)</option>
+				<option>Exotic (orange)</option>
+				<option>Veteran (red)</option>
+			</select>
+			<div>
+				<div class="trait_button"></div>
+				<div class="trait_button"></div>
+				<div class="trait_button"></div>
+			</div>
+			<script src="/scripts/trait_picker.js"></script>
+		</div>
+	</div>
 </div>

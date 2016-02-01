@@ -162,7 +162,15 @@ templates['trinkets'] = template({"1":function(container,depth0,helpers,partials
     + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {},(depth0 != null ? depth0.trinkets : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "</div>";
 },"useData":true});
-templates['weapon'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+templates['weapon'] = template({"1":function(container,depth0,helpers,partials,data) {
+    var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
+
+  return "					<tr>\r\n						<td>"
+    + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
+    + "</td>\r\n						<td>"
+    + alias4(((helper = (helper = helpers.rarity || (depth0 != null ? depth0.rarity : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"rarity","hash":{},"data":data}) : helper)))
+    + "</td>\r\n					</tr>\r\n";
+},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1, alias1=container.lambda, alias2=container.escapeExpression;
 
   return "<h1>Weapons</h1>\r\n<div class=\"item\">\r\n	<img src=\""
@@ -173,7 +181,13 @@ templates['weapon'] = template({"compiler":[7,">= 4.0.0"],"main":function(contai
     + alias2(alias1(((stack1 = (depth0 != null ? depth0.weapon : depth0)) != null ? stack1.name : stack1), depth0))
     + " icon\"/>\r\n	<h2>"
     + alias2(alias1(((stack1 = (depth0 != null ? depth0.weapon : depth0)) != null ? stack1.name : stack1), depth0))
-    + "</h2>\r\n</div>\r\n";
+    + "</h2>\r\n	<div>\r\n		<p>Wielded by: "
+    + alias2(alias1(((stack1 = (depth0 != null ? depth0.weapon : depth0)) != null ? stack1.hero : stack1), depth0))
+    + "</p>\r\n		<p>"
+    + alias2(alias1(((stack1 = (depth0 != null ? depth0.weapon : depth0)) != null ? stack1.description : stack1), depth0))
+    + "</p>\r\n		<div class=\"stats\">\r\n			<table class=\"rarities\">\r\n				<tbody>\r\n				<tr>\r\n					<th>Name</th>\r\n					<th>Rarity</th>\r\n				</tr>\r\n"
+    + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {},((stack1 = (depth0 != null ? depth0.weapon : depth0)) != null ? stack1.weapons : stack1),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "				</tbody>\r\n			</table>\r\n		</div>\r\n		<div>\r\n			<h3>Trait Picker</h3>\r\n			<label for=\"rarity\">Rarity:</label>\r\n			<select id=\"rarity\">\r\n				<option>Uncommon (green)</option>\r\n				<option>Rare (blue)</option>\r\n				<option>Exotic (orange)</option>\r\n				<option>Veteran (red)</option>\r\n			</select>\r\n			<div>\r\n				<div class=\"trait_button\"></div>\r\n				<div class=\"trait_button\"></div>\r\n				<div class=\"trait_button\"></div>\r\n			</div>\r\n			<script src=\"/scripts/trait_picker.js\"></script>\r\n		</div>\r\n	</div>\r\n</div>\r\n";
 },"useData":true});
 templates['weapons'] = template({"1":function(container,depth0,helpers,partials,data) {
     var stack1, helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;

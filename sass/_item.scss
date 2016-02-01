@@ -69,7 +69,11 @@ div.item{
 				padding-top: 0;
 			}
 
-			&.difficulties{
+			&.rarities th{
+				padding: 0 40px;
+			}
+
+			&.difficulties, &.rarities{
 				margin-top: 1.33em;
 				text-align: center;
 

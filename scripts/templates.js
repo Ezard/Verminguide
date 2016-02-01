@@ -141,6 +141,21 @@ templates['heroes'] = template({"1":function(container,depth0,helpers,partials,d
 templates['home'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     return "<h1>Welcome to Vermintide Utility!</h1>\r\n\r\n<div>\r\n	<h2 style=\"padding:0 40px;color:#C60000\">**Please note that this website is still a work in progress**</h2>\r\n\r\n	<p style=\"padding:0 40px\">Please use the links on the left to navigate the site :)</p>\r\n</div>";
 },"useData":true});
+templates['traits'] = template({"1":function(container,depth0,helpers,partials,data) {
+    var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
+
+  return "	<div class=\"trait\" data-name=\""
+    + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
+    + "\">\r\n		<h5><img src=\"/images/skaven_icon.svg\"/>"
+    + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
+    + "</h5>\r\n		<p>"
+    + alias4(((helper = (helper = helpers.description || (depth0 != null ? depth0.description : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"description","hash":{},"data":data}) : helper)))
+    + "</p>\r\n	</div>\r\n";
+},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var stack1;
+
+  return ((stack1 = helpers.each.call(depth0 != null ? depth0 : {},(depth0 != null ? depth0.traits : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "");
+},"useData":true});
 templates['trinkets'] = template({"1":function(container,depth0,helpers,partials,data) {
     var stack1, helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
 
@@ -187,7 +202,7 @@ templates['weapon'] = template({"1":function(container,depth0,helpers,partials,d
     + alias2(alias1(((stack1 = (depth0 != null ? depth0.weapon : depth0)) != null ? stack1.description : stack1), depth0))
     + "</p>\r\n		<div class=\"stats\">\r\n			<table class=\"rarities\">\r\n				<tbody>\r\n				<tr>\r\n					<th>Name</th>\r\n					<th>Rarity</th>\r\n				</tr>\r\n"
     + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {},((stack1 = (depth0 != null ? depth0.weapon : depth0)) != null ? stack1.weapons : stack1),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "				</tbody>\r\n			</table>\r\n		</div>\r\n		<div>\r\n			<h3>Trait Picker</h3>\r\n			<label for=\"rarity\">Rarity:</label>\r\n			<select id=\"rarity\">\r\n				<option>Uncommon (green)</option>\r\n				<option>Rare (blue)</option>\r\n				<option>Exotic (orange)</option>\r\n				<option>Veteran (red)</option>\r\n			</select>\r\n			<div>\r\n				<div class=\"trait_button\"></div>\r\n				<div class=\"trait_button\"></div>\r\n				<div class=\"trait_button\"></div>\r\n			</div>\r\n			<script src=\"/scripts/trait_picker.js\"></script>\r\n		</div>\r\n	</div>\r\n</div>\r\n";
+    + "				</tbody>\r\n			</table>\r\n		</div>\r\n		<div>\r\n			<h3>Trait Picker</h3>\r\n			<div class=\"column\">\r\n				<h4>Weapon Rarity:</h4>\r\n				<div class=\"rarities\">\r\n					<label for=\"rarity_uncommon\">Uncommon (green)</label>\r\n					<input type=\"radio\" name=\"rarity\" id=\"rarity_uncommon\"/>\r\n					<br/>\r\n					<label for=\"rarity_rare\">Rare (blue)</label>\r\n					<input type=\"radio\" name=\"rarity\" id=\"rarity_rare\"/>\r\n					<br/>\r\n					<label for=\"rarity_exotic\">Exotic (orange)</label>\r\n					<input type=\"radio\" name=\"rarity\" id=\"rarity_exotic\"/>\r\n					<br/>\r\n					<label for=\"rarity_veteran\">Veteran (red)</label>\r\n					<input type=\"radio\" name=\"rarity\" id=\"rarity_veteran\"/>\r\n					<img src=\"/images/skaven_icon.svg\"/>\r\n				</div>\r\n			</div>\r\n			<div class=\"column\">\r\n				<div class=\"trait_button\"></div>\r\n				<div class=\"trait_button\"></div>\r\n				<div class=\"trait_button\"></div>\r\n			</div>\r\n		</div>\r\n	</div>\r\n</div>\r\n<div id=\"shield\" class=\"shield\" style=\"display:none\">\r\n	<div id=\"trait_picker\" class=\"trait_picker\" style=\"display:none\">\r\n	</div>\r\n</div>\r\n<script src=\"/scripts/trait_picker.js\"></script>\r\n";
 },"useData":true});
 templates['weapons'] = template({"1":function(container,depth0,helpers,partials,data) {
     var stack1, helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;

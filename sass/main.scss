@@ -1,6 +1,7 @@
 @import "colours";
 @import "items";
 @import "item";
+@import "weapon";
 
 /* latin */
 @font-face{
@@ -76,6 +77,15 @@ div#content{
 .tooltip{
 	padding-right: 40px;
 	cursor: help;
+}
+
+div.shield{
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.6);
 }
 
 @media only screen and (max-width: 480px) {

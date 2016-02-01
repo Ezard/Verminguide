@@ -1,10 +1,12 @@
+@import "colours";
+
 div.item{
 
 	& > img{
 		float: left;
 		margin-left: 40px;
 		border-radius: 20px;
-		box-shadow: 0 0 10px 10px #C60000;
+		box-shadow: 0 0 10px 10px $dark_red;
 	}
 
 	h2{
@@ -42,7 +44,58 @@ div.item{
 		& > div{
 			float: left;
 			width: 100%;
+			margin-bottom: 20px;
 			box-sizing: border-box;
+
+			h4{
+				display: inline-block;
+				float: left;
+				margin-right: 40px;
+			}
+			div.column{
+				float: left;
+				width: 50%;
+			}
+			div.rarities{
+				float: left;
+				position: relative;
+				margin-top: 1.6em;
+
+				label{
+					display: inline-block;
+					width: 150px;
+					line-height: 30px;
+					cursor: pointer;
+					transition: color 300ms;
+				}
+				label:hover{
+					color: $dark_red;
+					text-decoration: underline;
+				}
+				img{
+					position: absolute;
+					top: 0;
+					height: 30px;
+					padding: 5px;
+					box-sizing: border-box;
+					transition: top 300ms;
+				}
+				input[type="radio"]{
+					display: none;
+				}
+				input[type="radio"]:nth-child(2):checked ~ img{
+					top: 0;
+				}
+				input[type="radio"]:nth-child(5):checked ~ img{
+					top: 30px;
+				}
+				input[type="radio"]:nth-child(8):checked ~ img{
+					top: 60px;
+				}
+				input[type="radio"]:nth-child(11):checked ~ img{
+					top: 90px;
+				}
+			}
 		}
 	}
 
@@ -68,13 +121,17 @@ div.item{
 			tr:first-child td{
 				padding-top: 0;
 			}
-
-			&.rarities th{
-				padding: 0 40px;
+			&.difficulties{
+				margin: 1.33em 40px 0 40px;
 			}
-
-			&.difficulties, &.rarities{
+			&.weapon_stats {
 				margin-top: 1.33em;
+
+				th {
+					padding: 0 40px;
+				}
+			}
+			&.difficulties, &.weapon_stats {
 				text-align: center;
 
 				th:nth-child(1), td:nth-child(1){

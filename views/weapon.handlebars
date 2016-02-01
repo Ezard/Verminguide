@@ -23,19 +23,33 @@
 		</div>
 		<div>
 			<h3>Trait Picker</h3>
-			<label for="rarity">Rarity:</label>
-			<select id="rarity">
-				<option>Uncommon (green)</option>
-				<option>Rare (blue)</option>
-				<option>Exotic (orange)</option>
-				<option>Veteran (red)</option>
-			</select>
-			<div>
+			<div class="column">
+				<h4>Weapon Rarity:</h4>
+				<div class="rarities">
+					<label for="rarity_uncommon">Uncommon (green)</label>
+					<input type="radio" name="rarity" id="rarity_uncommon"/>
+					<br/>
+					<label for="rarity_rare">Rare (blue)</label>
+					<input type="radio" name="rarity" id="rarity_rare"/>
+					<br/>
+					<label for="rarity_exotic">Exotic (orange)</label>
+					<input type="radio" name="rarity" id="rarity_exotic"/>
+					<br/>
+					<label for="rarity_veteran">Veteran (red)</label>
+					<input type="radio" name="rarity" id="rarity_veteran"/>
+					<img src="/images/skaven_icon.svg"/>
+				</div>
+			</div>
+			<div class="column">
 				<div class="trait_button"></div>
 				<div class="trait_button"></div>
 				<div class="trait_button"></div>
 			</div>
-			<script src="/scripts/trait_picker.js"></script>
 		</div>
 	</div>
 </div>
+<div id="shield" class="shield" style="display:none">
+	<div id="trait_picker" class="trait_picker" style="display:none">
+	</div>
+</div>
+<script src="/scripts/trait_picker.js"></script>

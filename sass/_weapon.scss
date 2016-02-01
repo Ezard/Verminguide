@@ -1,0 +1,54 @@
+@import "colours";
+
+div.shield{
+	div.trait_picker{
+		position: fixed;
+		left: 25%;
+		top: 5%;
+		width: 50%;
+		height: 90%;
+		padding-bottom: 20px;
+		box-sizing: border-box;
+		background-color: #212121;
+		border-top: 1px solid #616161;
+		border-left: 1px solid #616161;
+		box-shadow: 3px 3px 20px #111;
+		border-radius: 8px;
+		overflow-y: auto;
+		cursor: default;
+
+		div.trait{
+			float: left;
+			margin: 20px 20px 0 20px;
+			cursor: pointer;
+
+			h5{
+				float: left;
+				margin: 0;
+				line-height: 30px;
+				font-size: 1em;
+
+				img{
+					float: left;
+					margin-right: 20px;
+					width: 30px;
+					height: 30px;
+				}
+			}
+			p{
+				float: left;
+				margin-left: 50px;
+				font-size: 0.85em;
+			}
+			h5, p{
+				transition: color 300ms;
+			}
+
+			&:hover{
+				h5, p {
+					color: $dark_red;
+				}
+			}
+		}
+	}
+}

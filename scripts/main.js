@@ -1,7 +1,7 @@
 window.addEventListener('load', function () {
 	document.body.addEventListener('click', function (event) {
 		var target = getTarget(event.target);
-		if (target.href && event.button == 0 && target.origin == document.location.origin && window.history && history.pushState) {
+		if (target && target.href && event.button == 0 && target.origin == document.location.origin && window.history && history.pushState) {
 			event.preventDefault();
 			setContent(target.href);
 			setMenuOpen(false);

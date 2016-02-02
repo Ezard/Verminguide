@@ -30,7 +30,7 @@ app.engine('handlebars', exphbs({
 		booleanToYesNo: function (bool) {
 			return bool ? "yes" : "no";
 		},
-		smallerFont: function(str) {
+		smallerFont: function (str) {
 			if (str.length >= 15) {
 				return 'class="smaller_text" ';
 			} else {
@@ -59,12 +59,7 @@ app.get('/*', function (req, res, next) {
 });
 
 app.get('/', function (req, res) {
-	api.getTrinkets(function (trinkets) {
-		//res.render('home', function(err, html) {
-		//	res.end(html.replace("[[title]]", "Test"));
-		//});
-		res.render('home');
-	});
+	res.render('home');
 });
 app.get('/heroes/', function (req, res) {
 	api.getHeroes(function (heroes) {

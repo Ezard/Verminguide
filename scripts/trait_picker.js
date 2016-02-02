@@ -30,9 +30,9 @@ Array.prototype.slice.call(document.getElementsByName("rarity")).forEach(functio
 				clearTraits(3);
 				break;
 			case "rarity_veteran":
-				setTrait(0, traits[3][0][0].name, true);
-				setTrait(1, traits[3][0][1].name, true);
-				setTrait(2, traits[3][0][2].name, true);
+				setTrait(0, traits[3][0][0], true);
+				setTrait(1, traits[3][0][1], true);
+				setTrait(2, traits[3][0][2], true);
 				break;
 		}
 	});

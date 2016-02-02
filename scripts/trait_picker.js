@@ -41,22 +41,21 @@ Array.prototype.slice.call(document.getElementsByName("rarity")).forEach(functio
 Array.prototype.slice.call(document.getElementsByClassName("trait_button")).forEach(function (element, index, array) {
 	element.addEventListener('click', function () {
 		showPossibleTraits(index, getPossibleTraits(index));
-		//console.log(getPossibleTraits(index));
 	});
 });
 
-function setTrait(index, name, visible) {
-	document.getElementById("trait" + index).innerHTML = name;
-	currentTraits[index] = name;
+function setTrait(index, trait, visible) {
+	document.getElementById("trait" + index).innerHTML = trait.name != undefined ? trait.name : "";
+	currentTraits[index] = trait;
 	if (visible != undefined) {
 		document.getElementById("trait" + index).style.display = visible ? "block" : "none";
 	}
 }
 
 function clearTraits(numTraitsVisible) {
-	setTrait(0, "", numTraitsVisible > 0);
-	setTrait(1, "", numTraitsVisible > 1);
-	setTrait(2, "", numTraitsVisible > 2);
+	setTrait(0, {}, numTraitsVisible > 0);
+	setTrait(1, {}, numTraitsVisible > 1);
+	setTrait(2, {}, numTraitsVisible > 2);
 	currentTraits = [];
 }
 
@@ -69,7 +68,7 @@ function showPossibleTraits(i, traits) {
 	document.getElementById("trait_picker").innerHTML = Handlebars.templates["traits"]({traits: traits});
 	Array.prototype.slice.call(document.getElementsByClassName("trait")).forEach(function (element, index, array) {
 		element.addEventListener('click', function () {
-			setTrait(i, element.dataset.name);
+			setTrait(i, {name: element.dataset.name, description: element.dataset.description});
 		});
 	});
 	setTraitPickerOpen(true);
@@ -80,7 +79,7 @@ function getPossibleTraits(index) {
 	traits[rarity].forEach(function (element) {
 		var okay = true;
 		for (var i = 0; i < index; i++) {
-			if (element[i].name != currentTraits[i]) {
+			if (element[i].name != currentTraits[i].name) {
 				okay = false;
 				break;
 			}
@@ -90,6 +89,9 @@ function getPossibleTraits(index) {
 			})) {
 			possible.push(element[index]);
 		}
+	});
+	possible.sort(function (a, b) {
+		return (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0);
 	});
 	return possible;
 }

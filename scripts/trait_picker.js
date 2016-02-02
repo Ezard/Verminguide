@@ -45,7 +45,7 @@ Array.prototype.slice.call(document.getElementsByClassName("trait_button")).forE
 });
 
 function setTrait(index, trait, visible) {
-	document.getElementById("trait" + index).innerHTML = trait.name != undefined ? trait.name : "";
+	document.getElementById("trait" + index).innerHTML = trait.name != undefined && trait.description != undefined ? ("<h5>" + trait.name + "</h5><p>" + trait.description + "</p>") : "";
 	currentTraits[index] = trait;
 	if (visible != undefined) {
 		document.getElementById("trait" + index).style.display = visible ? "block" : "none";

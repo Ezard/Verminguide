@@ -149,6 +149,7 @@ module.exports = function (con) {
 						"name": rows[i].name,
 						"description": rows[i].description,
 						"hero": rows[i].hero,
+						"url": "http://vermintideutility.com/weapons/" + noSpaceLowerCase(rows[i].name),
 						"weapons": []
 					};
 				}
@@ -173,6 +174,7 @@ module.exports = function (con) {
 						"name": rows[0].name,
 						"description": rows[0].description,
 						"hero": rows[0].hero,
+						"url": "http://vermintideutility.com/weapons/" + noSpaceLowerCase(rows[i].name),
 						"weapons": []
 					};
 					con.query("SELECT w.name, r.name as rarity, weapon_class FROM weapons w LEFT JOIN rarities r ON w.rarity=r.id WHERE weapon_class=" + rows[0].id, function (err, rows, fields) {

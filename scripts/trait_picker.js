@@ -2,6 +2,8 @@ var traits;
 var rarity = 0;
 var currentTraits = [];
 
+Handlebars.partials = Handlebars.templates;
+
 var xhr = new XMLHttpRequest();
 xhr.onreadystatechange = function () {
 	if (xhr.readyState == 4) {
@@ -30,6 +32,7 @@ Array.prototype.slice.call(document.getElementsByName("rarity")).forEach(functio
 				clearTraits(3);
 				break;
 			case "rarity_veteran":
+				rarity = 3;
 				setTrait(0, traits[3][0][0], true);
 				setTrait(1, traits[3][0][1], true);
 				setTrait(2, traits[3][0][2], true);
@@ -40,22 +43,30 @@ Array.prototype.slice.call(document.getElementsByName("rarity")).forEach(functio
 
 Array.prototype.slice.call(document.getElementsByClassName("trait_button")).forEach(function (element, index, array) {
 	element.addEventListener('click', function () {
-		showPossibleTraits(index, getPossibleTraits(index));
+		var traits = getPossibleTraits(index);
+		if (traits == -1) alert("Please select the previous trait first");
+		else showPossibleTraits(index, traits);
 	});
 });
 
 function setTrait(index, trait, visible) {
-	document.getElementById("trait" + index).innerHTML = trait.name != undefined && trait.description != undefined ? ("<h5>" + trait.name + "</h5><p>" + trait.description + "</p>") : "";
 	currentTraits[index] = trait;
 	if (visible != undefined) {
 		document.getElementById("trait" + index).style.display = visible ? "block" : "none";
 	}
+	if (visible == undefined || visible) {
+		if (!trait) trait = {name: "Please select a trait..."};
+		document.getElementById("trait" + index).innerHTML = Handlebars.templates["trait"](trait);
+	}
+	for(var i = index + 1; i < 3; i++) {
+		setTrait(i, null, rarity + 1 > i);
+	}
 }
 
 function clearTraits(numTraitsVisible) {
-	setTrait(0, {}, numTraitsVisible > 0);
-	setTrait(1, {}, numTraitsVisible > 1);
-	setTrait(2, {}, numTraitsVisible > 2);
+	setTrait(0, null, numTraitsVisible > 0);
+	setTrait(1, null, numTraitsVisible > 1);
+	setTrait(2, null, numTraitsVisible > 2);
 	currentTraits = [];
 }
 
@@ -75,6 +86,7 @@ function showPossibleTraits(i, traits) {
 }
 
 function getPossibleTraits(index) {
+	if (index > currentTraits.length) return -1;
 	var possible = [];
 	traits[rarity].forEach(function (element) {
 		var okay = true;

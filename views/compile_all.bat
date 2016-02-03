@@ -1,1 +1,1 @@
-handlebars ./ -f %1/scripts/templates.js
+handlebars ./ -f ../scripts/templates.js

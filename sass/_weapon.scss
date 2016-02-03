@@ -16,48 +16,53 @@ div.shield{
 		border-radius: 8px;
 		overflow-y: auto;
 		cursor: default;
-
-		div.trait{
-			float: left;
-			margin: 20px 20px 0 20px;
-			cursor: pointer;
-
-			h5{
-				float: left;
-				width: 100%;
-				margin: 0;
-				line-height: 30px;
-				font-size: 1em;
-
-				img{
-					float: left;
-					margin-right: 20px;
-					width: 30px;
-					height: 30px;
-				}
-			}
-			p{
-				float: left;
-				margin-left: 50px;
-				font-size: 0.85em;
-			}
-			h5, p{
-				transition: color 300ms;
-			}
-
-			&:hover{
-				h5, p {
-					color: $dark_red;
-				}
-			}
-		}
 	}
 }
 div.trait_button{
 	float: left;
 	position: relative;
-	width: 30%;
-	height: 50px;
-	background-color: red;
+	width: 100%;
+	margin-bottom: 5px;
 	cursor: pointer;
+}
+div.trait{
+	float: left;
+	margin: 20px 20px 0 20px;
+	cursor: pointer;
+
+	h5{
+		float: left;
+		width: 100%;
+		margin: 0;
+		line-height: 30px;
+		font-size: 1em;
+
+		img{
+			float: left;
+			margin-right: 20px;
+			width: 30px;
+			height: 30px;
+		}
+	}
+	p{
+		float: left;
+		margin-left: 50px;
+		font-size: 0.85em;
+	}
+	h5, p{
+		transition: color 300ms;
+	}
+
+	&:hover{
+		h5, p {
+			color: $dark_red;
+		}
+	}
+}
+div.trait_button div.trait{
+	margin: 0;
+
+	p {
+		margin: 5px 40px 5px 50px;
+	}
 }

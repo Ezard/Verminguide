@@ -43,27 +43,32 @@ Array.prototype.slice.call(document.getElementsByName("rarity")).forEach(functio
 
 Array.prototype.slice.call(document.getElementsByClassName("trait_button")).forEach(function (element, index, array) {
 	element.addEventListener('click', function () {
-		var traits = getPossibleTraits(index);
-		if (traits == -1) alert("Please select the previous trait first");
-		else showPossibleTraits(index, traits);
+		showPossibleTraits(index, getPossibleTraits(index));
 	});
 });
 
 function setTrait(index, trait, visible) {
+	if (trait == null) {
+		console.log("Setting trait to null");
+	} else {
+		console.log(index);
+		console.log(trait);
+	}
 	currentTraits[index] = trait;
 	if (visible != undefined) {
 		document.getElementById("trait" + index).style.display = visible ? "block" : "none";
 	}
 	if (visible == undefined || visible) {
-		if (!trait) trait = {name: "Please select a trait..."};
+		if (!trait) {
+			trait = {name: "Please select a trait..."};
+			console.log("Resetting trait");
+		}
 		document.getElementById("trait" + index).innerHTML = Handlebars.templates["trait"](trait);
-	}
-	for(var i = index + 1; i < 3; i++) {
-		setTrait(i, null, rarity + 1 > i);
 	}
 }
 
 function clearTraits(numTraitsVisible) {
+	console.log("Clearing traits");
 	setTrait(0, null, numTraitsVisible > 0);
 	setTrait(1, null, numTraitsVisible > 1);
 	setTrait(2, null, numTraitsVisible > 2);
@@ -76,9 +81,10 @@ function setTraitPickerOpen(open) {
 }
 
 function showPossibleTraits(i, traits) {
-	document.getElementById("trait_picker").innerHTML = Handlebars.templates["traits"]({traits: traits});
-	Array.prototype.slice.call(document.getElementsByClassName("trait")).forEach(function (element, index, array) {
+	document.getElementById("trait_picker").innerHTML = Handlebars.templates["traits"]({traits: traits, picker: true});
+	Array.prototype.slice.call(document.getElementById("trait_picker").getElementsByClassName("trait")).forEach(function (element, index, array) {
 		element.addEventListener('click', function () {
+			console.log("index: " + i);
 			setTrait(i, {name: element.dataset.name, description: element.dataset.description});
 		});
 	});
@@ -86,20 +92,36 @@ function showPossibleTraits(i, traits) {
 }
 
 function getPossibleTraits(index) {
-	if (index > currentTraits.length) return -1;
 	var possible = [];
+	var currentTraitsTemp = [];
+	for (var i = 0; i < currentTraits.length; i++) {
+		if (i != index) {
+			currentTraitsTemp.push(currentTraits[i]);
+		}
+	}
 	traits[rarity].forEach(function (element) {
-		var okay = true;
-		for (var i = 0; i < index; i++) {
-			if (element[i].name != currentTraits[i].name) {
-				okay = false;
-				break;
+		var count = 0;
+		for (i = 0; i < currentTraitsTemp.length; i++) {
+			if (currentTraitsTemp[i]) count++;
+		}
+		var temp = [];
+		for (i = 0; i < element.length; i++) {
+			if (currentTraitsTemp.some(function (e) {
+					return e && e.name == element[i].name && e.description == element[i].description;
+				})) {
+				count--;
+			} else {
+				temp.push(element[i]);
 			}
 		}
-		if (okay && !possible.some(function (e) {
-				return e.name == element[index].name && e.description == element[index].description;
-			})) {
-			possible.push(element[index]);
+		if (count == 0) {
+			for (i = 0; i < temp.length; i++) {
+				if (!possible.some(function (element) {
+						return element.name == temp[i].name && element.description == temp[i].description;
+					})) {
+					possible.push(temp[i]);
+				}
+			}
 		}
 	});
 	possible.sort(function (a, b) {

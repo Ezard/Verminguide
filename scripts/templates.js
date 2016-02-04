@@ -163,6 +163,25 @@ templates['traits'] = template({"1":function(container,depth0,helpers,partials,d
 
   return ((stack1 = helpers.each.call(depth0 != null ? depth0 : {},(depth0 != null ? depth0.traits : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "");
 },"usePartial":true,"useData":true});
+templates['trinket'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var stack1, alias1=container.lambda, alias2=container.escapeExpression;
+
+  return "<h1>Trinkets</h1>\r\n<div class=\"item trinket\">\r\n	<img src=\""
+    + alias2(alias1(((stack1 = (depth0 != null ? depth0.trinket : depth0)) != null ? stack1.image : stack1), depth0))
+    + "\" title=\""
+    + alias2(alias1(((stack1 = (depth0 != null ? depth0.trinket : depth0)) != null ? stack1.name : stack1), depth0))
+    + "\" alt=\""
+    + alias2(alias1(((stack1 = (depth0 != null ? depth0.trinket : depth0)) != null ? stack1.name : stack1), depth0))
+    + " icon\"/>\r\n	<h2>"
+    + alias2(alias1(((stack1 = (depth0 != null ? depth0.trinket : depth0)) != null ? stack1.name : stack1), depth0))
+    + "</h2>\r\n	<div>\r\n		<h3>Type</h3>\r\n		<p>"
+    + alias2(alias1(((stack1 = (depth0 != null ? depth0.trinket : depth0)) != null ? stack1.type : stack1), depth0))
+    + "</p>\r\n		<h3>Rarity</h3>\r\n		<p>"
+    + alias2(alias1(((stack1 = (depth0 != null ? depth0.trinket : depth0)) != null ? stack1.rarity : stack1), depth0))
+    + "</p>\r\n		<h3>Description</h3>\r\n		<p>"
+    + alias2(alias1(((stack1 = (depth0 != null ? depth0.trinket : depth0)) != null ? stack1.description : stack1), depth0))
+    + "</p>\r\n	</div>\r\n</div>";
+},"useData":true});
 templates['trinkets'] = template({"1":function(container,depth0,helpers,partials,data) {
     var stack1, helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
 

@@ -81,6 +81,11 @@ app.get('/trinkets/', function (req, res) {
 		res.render('trinkets', {trinkets: trinkets});
 	});
 });
+app.get('/trinkets/:name([a-z-]+)', function (req, res) {
+	api.getTrinket(req.params.name.replace(/-/g, ' '), function (trinket) {
+		res.render('trinket', {trinket: trinket});
+	});
+});
 app.get('/weapons/', function (req, res) {
 	api.getWeapons(function (weapons) {
 		res.render('weapons', {weapons: weapons});

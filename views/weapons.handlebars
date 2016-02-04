@@ -1,11 +1,14 @@
 <h1>Weapons</h1>
-<div id="items">
-	{{#each weapons}}
-		<a href="{{url}}">
-			<div>
-				<div style="background-image:url({{icon}})"></div>
-				<h2 {{#smallerFont name}}{{/smallerFont}}>{{name}}</h2>
-			</div>
-		</a>
+<div class="items weapons">
+	{{#each weapon_sets}}
+		<h2>{{hero}}</h2>
+		{{#each weapons}}
+			<a href="{{url}}">
+				<div>
+					<div style="background-image:url({{icon}})"></div>
+					<h2 {{#smallerFont name}}{{/smallerFont}}>{{name}}</h2>
+				</div>
+			</a>
+		{{/each}}
 	{{/each}}
 </div>

@@ -1,5 +1,6 @@
 @import "colours";
 @import "items";
+@import "weapons";
 @import "item";
 @import "trinket";
 @import "weapon";
@@ -108,7 +109,7 @@ div.shield{
 				background-color: rgba(0, 0, 0, 0.5);
 			}
 		}
-		div#items{
+		div.items{
 			position: absolute;
 			height: 100%;
 			background-color: black;

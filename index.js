@@ -88,7 +88,20 @@ app.get('/trinkets/:name([a-z-]+)', function (req, res) {
 });
 app.get('/weapons/', function (req, res) {
 	api.getWeapons(function (weapons) {
-		res.render('weapons', {weapons: weapons});
+		var weaponSets = [];
+		for (var i = 0; i < weapons.length; i++) {
+			var found = false;
+			for (var j = 0; j < weaponSets.length; j++) {
+				if (weaponSets[j].hero == weapons[i].hero) {
+					weaponSets[j].weapons.push(weapons[i]);
+					found = true;
+				}
+			}
+			if (!found) {
+				weaponSets.push({hero: weapons[i].hero, weapons: [weapons[i]]});
+			}
+		}
+		res.render('weapons', {weapon_sets: weaponSets});
 	});
 });
 app.get('/weapons/:name([a-z-]+)', function (req, res) {

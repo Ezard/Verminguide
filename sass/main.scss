@@ -129,6 +129,7 @@ div.shield{
 			height: 100vh;
 			background-color: transparent;
 			transition: background-color 300ms;
+			z-index: -1;
 		}
 	}
 

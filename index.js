@@ -36,6 +36,9 @@ app.engine('handlebars', exphbs({
 			} else {
 				return "";
 			}//1em
+		},
+		json: function (obj) {
+			return JSON.stringify(obj);
 		}
 	}
 }));
@@ -107,6 +110,11 @@ app.get('/weapons/', function (req, res) {
 app.get('/weapons/:name([a-z-]+)', function (req, res) {
 	api.getWeaponsByClass(req.params.name.replace(/-/g, ' '), function (weapon) {
 		res.render('weapon', {weapon: weapon});
+	});
+});
+app.get('/test', function(req, res) {
+	api.getWeaponsByClass('rapier', function(weapons) {
+		res.send(weapons);
 	});
 });
 

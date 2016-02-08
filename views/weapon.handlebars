@@ -5,38 +5,53 @@
 	<div>
 		<p>Wielded by: {{weapon.hero}}</p>
 		<p>{{weapon.description}}</p>
-		<div class="stats">
-			<table class="rarities">
-				<tbody>
-				<tr>
-					<th>Name</th>
-					<th>Rarity</th>
-				</tr>
-				{{#each weapon.weapons}}
-					<tr>
-						<td>{{name}}</td>
-						<td>{{rarity}}</td>
-					</tr>
-				{{/each}}
-				</tbody>
-			</table>
+		<div class="stats weapon_stats">
+			<h3>Stats</h3>
+			<div class="column">
+				<h4>Weapon Rarity:</h4>
+				<div class="rarities">
+					<label for="stats_rarity_plentiful">Plentiful (white)</label>
+					<input type="radio" name="rarity" id="stats_rarity_plentiful"/>
+					<br/>
+					<label for="stats_rarity_common">Common (green)</label>
+					<input type="radio" name="rarity" id="stats_rarity_common"/>
+					<br/>
+					<label for="stats_rarity_rare">Rare (blue)</label>
+					<input type="radio" name="rarity" id="stats_rarity_rare"/>
+					<br/>
+					<label for="stats_rarity_exotic">Exotic (orange)</label>
+					<input type="radio" name="rarity" id="stats_rarity_exotic"/>
+					<br/>
+					<label for="stats_rarity_veteran">Veteran (red)</label>
+					<input type="radio" name="rarity" id="stats_rarity_veteran"/>
+					<img src="/images/skaven_icon.svg"/>
+				</div>
+			</div>
+			<div class="column">
+				<div class="stat_bars">
+					{{#each weapon.weapons.0.attacks}}
+						<label class="stat_label">{{name}}</label>
+						<div><div class="hbar"></div><div class="vbar"></div></div>
+					{{/each}}
+				</div>
+			</div>
 		</div>
 		<div class="trait_picker">
 			<h3>Trait Picker</h3>
 			<div class="column">
 				<h4>Weapon Rarity:</h4>
 				<div class="rarities">
-					<label for="rarity_uncommon">Uncommon (green)</label>
-					<input type="radio" name="rarity" id="rarity_uncommon"/>
+					<label for="traits_rarity_common">Common (green)</label>
+					<input type="radio" name="rarity" id="traits_rarity_common"/>
 					<br/>
-					<label for="rarity_rare">Rare (blue)</label>
-					<input type="radio" name="rarity" id="rarity_rare"/>
+					<label for="traits_rarity_rare">Rare (blue)</label>
+					<input type="radio" name="rarity" id="traits_rarity_rare"/>
 					<br/>
-					<label for="rarity_exotic">Exotic (orange)</label>
-					<input type="radio" name="rarity" id="rarity_exotic"/>
+					<label for="traits_rarity_exotic">Exotic (orange)</label>
+					<input type="radio" name="rarity" id="traits_rarity_exotic"/>
 					<br/>
-					<label for="rarity_veteran">Veteran (red)</label>
-					<input type="radio" name="rarity" id="rarity_veteran"/>
+					<label for="traits_rarity_veteran">Veteran (red)</label>
+					<input type="radio" name="rarity" id="traits_rarity_veteran"/>
 					<img src="/images/skaven_icon.svg"/>
 				</div>
 			</div>
@@ -52,4 +67,5 @@
 	<div id="trait_picker" class="trait_picker" style="display:none">
 	</div>
 </div>
-<script src="/scripts/trait_picker.js"></script>
+<script>var weapons = {{{json weapon.weapons}}};</script>
+<script src="/scripts/weapon.js"></script>

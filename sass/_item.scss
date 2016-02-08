@@ -53,50 +53,11 @@ div.item{
 				float: left;
 				width: 50%;
 			}
-			div.rarities{
-				float: left;
-				position: relative;
-				margin-top: 1.6em;
-
-				label{
-					display: inline-block;
-					width: 150px;
-					line-height: 30px;
-					cursor: pointer;
-					transition: color 300ms;
-				}
-				label:hover{
-					color: $dark_red;
-					text-decoration: underline;
-				}
-				img{
-					position: absolute;
-					top: 0;
-					height: 30px;
-					padding: 5px;
-					box-sizing: border-box;
-					transition: top 300ms;
-				}
-				input[type="radio"]{
-					display: none;
-				}
-				input[type="radio"]:nth-child(2):checked ~ img{
-					top: 0;
-				}
-				input[type="radio"]:nth-child(5):checked ~ img{
-					top: 30px;
-				}
-				input[type="radio"]:nth-child(8):checked ~ img{
-					top: 60px;
-				}
-				input[type="radio"]:nth-child(11):checked ~ img{
-					top: 90px;
-				}
-			}
 		}
 	}
 
 	div.stats{
+		float: left;
 		width: 100%;
 
 		h3{

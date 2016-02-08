@@ -165,7 +165,7 @@ module.exports = function (con) {
 			});
 		},
 		getWeaponsByClass: function (weapon_class, callback) {
-			con.query("SELECT wc.id, wc.name, description, h.name AS hero FROM weapon_classes wc INNER JOIN heroes h ON wc.hero=h.id WHERE wc.name=" + con.escape(weapon_class) + " ORDER BY wc.id", function (err, rows, fields) {
+			con.query("SELECT wc.id, wc.name, description, h.name AS hero FROM weapon_classes wc INNER JOIN heroes h ON wc.hero=h.id WHERE wc.name=" + con.escape(weapon_class) + " OR wc.name=REPLACE(" + con.escape(weapon_class) + ", '-', ' ') ORDER BY wc.id", function (err, rows, fields) {
 				if (rows.length == 0) {
 					callback(null);
 				} else {
@@ -215,7 +215,7 @@ module.exports = function (con) {
 			});
 		},
 		getWeaponTraitSets: function (weapon_class, callback) {
-			con.query("SELECT rarity, wt1.name as trait1_name, wt1.description as trait1_string, trait1_data, wt2.name as trait2_name, wt2.description as trait2_string, trait2_data, wt3.name as trait3_name, wt3.description as trait3_string, trait3_data FROM trait_sets ts LEFT JOIN weapon_traits wt1 ON trait1_string=wt1.id LEFT JOIN weapon_traits wt2 ON trait2_string=wt2.id LEFT JOIN weapon_traits wt3 ON trait3_string=wt3.id WHERE ts.weapon=(SELECT wc.id FROM weapon_classes wc WHERE wc.name='" + weapon_class + "') ORDER BY ts.rarity", function (err, rows, fields) {
+			con.query("SELECT rarity, wt1.name as trait1_name, wt1.description as trait1_string, trait1_data, wt2.name as trait2_name, wt2.description as trait2_string, trait2_data, wt3.name as trait3_name, wt3.description as trait3_string, trait3_data FROM trait_sets ts LEFT JOIN weapon_traits wt1 ON trait1_string=wt1.id LEFT JOIN weapon_traits wt2 ON trait2_string=wt2.id LEFT JOIN weapon_traits wt3 ON trait3_string=wt3.id WHERE ts.weapon=(SELECT wc.id FROM weapon_classes wc WHERE wc.name='" + weapon_class + "' OR wc.name=REPLACE('" + weapon_class + "', '-', ' ')) ORDER BY ts.rarity", function (err, rows, fields) {
 				var traits = [[], [], [], []];
 				for (var i = 0; i < rows.length; i++) {
 					var set = [];

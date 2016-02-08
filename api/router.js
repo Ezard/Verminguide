@@ -51,7 +51,7 @@ module.exports = function (router, api) {
 	});
 
 	router.get("/weapons/:name([a-z-]+)", function (req, res) {
-		api.getWeaponsByClass(req.params.name.replace(/-/g, ' '), function (trinket) {
+		api.getWeaponsByClass(req.params.name, function (trinket) {
 			setHeaders(res);
 			if (trinket == null) {
 				sendResourceNotFound(res);
@@ -62,7 +62,7 @@ module.exports = function (router, api) {
 	});
 
 	router.get("/weapons/:name([a-z-]+)/traits", function (req, res) {
-		api.getWeaponTraitSets(req.params.name.replace(/-/g, ' '), function (traits) {
+		api.getWeaponTraitSets(req.params.name, function (traits) {
 			setHeaders(res);
 			if (traits == null) {
 				sendResourceNotFound(res);

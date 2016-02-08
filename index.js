@@ -108,7 +108,7 @@ app.get('/weapons/', function (req, res) {
 	});
 });
 app.get('/weapons/:name([a-z-]+)', function (req, res) {
-	api.getWeaponsByClass(req.params.name.replace(/-/g, ' '), function (weapon) {
+	api.getWeaponsByClass(req.params.name, function (weapon) {
 		res.render('weapon', {weapon: weapon});
 	});
 });

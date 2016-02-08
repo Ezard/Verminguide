@@ -164,32 +164,56 @@ module.exports = function (con) {
 				});
 			});
 		},
-
 		getWeaponsByClass: function (weapon_class, callback) {
 			con.query("SELECT wc.id, wc.name, description, h.name AS hero FROM weapon_classes wc INNER JOIN heroes h ON wc.hero=h.id WHERE wc.name=" + con.escape(weapon_class) + " ORDER BY wc.id", function (err, rows, fields) {
 				if (rows.length == 0) {
 					callback(null);
 				} else {
 					var weapon_class = {
-						"name": rows[0].name,
-						"description": rows[0].description,
-						"hero": rows[0].hero,
-						"url": "http://vermintideutility.com/weapons/" + noSpaceLowerCase(rows[0].name),
-						"weapons": []
+						name: rows[0].name,
+						description: rows[0].description,
+						hero: rows[0].hero,
+						url: "http://vermintideutility.com/weapons/" + noSpaceLowerCase(rows[0].name),
+						weapons: []
 					};
-					con.query("SELECT w.name, r.name as rarity, weapon_class FROM weapons w LEFT JOIN rarities r ON w.rarity=r.id WHERE weapon_class=" + rows[0].id, function (err, rows, fields) {
+					con.query("SELECT w.name, r.name as rarity, w.weapon_class, wa.name as attack_name, wa.damage_normal, wa.damage_armoured, wa.damage_resistant, wa.damage_friendly FROM weapons w LEFT JOIN rarities r ON w.rarity=r.id LEFT JOIN weapon_attacks wa ON w.weapon_class=wa.weapon_class AND w.rarity=wa.rarity WHERE w.weapon_class=" + rows[0].id, function (err, rows, fields) {
 						for (var i = 0; i < rows.length; i++) {
-							weapon_class.weapons.push({
-								"name": rows[i].name,
-								"rarity": rows[i].rarity
+							var index = weapon_class.weapons.findIndex(function (element, index, array) {
+								return element.name == rows[i].name;
 							});
+							if (index > -1) {
+								weapon_class.weapons[index].attacks.push({
+									name: rows[i].attack_name,
+									damage: {
+										normal: rows[i].damage_normal,
+										armoured: rows[i].damage_armoured,
+										resistant: rows[i].damage_resistant,
+										friendly: rows[i].damage_friendly
+									}
+								});
+							} else {
+								var weapon = {
+									name: rows[i].name,
+									rarity: rows[i].rarity,
+									attacks: []
+								};
+								weapon.attacks.push({
+									name: rows[i].attack_name,
+									damage: {
+										normal: rows[i].damage_normal,
+										armoured: rows[i].damage_armoured,
+										resistant: rows[i].damage_resistant,
+										friendly: rows[i].damage_friendly
+									}
+								});
+								weapon_class.weapons.push(weapon);
+							}
 						}
 						callback(weapon_class);
 					});
 				}
 			});
 		},
-
 		getWeaponTraitSets: function (weapon_class, callback) {
 			con.query("SELECT rarity, wt1.name as trait1_name, wt1.description as trait1_string, trait1_data, wt2.name as trait2_name, wt2.description as trait2_string, trait2_data, wt3.name as trait3_name, wt3.description as trait3_string, trait3_data FROM trait_sets ts LEFT JOIN weapon_traits wt1 ON trait1_string=wt1.id LEFT JOIN weapon_traits wt2 ON trait2_string=wt2.id LEFT JOIN weapon_traits wt3 ON trait3_string=wt3.id WHERE ts.weapon=(SELECT wc.id FROM weapon_classes wc WHERE wc.name='" + weapon_class + "') ORDER BY ts.rarity", function (err, rows, fields) {
 				var traits = [[], [], [], []];

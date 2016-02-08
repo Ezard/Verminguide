@@ -146,7 +146,7 @@ function updateWeaponStats(rarity) {
 	var hBars = document.getElementsByClassName("hbar");
 	var vBars = document.getElementsByClassName("vbar");
 	for (var i = 0; i < weapons[rarity].attacks.length; i++) {
-		statLabels[i].innerHTML = statLabels[i].innerHTML.split(" - ")[0] + " - " + weapons[rarity].attacks[i].damage.normal;
+		statLabels[i].innerHTML = statLabels[i].innerHTML.split(": ")[0] + ": " + weapons[rarity].attacks[i].damage.normal;
 		hBars[i].style.width = ((weapons[rarity].attacks[i].damage.normal / 40) * 100) + "%";
 		vBars[i].style.left = "calc(" + ((weapons[rarity].attacks[i].damage.normal / 40) * 100) + "% - 2.5px)";
 	}

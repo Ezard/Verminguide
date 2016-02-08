@@ -69,3 +69,12 @@ div.trait_button div.trait{
 div.trait_picker{
 	min-height: 350px;
 }
+div.item.weapon{
+	& > div{
+		& > div{
+			h4{
+				float: left;
+			}
+		}
+	}
+}

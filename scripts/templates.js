@@ -214,7 +214,7 @@ templates['weapon'] = template({"1":function(container,depth0,helpers,partials,d
 },"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1, alias1=container.lambda, alias2=container.escapeExpression;
 
-  return "<h1>Weapons</h1>\r\n<div class=\"item\">\r\n	<img src=\""
+  return "<h1>Weapons</h1>\r\n<div class=\"item weapon\">\r\n	<img src=\""
     + alias2(alias1(((stack1 = (depth0 != null ? depth0.weapon : depth0)) != null ? stack1.icon : stack1), depth0))
     + "\" title=\""
     + alias2(alias1(((stack1 = (depth0 != null ? depth0.weapon : depth0)) != null ? stack1.name : stack1), depth0))

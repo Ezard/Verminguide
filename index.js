@@ -112,11 +112,6 @@ app.get('/weapons/:name([a-z-]+)', function (req, res) {
 		res.render('weapon', {weapon: weapon});
 	});
 });
-app.get('/test', function(req, res) {
-	api.getWeaponsByClass('rapier', function(weapons) {
-		res.send(weapons);
-	});
-});
 
 app.use(vhost('static.vermintideutility.com', express.static('/var/www/images/', {fallthrough: false})));
 app.use(slash());

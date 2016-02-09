@@ -177,7 +177,25 @@ module.exports = function (con) {
 						weapons: []
 					};
 					con.query("SELECT w.name, r.name as rarity, w.weapon_class, wa.name as attack_name, wa.damage_normal, wa.damage_armoured, wa.damage_resistant, wa.damage_friendly FROM weapons w LEFT JOIN rarities r ON w.rarity=r.id LEFT JOIN weapon_attacks wa ON w.weapon_class=wa.weapon_class AND w.rarity=wa.rarity WHERE w.weapon_class=" + rows[0].id, function (err, rows, fields) {
+						var minRarity = 100;
+						var Rarities = {
+							Plentiful: 1,
+							Common: 2,
+							Rare: 3,
+							Exotic: 4,
+							Veteran: 5
+						};
 						for (var i = 0; i < rows.length; i++) {
+							if (Rarities[rows[i].rarity] < minRarity) {
+								minRarity = Rarities[rows[i].rarity];
+							}
+						}
+						if (minRarity != 100) {
+							for (i = 1; i < minRarity; i++) {
+								weapon_class.weapons.push({});
+							}
+						}
+						for (i = 0; i < rows.length; i++) {
 							var index = weapon_class.weapons.findIndex(function (element, index, array) {
 								return element.name == rows[i].name;
 							});

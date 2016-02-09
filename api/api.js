@@ -176,7 +176,7 @@ module.exports = function (con) {
 						url: "http://vermintideutility.com/weapons/" + noSpaceLowerCase(rows[0].name),
 						weapons: []
 					};
-					con.query("SELECT w.name, r.name as rarity, w.weapon_class, wa.name as attack_name, wa.damage_normal, wa.damage_armoured, wa.damage_resistant, wa.damage_friendly FROM weapons w LEFT JOIN rarities r ON w.rarity=r.id LEFT JOIN weapon_attacks wa ON w.weapon_class=wa.weapon_class AND w.rarity=wa.rarity WHERE w.weapon_class=" + rows[0].id + " ORDER BY sort_order", function (err, rows, fields) {
+					con.query("SELECT w.name, r.name as rarity, w.weapon_class, wa.name as attack_name, wa.damage_normal, wa.damage_armoured, wa.damage_resistant, wa.damage_friendly FROM weapons w LEFT JOIN rarities r ON w.rarity=r.id LEFT JOIN weapon_attacks wa ON w.weapon_class=wa.weapon_class AND w.rarity=wa.rarity WHERE w.weapon_class=" + rows[0].id + " ORDER BY r.id, sort_order", function (err, rows, fields) {
 						var minRarity = 100;
 						var Rarities = {
 							Plentiful: 1,

@@ -17,7 +17,7 @@ xhr.send();
 document.getElementById("shield").addEventListener('click', function () {
 	setTraitPickerOpen(false);
 });
-Array.prototype.slice.call(document.getElementsByName("stats_rarity").concat(document.getElementsByName("traits_rarity"))).forEach(function (element) {
+Array.prototype.slice.call(document.getElementsByName("stats_rarity")).forEach(function (element) {
 	element.addEventListener('change', function () {
 		switch (element.id) {
 			case "stats_rarity_plentiful":
@@ -40,6 +40,12 @@ Array.prototype.slice.call(document.getElementsByName("stats_rarity").concat(doc
 				stats_rarity = 4;
 				updateWeaponStats(stats_rarity);
 				break;
+		}
+	});
+});
+Array.prototype.slice.call(document.getElementsByName("traits_rarity")).forEach(function (element) {
+	element.addEventListener('change', function () {
+		switch (element.id) {
 			case "traits_rarity_common":
 				traits_rarity = 0;
 				clearTraits(1);

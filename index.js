@@ -67,27 +67,47 @@ app.get('/', function (req, res) {
 });
 app.get('/heroes/', function (req, res) {
 	api.getHeroes(function (heroes) {
-		res.render('heroes', {heroes: heroes});
+		res.render('heroes', {
+			title: "Heroes",
+			description: "Information about the playable characters in Vermintide",
+			heroes: heroes
+		});
 	});
 });
 app.get('/enemies/', function (req, res) {
 	api.getEnemies(function (enemies) {
-		res.render('enemies', {enemies: enemies});
+		res.render('enemies', {
+			title: "Enemies",
+			description: "Information about the enemies in Vermintide",
+			enemies: enemies
+		});
 	});
 });
 app.get("/enemies/:name([a-z-]+)", function (req, res) {
 	api.getEnemy(req.params.name.replace(/-/g, ' '), function (enemy) {
-		res.render('enemy', {enemy: enemy});
+		res.render('enemy', {
+			title: enemy.name,
+			description: "Information about the " + enemy.name + " enemy in Vermintide",
+			enemy: enemy
+		});
 	});
 });
 app.get('/trinkets/', function (req, res) {
 	api.getTrinkets(function (trinkets) {
-		res.render('trinkets', {trinkets: trinkets});
+		res.render('trinkets', {
+			title: "Trinkets",
+			description: "Information about the trinkets in Vermintide",
+			trinkets: trinkets
+		});
 	});
 });
 app.get('/trinkets/:name([a-z-]+)', function (req, res) {
 	api.getTrinket(req.params.name.replace(/-/g, ' '), function (trinket) {
-		res.render('trinket', {trinket: trinket});
+		res.render('trinket', {
+			title: trinket.name,
+			description: "Information about the " + trinket.name + " trinket in Vermintide",
+			trinket: trinket
+		});
 	});
 });
 app.get('/weapons/', function (req, res) {
@@ -105,12 +125,20 @@ app.get('/weapons/', function (req, res) {
 				weaponSets.push({hero: weapons[i].hero, weapons: [weapons[i]]});
 			}
 		}
-		res.render('weapons', {weapon_sets: weaponSets});
+		res.render('weapons', {
+			title: "Weapons",
+			description: "Information about the weapons in Vermintide",
+			weapon_sets: weaponSets
+		});
 	});
 });
 app.get('/weapons/:name([a-z-]+)', function (req, res) {
 	api.getWeaponsByClass(req.params.name, function (weapon) {
-		res.render('weapon', {weapon: weapon});
+		res.render('weapon', {
+			title: weapon.name,
+			description: "Information about the " + weapon.name + " weapon in Vermintide",
+			weapon: weapon
+		});
 	});
 });
 

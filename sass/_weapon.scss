@@ -93,7 +93,7 @@ div.rarities{
 	position: relative;
 	margin-top: 1.6em;
 
-	label:hover{
+	label:hover, input[type="radio"]:checked + label{
 		color: $dark_red;
 		text-decoration: underline;
 	}
@@ -109,19 +109,19 @@ div.rarities{
 	input[type="radio"]{
 		display: none;
 	}
-	input[type="radio"]:nth-child(2):checked ~ img{
+	input[type="radio"]:nth-child(1):checked ~ img{
 		top: 0;
 	}
-	input[type="radio"]:nth-child(5):checked ~ img{
+	input[type="radio"]:nth-child(4):checked ~ img{
 		top: 30px;
 	}
-	input[type="radio"]:nth-child(8):checked ~ img{
+	input[type="radio"]:nth-child(7):checked ~ img{
 		top: 60px;
 	}
-	input[type="radio"]:nth-child(11):checked ~ img{
+	input[type="radio"]:nth-child(10):checked ~ img{
 		top: 90px;
 	}
-	input[type="radio"]:nth-child(14):checked ~ img{
+	input[type="radio"]:nth-child(13):checked ~ img{
 		top: 120px;
 	}
 }

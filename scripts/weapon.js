@@ -17,7 +17,7 @@ xhr.send();
 document.getElementById("shield").addEventListener('click', function () {
 	setTraitPickerOpen(false);
 });
-Array.prototype.slice.call(document.getElementsByName("rarity")).forEach(function (element) {
+Array.prototype.slice.call(document.getElementsByName("stats_rarity").concat(document.getElementsByName("traits_rarity"))).forEach(function (element) {
 	element.addEventListener('change', function () {
 		switch (element.id) {
 			case "stats_rarity_plentiful":

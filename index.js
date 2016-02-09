@@ -83,13 +83,17 @@ app.get('/enemies/', function (req, res) {
 		});
 	});
 });
-app.get("/enemies/:name([a-z-]+)", function (req, res) {
+app.get("/enemies/:name([a-z-]+)", function (req, res, next) {
 	api.getEnemy(req.params.name.replace(/-/g, ' '), function (enemy) {
-		res.render('enemy', {
-			title: enemy.name,
-			description: "Information about the " + enemy.name + " enemy in Vermintide",
-			enemy: enemy
-		});
+		if (enemy) {
+			res.render('enemy', {
+				title: enemy.name,
+				description: "Information about the " + enemy.name + " enemy in Vermintide",
+				enemy: enemy
+			});
+		} else {
+			next();
+		}
 	});
 });
 app.get('/trinkets/', function (req, res) {
@@ -101,13 +105,17 @@ app.get('/trinkets/', function (req, res) {
 		});
 	});
 });
-app.get('/trinkets/:name([a-z-]+)', function (req, res) {
+app.get('/trinkets/:name([a-z-]+)', function (req, res, next) {
 	api.getTrinket(req.params.name.replace(/-/g, ' '), function (trinket) {
-		res.render('trinket', {
-			title: trinket.name,
-			description: "Information about the " + trinket.name + " trinket in Vermintide",
-			trinket: trinket
-		});
+		if (trinket) {
+			res.render('trinket', {
+				title: trinket.name,
+				description: "Information about the " + trinket.name + " trinket in Vermintide",
+				trinket: trinket
+			});
+		} else {
+			next();
+		}
 	});
 });
 app.get('/weapons/', function (req, res) {
@@ -132,13 +140,17 @@ app.get('/weapons/', function (req, res) {
 		});
 	});
 });
-app.get('/weapons/:name([a-z-]+)', function (req, res) {
+app.get('/weapons/:name([a-z-]+)', function (req, res, next) {
 	api.getWeaponsByClass(req.params.name, function (weapon) {
-		res.render('weapon', {
-			title: weapon.name,
-			description: "Information about the " + weapon.name + " weapon in Vermintide",
-			weapon: weapon
-		});
+		if (weapon) {
+			res.render('weapon', {
+				title: weapon.name,
+				description: "Information about the " + weapon.name + " weapon in Vermintide",
+				weapon: weapon
+			});
+		} else {
+			next();
+		}
 	});
 });
 

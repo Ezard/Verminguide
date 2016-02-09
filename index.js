@@ -23,6 +23,7 @@ app.use('/css', express.static('css'));
 app.use('/images', express.static('images'));
 app.use('/scripts', express.static('scripts'));
 app.use('/handlebars', express.static('node_modules/handlebars/dist'));
+app.use('/static', express.static('static'));
 
 app.engine('handlebars', exphbs({
 	defaultLayout: __dirname + '/views/layouts/main',

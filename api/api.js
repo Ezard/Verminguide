@@ -118,8 +118,7 @@ module.exports = function (con) {
 			});
 		},
 		getTrinket: function (name, callback) {
-			name = name.replace("'", "");
-			con.query("SELECT t.name, tt.description AS description, tt.name AS type, effect, r.name AS rarity FROM trinkets t LEFT JOIN trinket_types tt ON t.type=tt.id LEFT JOIN rarities r ON t.rarity=r.id WHERE t.name=" + con.escape(name) + " OR REPLACE(t.name, '-', ' ')=" + con.escape(name), function (err, rows, fields) {
+			con.query("SELECT t.name, tt.description AS description, tt.name AS type, effect, r.name AS rarity FROM trinkets t LEFT JOIN trinket_types tt ON t.type=tt.id LEFT JOIN rarities r ON t.rarity=r.id WHERE REPLACE(REPLACE(REPLACE(t.name, \"'\", ''), ' ', '-'), ',', '')=" + con.escape(name), function (err, rows, fields) {
 				if (rows.length == 0) {
 					callback(null);
 				} else {

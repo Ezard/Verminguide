@@ -33,7 +33,7 @@ module.exports = function (router, api) {
 	});
 
 	router.get("/trinkets/:name([a-z-]+)", function (req, res) {
-		api.getTrinket(req.params.name.replace(/-/g, ' '), function (trinket) {
+		api.getTrinket(req.params.name, function (trinket) {
 			setHeaders(res);
 			if (trinket == null) {
 				sendResourceNotFound(res);

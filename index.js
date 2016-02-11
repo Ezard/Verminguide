@@ -106,7 +106,7 @@ app.get('/trinkets/', function (req, res) {
 	});
 });
 app.get('/trinkets/:name([a-z-]+)', function (req, res, next) {
-	api.getTrinket(req.params.name.replace(/-/g, ' '), function (trinket) {
+	api.getTrinket(req.params.name, function (trinket) {
 		if (trinket) {
 			res.render('trinket', {
 				title: trinket.name,

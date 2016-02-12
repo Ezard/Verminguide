@@ -1,0 +1,27 @@
+{
+  "short_name": "Vermintide",
+  "name": "Vermintide Utility",
+  "icons": [
+    {
+      "src": "/images/icons/icon-48.png",
+      "sizes": "48x48"
+    },
+    {
+      "src": "/images/icons/icon-72png",
+      "sizes": "72x72"
+    },
+    {
+      "src": "/images/icons/icon-96.png",
+      "sizes": "96x96"
+    },
+    {
+      "src": "/images/icons/icon-144.png",
+      "sizes": "144x144"
+    },
+    {
+      "src": "/images/icons/icon-192.png",
+      "sizes": "192x192"
+    }
+  ],
+  "start_url": "/"
+}

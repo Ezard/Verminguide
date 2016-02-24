@@ -152,10 +152,20 @@ function updateWeaponStats(rarity) {
 	var hBars = document.getElementsByClassName("hbar");
 	var vBars = document.getElementsByClassName("vbar");
 	if (weapons[rarity].attacks) {
-		for (var i = 0; i < weapons[rarity].attacks.length; i++) {
+		var max = 0;
+		for (var i = 0; i < weapons.length; i++) {
+			for (var j = 0; j < weapons[i].attacks.length; j++) {
+				for (var property in weapons[i].attacks[j].damage) {
+					if (weapons[i].attacks[j].damage.hasOwnProperty(property) && weapons[i].attacks[j].damage[property] > max) {
+						max = weapons[i].attacks[j].damage[property];
+					}
+				}
+			}
+		}
+		for (i = 0; i < weapons[rarity].attacks.length; i++) {
 			statLabels[i].innerHTML = statLabels[i].innerHTML.split(": ")[0] + ": " + weapons[rarity].attacks[i].damage.normal;
-			hBars[i].style.width = ((weapons[rarity].attacks[i].damage.normal / 40) * 100) + "%";
-			vBars[i].style.left = "calc(" + ((weapons[rarity].attacks[i].damage.normal / 40) * 100) + "% - 2.5px)";
+			hBars[i].style.width = ((weapons[rarity].attacks[i].damage.normal / max) * 100) + "%";
+			vBars[i].style.left = "calc(" + ((weapons[rarity].attacks[i].damage.normal / max) * 100) + "% - 2.5px)";
 		}
 	} else {
 		Array.prototype.slice.call(statLabels).forEach(function (element) {

@@ -11,7 +11,7 @@ xhr.onreadystatechange = function () {
 		traits = JSON.parse(xhr.responseText);
 	}
 };
-xhr.open("GET", (window.location + "").replace(/localhost|vermintideutility\.com/, "api.vermintideutility.com") + "/traits");
+xhr.open("GET", (window.location + "").replace(/localhost|verminguide\.com/, "api.verminguide.com") + "/traits");
 xhr.send();
 
 document.getElementById("shield").addEventListener('click', function () {

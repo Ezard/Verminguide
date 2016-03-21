@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>{{#if title}}{{title}} - {{/if}}Vermintide Utility</title>
+	<title>{{#if title}}{{title}} - {{/if}}Verminguide</title>
 	<link rel="dns-prefetch" href="http://fonts.gstatic.com">
 	<link rel="dns-prefetch" href="http://www.google-analytics.com">
 	{{#if description}}
@@ -31,30 +31,21 @@
 	ga('send', 'pageview');</script>
 </head>
 <body>
-<nav id="menu">
-	<div id="cover" onclick="setMenuOpen(false)"></div>
-	<div>
-		<a href="http://vermintideutility.com" style="margin:0;padding:0">
-			<img src="/images/logo.png" alt="Vermintide Utility logo"/>
+<header id="header">
+	<nav>
+		<a href="/heroes/">Heroes</a>
+		<a href="/enemies/">Enemies</a>
+		<a href="/" class="logo">
+			<h1>Verminguide</h1>
 		</a>
-		<a href="/heroes/" onclick="setMenuOpen(false)">
-			Heroes
-		</a>
-		<a href="/enemies/" onclick="setMenuOpen(false)">
-			Enemies
-		</a>
-		<a href="/trinkets/" onclick="setMenuOpen(false)">
-			Trinkets
-		</a>
-		<a href="/weapons/" onclick="setMenuOpen(false)">
-			Weapons
-		</a>
-	</div>
-</nav>
-<div id="content">
+		<a href="/trinkets/">Trinkets</a>
+		<a href="/weapons/">Weapons</a>
+	</nav>
+</header>
+<div class="content">
 	{{{body}}}
 </div>
-<div id="hamburger" onclick="setMenuOpen(true)">
+<div id="hamburger" class="hamburger">
 	<div style="margin: 0;"></div>
 	<div></div>
 	<div></div>

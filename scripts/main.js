@@ -96,10 +96,9 @@
 //	xhr.send();
 //}
 
-function setMenuOpen(open) {
-	if (open) {
-		document.getElementById("menu").className = "expanded";
-	} else {
-		document.getElementById("menu").className = "";
-	}
-}
+window.addEventListener("load", function () {
+	document.getElementById("hamburger").addEventListener("click", function () {
+		var header = document.getElementById("header");
+		header.className = (header.className == "" ? "open" : "");
+	});
+}, false);

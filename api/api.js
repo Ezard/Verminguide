@@ -23,9 +23,9 @@ module.exports = function (con) {
 					enemy.armoured = rows[i].armoured == 1;
 					enemy.poison_resistance = rows[i].poison_resistance;
 					var urlName = noSpaceLowerCase(enemy.name);
-					enemy.icon = "http://static.vermintideutility.com/enemies/icons/" + urlName + ".jpg";
-					enemy.image = "http://static.vermintideutility.com/enemies/" + urlName + ".png";
-					enemy.url = "http://vermintideutility.com/enemies/" + urlName;
+					enemy.icon = "http://static.verminguide.com/enemies/icons/" + urlName + ".jpg";
+					enemy.image = "http://static.verminguide.com/enemies/" + urlName + ".png";
+					enemy.url = "http://verminguide.com/enemies/" + urlName;
 					enemies.push(enemy);
 				}
 				callback(enemies);
@@ -68,9 +68,9 @@ module.exports = function (con) {
 						enemy.armoured = rows[0].armoured == 1;
 						enemy.poison_resistance = rows[0].poison_resistance;
 						var urlName = noSpaceLowerCase(enemy.name);
-						enemy.icon = "http://static.vermintideutility.com/enemies/icons/" + urlName + ".jpg";
-						enemy.image = "http://static.vermintideutility.com/enemies/" + urlName + ".png";
-						enemy.url = "http://vermintideutility.com/enemies/" + urlName;
+						enemy.icon = "http://static.verminguide.com/enemies/icons/" + urlName + ".jpg";
+						enemy.image = "http://static.verminguide.com/enemies/" + urlName + ".png";
+						enemy.url = "http://verminguide.com/enemies/" + urlName;
 						callback(enemy);
 					});
 				}
@@ -85,9 +85,9 @@ module.exports = function (con) {
 					hero.name = rows[i].name;
 					hero.class = rows[i].class;
 					var urlName = noSpaceLowerCase(hero.name);
-					hero.icon = "http://static.vermintideutility.com/heroes/icons/" + urlName + ".jpg";
-					hero.image = "http://static.vermintideutility.com/heroes/" + urlName + ".png";
-					hero.url = "http://vermintideutility.com/heroes/" + urlName;
+					hero.icon = "http://static.verminguide.com/heroes/icons/" + urlName + ".jpg";
+					hero.image = "http://static.verminguide.com/heroes/" + urlName + ".png";
+					hero.url = "http://verminguide.com/heroes/" + urlName;
 					heroes.push(hero);
 				}
 				callback(heroes);
@@ -110,8 +110,8 @@ module.exports = function (con) {
 					trinket.type = rows[i].type;
 					trinket.rarity = rows[i].rarity;
 					var urlName = noSpaceLowerCase(trinket.name).replace(/[',]/g, "");
-					trinket.image = "http://static.vermintideutility.com/trinkets/" + urlName + ".png";
-					trinket.url = "http://vermintideutility.com/trinkets/" + urlName;
+					trinket.image = "http://static.verminguide.com/trinkets/" + urlName + ".png";
+					trinket.url = "http://verminguide.com/trinkets/" + urlName;
 					trinkets.push(trinket);
 				}
 				callback(trinkets);
@@ -134,8 +134,8 @@ module.exports = function (con) {
 					trinket.type = rows[0].type;
 					trinket.rarity = rows[0].rarity;
 					var urlName = noSpaceLowerCase(trinket.name).replace(/[',]/g, "");
-					trinket.image = "http://static.vermintideutility.com/trinkets/" + urlName + ".png";
-					trinket.url = "http://vermintideutility.com/trinkets/" + urlName;
+					trinket.image = "http://static.verminguide.com/trinkets/" + urlName + ".png";
+					trinket.url = "http://verminguide.com/trinkets/" + urlName;
 					callback(trinket);
 				}
 			});
@@ -149,7 +149,7 @@ module.exports = function (con) {
 						"name": rows[i].name,
 						"description": rows[i].description,
 						"hero": rows[i].hero,
-						"url": "http://vermintideutility.com/weapons/" + noSpaceLowerCase(rows[i].name),
+						"url": "http://verminguide.com/weapons/" + noSpaceLowerCase(rows[i].name),
 						"weapons": []
 					};
 				}
@@ -173,7 +173,7 @@ module.exports = function (con) {
 						name: rows[0].name,
 						description: rows[0].description,
 						hero: rows[0].hero,
-						url: "http://vermintideutility.com/weapons/" + noSpaceLowerCase(rows[0].name),
+						url: "http://verminguide.com/weapons/" + noSpaceLowerCase(rows[0].name),
 						weapons: []
 					};
 					con.query("SELECT w.name, r.name as rarity, w.weapon_class, wa.name as attack_name, wa.damage_normal, wa.damage_armoured, wa.damage_resistant, wa.damage_friendly FROM weapons w LEFT JOIN rarities r ON w.rarity=r.id LEFT JOIN weapon_attacks wa ON w.weapon_class=wa.weapon_class AND w.rarity=wa.rarity WHERE w.weapon_class=" + rows[0].id + " ORDER BY r.id, sort_order", function (err, rows, fields) {

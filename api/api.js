@@ -1,7 +1,7 @@
 module.exports = function (con) {
 	return {
 		getEnemies: function (callback) {
-			con.query("SELECT name, description, notes, hp_easy, hp_normal, hp_hard, hp_nightmare, hp_cataclysm, armoured, poison_resistance FROM enemies", function (err, rows, fields) {
+			con.query("SELECT name, description, notes, hp_easy, hp_normal, hp_hard, hp_nightmare, hp_cataclysm, armoured, poison_resistance FROM enemies", function (err, rows) {
 				var enemies = [];
 				for (var i = 0; i < rows.length; i++) {
 					var enemy = {};
@@ -14,11 +14,11 @@ module.exports = function (con) {
 						enemy.notes.push({title: split2[0], content: split2[1]});
 					}
 					enemy.hp = {
-						"easy": rows[i].hp_easy,
-						"normal": rows[i].hp_normal,
-						"hard": rows[i].hp_hard,
-						"nightmare": rows[i].hp_nightmare,
-						"cataclysm": rows[i].hp_cataclysm
+						"easy": rows[i]["hp_easy"],
+						"normal": rows[i]["hp_normal]"],
+						"hard": rows[i]["hp_hard"],
+						"nightmare": rows[i]["hp_nightmare"],
+						"cataclysm": rows[i]["hp_cataclysm"]
 					};
 					enemy.armoured = rows[i].armoured == 1;
 					enemy.poison_resistance = rows[i].poison_resistance;
@@ -32,11 +32,11 @@ module.exports = function (con) {
 			});
 		},
 		getEnemy: function (name, callback) {
-			con.query("SELECT id, name, description, notes, hp_easy, hp_normal, hp_hard, hp_nightmare, hp_cataclysm, armoured, poison_resistance FROM enemies WHERE name=" + con.escape(name), function (err, rows, fields) {
+			con.query("SELECT id, name, description, notes, hp_easy, hp_normal, hp_hard, hp_nightmare, hp_cataclysm, armoured, poison_resistance FROM enemies WHERE name=" + con.escape(name), function (err, rows) {
 				if (rows.length == 0) {
 					callback(null);
 				} else {
-					con.query("SELECT name, damage_easy, damage_normal, damage_hard, damage_nightmare, damage_cataclysm FROM enemy_attacks WHERE enemy_id=" + rows[0].id, function (err2, rows2, fields2) {
+					con.query("SELECT name, damage_easy, damage_normal, damage_hard, damage_nightmare, damage_cataclysm FROM enemy_attacks WHERE enemy_id=" + rows[0].id, function (err2, rows2) {
 						var enemy = {};
 						enemy.name = rows[0].name;
 						enemy.description = rows[0].description;
@@ -47,21 +47,21 @@ module.exports = function (con) {
 							enemy.notes.push({title: split2[0], content: split2[1]});
 						}
 						enemy.hp = {
-							"easy": rows[0].hp_easy,
-							"normal": rows[0].hp_normal,
-							"hard": rows[0].hp_hard,
-							"nightmare": rows[0].hp_nightmare,
-							"cataclysm": rows[0].hp_cataclysm
+							"easy": rows[0]["hp_easy"],
+							"normal": rows[0]["hp_normal"],
+							"hard": rows[0]["hp_hard"],
+							"nightmare": rows[0]["hp_nightmare"],
+							"cataclysm": rows[0]["hp_cataclysm"]
 						};
 						enemy.attacks = [];
 						for (i = 0; i < rows2.length; i++) {
 							enemy.attacks.push({
 								name: rows2[i].name, damage: {
-									"easy": rows2[i].damage_easy,
-									"normal": rows2[i].damage_normal,
-									"hard": rows2[i].damage_hard,
-									"nightmare": rows2[i].damage_nightmare,
-									"cataclysm": rows2[i].damage_cataclysm
+									"easy": rows2[i]["damage_easy"],
+									"normal": rows2[i]["damage_normal"],
+									"hard": rows2[i]["damage_hard"],
+									"nightmare": rows2[i]["damage_nightmare"],
+									"cataclysm": rows2[i]["damage_cataclysm"]
 								}
 							});
 						}
@@ -78,7 +78,7 @@ module.exports = function (con) {
 		},
 
 		getHeroes: function (callback) {
-			con.query("SELECT name, class FROM heroes", function (err, rows, fields) {
+			con.query("SELECT name, class FROM heroes", function (err, rows) {
 				var heroes = [];
 				for (var i = 0; i < rows.length; i++) {
 					var hero = {};
@@ -95,13 +95,13 @@ module.exports = function (con) {
 		},
 
 		getTrinkets: function (callback) {
-			con.query("SELECT t.name, tt.description AS description, tt.name AS type, effect, r.name AS rarity FROM trinkets t LEFT JOIN trinket_types tt ON t.type=tt.id LEFT JOIN rarities r ON t.rarity=r.id", function (err, rows, fields) {
+			con.query("SELECT t.name, tt.description AS description, tt.name AS type, effect, r.name AS rarity FROM trinkets t LEFT JOIN trinket_types tt ON t.type=tt.id LEFT JOIN rarities r ON t.rarity=r.id", function (err, rows) {
 				var trinkets = [];
 				for (var i = 0; i < rows.length; i++) {
 					var trinket = {};
 					if (rows[i].description) {
 						if (rows[i].description.indexOf("|val|") != -1) {
-							trinket.description = rows[i].description.replace(/\|val\|/g, rows[i].effect);
+							trinket.description = rows[i].description.replace(/\|val\|/g, rows[i]["effect"]);
 						} else {
 							trinket.description = rows[i].description;
 						}
@@ -118,14 +118,14 @@ module.exports = function (con) {
 			});
 		},
 		getTrinket: function (name, callback) {
-			con.query("SELECT t.name, tt.description AS description, tt.name AS type, effect, r.name AS rarity FROM trinkets t LEFT JOIN trinket_types tt ON t.type=tt.id LEFT JOIN rarities r ON t.rarity=r.id WHERE REPLACE(REPLACE(REPLACE(t.name, \"'\", ''), ' ', '-'), ',', '')=" + con.escape(name), function (err, rows, fields) {
+			con.query("SELECT t.name, tt.description AS description, tt.name AS type, effect, r.name AS rarity FROM trinkets t LEFT JOIN trinket_types tt ON t.type=tt.id LEFT JOIN rarities r ON t.rarity=r.id WHERE REPLACE(REPLACE(REPLACE(t.name, \"'\", ''), ' ', '-'), ',', '')=" + con.escape(name), function (err, rows) {
 				if (rows.length == 0) {
 					callback(null);
 				} else {
 					var trinket = {};
 					if (rows[0].description) {
 						if (rows[0].description.indexOf("|val|") != -1) {
-							trinket.description = rows[0].description.replace(/\|val\|/g, rows[0].effect);
+							trinket.description = rows[0].description.replace(/\|val\|/g, rows[0]["effect"]);
 						} else {
 							trinket.description = rows[0].description;
 						}
@@ -142,7 +142,7 @@ module.exports = function (con) {
 		},
 
 		getWeapons: function (callback) {
-			con.query("SELECT wc.id, wc.name, description, h.name AS hero FROM weapon_classes wc INNER JOIN heroes h ON wc.hero=h.id ORDER BY wc.id", function (err, rows, fields) {
+			con.query("SELECT wc.id, wc.name, description, h.name AS hero FROM weapon_classes wc INNER JOIN heroes h ON wc.hero=h.id ORDER BY wc.id", function (err, rows) {
 				var weapon_classes = [];
 				for (var i = 0; i < rows.length; i++) {
 					weapon_classes[rows[i].id - 1] = {
@@ -153,9 +153,9 @@ module.exports = function (con) {
 						"weapons": []
 					};
 				}
-				con.query("SELECT w.name, r.name as rarity, weapon_class FROM weapons w LEFT JOIN rarities r ON w.rarity=r.id", function (err, rows, fields) {
+				con.query("SELECT w.name, r.name as rarity, weapon_class FROM weapons w LEFT JOIN rarities r ON w.rarity=r.id", function (err, rows) {
 					for (var i = 0; i < rows.length; i++) {
-						weapon_classes[rows[i].weapon_class - 1].weapons.push({
+						weapon_classes[rows[i]["weapon_class"] - 1].weapons.push({
 							"name": rows[i].name,
 							"rarity": rows[i].rarity
 						});
@@ -165,7 +165,7 @@ module.exports = function (con) {
 			});
 		},
 		getWeaponsByClass: function (weapon_class, callback) {
-			con.query("SELECT wc.id, wc.name, description, h.name AS hero FROM weapon_classes wc INNER JOIN heroes h ON wc.hero=h.id WHERE wc.name=" + con.escape(weapon_class) + " OR wc.name=REPLACE(" + con.escape(weapon_class) + ", '-', ' ') ORDER BY wc.id", function (err, rows, fields) {
+			con.query("SELECT wc.id, wc.name, description, h.name AS hero FROM weapon_classes wc INNER JOIN heroes h ON wc.hero=h.id WHERE wc.name=" + con.escape(weapon_class) + " OR wc.name=REPLACE(" + con.escape(weapon_class) + ", '-', ' ') ORDER BY wc.id", function (err, rows) {
 				if (rows.length == 0) {
 					callback(null);
 				} else {
@@ -176,7 +176,7 @@ module.exports = function (con) {
 						url: "http://verminguide.com/weapons/" + noSpaceLowerCase(rows[0].name),
 						weapons: []
 					};
-					con.query("SELECT w.name, r.name as rarity, w.weapon_class, wa.name as attack_name, wa.damage_normal, wa.damage_armoured, wa.damage_resistant, wa.damage_friendly FROM weapons w LEFT JOIN rarities r ON w.rarity=r.id LEFT JOIN weapon_attacks wa ON w.weapon_class=wa.weapon_class AND w.rarity=wa.rarity WHERE w.weapon_class=" + rows[0].id + " ORDER BY r.id, sort_order", function (err, rows, fields) {
+					con.query("SELECT w.name, r.name as rarity, w.weapon_class, wa.name as attack_name, wa.damage_normal, wa.damage_armoured, wa.damage_resistant, wa.damage_friendly FROM weapons w LEFT JOIN rarities r ON w.rarity=r.id LEFT JOIN weapon_attacks wa ON w.weapon_class=wa.weapon_class AND w.rarity=wa.rarity WHERE w.weapon_class=" + rows[0].id + " ORDER BY r.id, sort_order", function (err, rows) {
 						var minRarity = 100;
 						var Rarities = {
 							Plentiful: 1,
@@ -196,12 +196,12 @@ module.exports = function (con) {
 							}
 						}
 						for (i = 0; i < rows.length; i++) {
-							var index = weapon_class.weapons.findIndex(function (element, index, array) {
+							var index = weapon_class.weapons.findIndex(function (element) {
 								return element.name == rows[i].name;
 							});
 							if (index > -1) {
 								weapon_class.weapons[index].attacks.push({
-									name: rows[i].attack_name,
+									name: rows[i]["attack_name"],
 									damage: {
 										normal: rows[i].damage_normal,
 										armoured: rows[i].damage_armoured,
@@ -216,7 +216,7 @@ module.exports = function (con) {
 									attacks: []
 								};
 								weapon.attacks.push({
-									name: rows[i].attack_name,
+									name: rows[i]["attack_name"],
 									damage: {
 										normal: rows[i].damage_normal,
 										armoured: rows[i].damage_armoured,
@@ -233,7 +233,7 @@ module.exports = function (con) {
 			});
 		},
 		getWeaponTraitSets: function (weapon_class, callback) {
-			con.query("SELECT rarity, wt1.name as trait1_name, wt1.description as trait1_string, trait1_data, wt2.name as trait2_name, wt2.description as trait2_string, trait2_data, wt3.name as trait3_name, wt3.description as trait3_string, trait3_data FROM trait_sets ts LEFT JOIN weapon_traits wt1 ON trait1_string=wt1.id LEFT JOIN weapon_traits wt2 ON trait2_string=wt2.id LEFT JOIN weapon_traits wt3 ON trait3_string=wt3.id WHERE ts.weapon=(SELECT wc.id FROM weapon_classes wc WHERE wc.name='" + weapon_class + "' OR wc.name=REPLACE('" + weapon_class + "', '-', ' ')) ORDER BY ts.rarity", function (err, rows, fields) {
+			con.query("SELECT rarity, wt1.name as trait1_name, wt1.description as trait1_string, trait1_data, wt2.name as trait2_name, wt2.description as trait2_string, trait2_data, wt3.name as trait3_name, wt3.description as trait3_string, trait3_data FROM trait_sets ts LEFT JOIN weapon_traits wt1 ON trait1_string=wt1.id LEFT JOIN weapon_traits wt2 ON trait2_string=wt2.id LEFT JOIN weapon_traits wt3 ON trait3_string=wt3.id WHERE ts.weapon=(SELECT wc.id FROM weapon_classes wc WHERE wc.name='" + weapon_class + "' OR wc.name=REPLACE('" + weapon_class + "', '-', ' ')) ORDER BY ts.rarity", function (err, rows) {
 				var traits = [[], [], [], []];
 				for (var i = 0; i < rows.length; i++) {
 					var set = [];
@@ -271,23 +271,23 @@ function getTraitText(text, data, rarity) {
 	var index;
 	if ((index = text.indexOf("|val")) != -1) {
 		if (text.charAt(index + 4) == '%') {
-			text = text.substring(0, index) + (rarity == 5 ? (Math.round(data.max_chance * 100) + "%") : (Math.round(data.min_chance * 100) + "% - " + Math.round(data.max_chance * 100) + "%")) + text.substring(index + 6);
+			text = text.substring(0, index) + (rarity == 5 ? (Math.round(data["max_chance"] * 100) + "%") : (Math.round(data["min_chance"] * 100) + "% - " + Math.round(data["max_chance"] * 100) + "%")) + text.substring(index + 6);
 		} else {
-			text = text.substring(0, index) + (rarity == 5 ? Math.round(data.max_chance * 100) : (Math.round(data.min_chance * 100) + " - " + Math.round(data.max_chance * 100))) + text.substring(index + 5);
+			text = text.substring(0, index) + (rarity == 5 ? Math.round(data["max_chance"] * 100) : (Math.round(data["min_chance"] * 100) + " - " + Math.round(data["max_chance"] * 100))) + text.substring(index + 5);
 		}
 	}
 	if ((index = text.indexOf("|bonus")) != -1) {
 		if (text.charAt(index + 6) == '%') {
-			text = text.substring(0, index) + Math.round(data.bonus) + "%" + text.substring(index + 8);
+			text = text.substring(0, index) + Math.round(data["bonus"]) + "%" + text.substring(index + 8);
 		} else {
-			text = text.substring(0, index) + Math.round(data.bonus) + text.substring(index + 7);
+			text = text.substring(0, index) + Math.round(data["bonus"]) + text.substring(index + 7);
 		}
 	}
 	if ((index = text.indexOf("|multiplier")) != -1) {
 		if (text.charAt(index + 11) == '%') {
-			text = text.substring(0, index) + Math.round(data.multiplier * 100) + "%" + text.substring(index + 13);
+			text = text.substring(0, index) + Math.round(data["multiplier"] * 100) + "%" + text.substring(index + 13);
 		} else {
-			text = text.substring(0, index) + Math.round(data.multiplier * 100) + text.substring(index + 12);
+			text = text.substring(0, index) + Math.round(data["multiplier"] * 100) + text.substring(index + 12);
 		}
 	}
 	return text;

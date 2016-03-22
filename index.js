@@ -157,7 +157,7 @@ app.get('/weapons/:name([a-z-]+)', function (req, res, next) {
 app.use(vhost('static.verminguide.com', express.static('/var/www/images/', {fallthrough: false})));
 app.use(slash());
 
-app.use(function (req, res, next) {
+app.use(function (req, res) {
 	res.status(404);
 
 	if (req.accepts('html')) {
@@ -173,5 +173,5 @@ app.use(function (req, res, next) {
 	res.type('txt').send('Not found');
 });
 
-var server = app.listen(80, function () {
+app.listen(80, function () {
 });

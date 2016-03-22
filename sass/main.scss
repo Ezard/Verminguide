@@ -103,9 +103,9 @@ header{
 }
 
 div.content{
-	position: relative;
+	position: absolute;
 	top: 100px;
-	width: 100%;
+	width: 100vw;
 }
 
 div.hamburger{
@@ -118,8 +118,8 @@ div.hamburger{
 	}
 
 	header{
-		width: 80%;
-		height: 100%;
+		width: 80vw;
+		height: 100vh;
 		transform: translateX(-100vw);
 		transition: transform 300ms;
 
@@ -148,7 +148,6 @@ div.hamburger{
 	}
 
 	div.content{
-		position: fixed;
 		top: 0;
 		transform: translateX(0);
 		transition: transform 300ms;

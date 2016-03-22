@@ -148,6 +148,7 @@ div.hamburger{
 	}
 
 	div.content{
+		position: fixed;
 		top: 0;
 		transform: translateX(0);
 		transition: transform 300ms;

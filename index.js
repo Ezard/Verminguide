@@ -55,7 +55,7 @@ app.use(subdomain('api', router));
 
 app.get('/*', function (req, res, next) {
 	if (req.headers.host.match(/^www\./)) {
-		res.writeHead(301, {'Location': 'http://vermintideutility.com'});
+		res.writeHead(301, {'Location': 'http://verminguide.com'});
 		res.end();
 	} else {
 		return next();

@@ -139,10 +139,7 @@ templates['heroes'] = template({"1":function(container,depth0,helpers,partials,d
     + "</div>";
 },"useData":true});
 templates['home'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<h1>Welcome to Verminguide!</h1>\r\n\r\n<div>\r\n	<h2 style=\"padding:0 40px;color:#C60000\">**Please note that this website is still a work in progress**</h2>\r\n</div>";
-},"useData":true});
-templates['test'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<!--<h1 style=\"color: white\">This is just some random test content</h1>-->";
+    return "<h1>Verminguide</h1>\r\n\r\n<div>\r\n	<h2 style=\"padding:0 40px;color:#C60000\">**Please note that this website is still a work in progress**</h2>\r\n</div>";
 },"useData":true});
 templates['trait'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
@@ -282,30 +279,6 @@ templates['layouts/main'] = template({"1":function(container,depth0,helpers,part
     + "Verminguide</title>\r\n	<link rel=\"dns-prefetch\" href=\"http://fonts.gstatic.com\">\r\n	<link rel=\"dns-prefetch\" href=\"http://www.google-analytics.com\">\r\n"
     + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.description : depth0),{"name":"if","hash":{},"fn":container.program(3, data, 0),"inverse":container.program(5, data, 0),"data":data})) != null ? stack1 : "")
     + "	<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\r\n	<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\r\n	<meta name=\"theme-color\" content=\"#212121\">\r\n	<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/main.css\">\r\n	<script src=\"/handlebars/handlebars.min.js\"></script>\r\n	<script src=\"/scripts/main.min.js\"></script>\r\n	<script src=\"/scripts/templates.min.js\"></script>\r\n	<script>(function (i, s, o, g, r, a, m) {\r\n		i['GoogleAnalyticsObject'] = r;\r\n		i[r] = i[r] || function () {\r\n					(i[r].q = i[r].q || []).push(arguments)\r\n				}, i[r].l = 1 * new Date();\r\n		a = s.createElement(o), m = s.getElementsByTagName(o)[0];\r\n		a.async = 1;\r\n		a.src = g;\r\n		m.parentNode.insertBefore(a, m)\r\n	})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');\r\n	ga('create', 'UA-72698344-1', 'auto');\r\n	ga('require', 'linkid');\r\n	ga('send', 'pageview');</script>\r\n</head>\r\n<body>\r\n<header id=\"header\">\r\n	<nav>\r\n		<a href=\"/heroes/\">Heroes</a>\r\n		<a href=\"/enemies/\">Enemies</a>\r\n		<a href=\"/\" class=\"logo\">\r\n			<h1>Verminguide</h1>\r\n		</a>\r\n		<a href=\"/trinkets/\">Trinkets</a>\r\n		<a href=\"/weapons/\">Weapons</a>\r\n	</nav>\r\n</header>\r\n<div class=\"content\">\r\n	"
-    + ((stack1 = ((helper = (helper = helpers.body || (depth0 != null ? depth0.body : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(alias1,{"name":"body","hash":{},"data":data}) : helper))) != null ? stack1 : "")
-    + "\r\n</div>\r\n<div id=\"hamburger\" class=\"hamburger\">\r\n	<div style=\"margin: 0;\"></div>\r\n	<div></div>\r\n	<div></div>\r\n</div>\r\n</body>\r\n</html>";
-},"useData":true});
-templates['layouts/new'] = template({"1":function(container,depth0,helpers,partials,data) {
-    var helper;
-
-  return container.escapeExpression(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"title","hash":{},"data":data}) : helper)))
-    + " - ";
-},"3":function(container,depth0,helpers,partials,data) {
-    var helper;
-
-  return "		<meta name=\"description\" content=\""
-    + container.escapeExpression(((helper = (helper = helpers.description || (depth0 != null ? depth0.description : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"description","hash":{},"data":data}) : helper)))
-    + "\">\r\n";
-},"5":function(container,depth0,helpers,partials,data) {
-    return "		<meta name=\"description\" content=\"Everything you could possibly want to know about Vermintide, plus more!\">\r\n";
-},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    var stack1, helper, alias1=depth0 != null ? depth0 : {};
-
-  return "<!DOCTYPE html>\r\n<html>\r\n<head>\r\n	<title>"
-    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.title : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "Verminguide</title>\r\n	<link rel=\"dns-prefetch\" href=\"http://fonts.gstatic.com\">\r\n	<link rel=\"dns-prefetch\" href=\"http://www.google-analytics.com\">\r\n"
-    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.description : depth0),{"name":"if","hash":{},"fn":container.program(3, data, 0),"inverse":container.program(5, data, 0),"data":data})) != null ? stack1 : "")
-    + "	<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\r\n	<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\r\n	<meta name=\"theme-color\" content=\"#212121\">\r\n	<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/main.css\">\r\n	<script src=\"/handlebars/handlebars.min.js\"></script>\r\n	<script src=\"/scripts/main.min.js\"></script>\r\n	<script src=\"/scripts/templates.min.js\"></script>\r\n	<script>(function (i, s, o, g, r, a, m) {\r\n		i['GoogleAnalyticsObject'] = r;\r\n		i[r] = i[r] || function () {\r\n					(i[r].q = i[r].q || []).push(arguments)\r\n				}, i[r].l = 1 * new Date();\r\n		a = s.createElement(o), m = s.getElementsByTagName(o)[0];\r\n		a.async = 1;\r\n		a.src = g;\r\n		m.parentNode.insertBefore(a, m)\r\n	})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');\r\n	ga('create', 'UA-72698344-1', 'auto');\r\n	ga('require', 'linkid');\r\n	ga('send', 'pageview');</script>\r\n</head>\r\n<body>\r\n<header id=\"header\">\r\n	<nav>\r\n		<a href=\"/heroes/\">Heroes</a>\r\n		<a href=\"/enemies/\">Enemies</a>\r\n		<a href=\"/\" class=\"logo\">\r\n			<h1>Verminguide</h1>\r\n		</a>\r\n		<a href=\"/trinkets/\">Trinkets</a>\r\n		<a href=\"/weapons/\">Weapons</a>\r\n	</nav>\r\n</header>\r\n<div class=\"content\">\r\n	<h1>This is the title</h1>\r\n	"
     + ((stack1 = ((helper = (helper = helpers.body || (depth0 != null ? depth0.body : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(alias1,{"name":"body","hash":{},"data":data}) : helper))) != null ? stack1 : "")
     + "\r\n</div>\r\n<div id=\"hamburger\" class=\"hamburger\">\r\n	<div style=\"margin: 0;\"></div>\r\n	<div></div>\r\n	<div></div>\r\n</div>\r\n</body>\r\n</html>";
 },"useData":true});

@@ -154,7 +154,7 @@ app.get('/weapons/:name([a-z-]+)', function (req, res, next) {
 	});
 });
 
-app.use(vhost('static.vermintideutility.com', express.static('/var/www/images/', {fallthrough: false})));
+app.use(vhost('static.verminguide.com', express.static('/var/www/images/', {fallthrough: false})));
 app.use(slash());
 
 app.use(function (req, res, next) {

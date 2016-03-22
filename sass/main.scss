@@ -154,6 +154,7 @@ div.hamburger{
 	}
 
 	header.open + div.content{
+		position: fixed;
 		transform: translateX(80vw);
 	}
 

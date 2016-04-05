@@ -4,9 +4,9 @@ div.shield{
 	div.trait_picker{
 		position: fixed;
 		left: 25%;
-		top: 5%;
+		top: calc(5% + 100px);
 		width: 50%;
-		height: 90%;
+		height: calc(90% - 100px);
 		padding-bottom: 20px;
 		box-sizing: border-box;
 		background-color: #212121;
